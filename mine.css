@@ -10,7 +10,8 @@
     }
 
     .btn-upload {
-        background-color: rgb(165, 165, 165)
+        background-color: rgb(165, 165, 165);
+        
      }
 
      footer {
@@ -18,4 +19,23 @@
       bottom: 0;
 
      }
+
+     .faq-que {
+        background-color: rgb(240, 240, 240);
+        color: cornflowerblue;
+        border-radius: 15px;
+        padding: 5px; 
+        text-align: center;
+        margin-bottom: 3px;
+     }
+
+     .faq-ans {
+        background-color: rgb(250, 250, 250);
+        border-radius: 15px;
+        padding: 5px; 
+        text-align: center;
+        margin-bottom: 25px;
+     }
+
+    
     
