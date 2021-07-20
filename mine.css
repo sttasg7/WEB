@@ -1,0 +1,21 @@
+.link-cur {
+        background-color: rgb(55,55,55);
+        border-radius: 5px;
+    }
+
+    header {
+        background-color: black;
+        border-radius: 15px;
+        padding: 15px; 
+    }
+
+    .btn-upload {
+        background-color: rgb(165, 165, 165)
+     }
+
+     footer {
+      position: fixed;
+      bottom: 0;
+
+     }
+    
