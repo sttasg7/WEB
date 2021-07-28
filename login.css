@@ -1,4 +1,12 @@
-#mailaddress {
+#email_log {
+  width: 350px;
+  height: 50px;
+  margin: auto;
+  position: relative;
+  border-width: thin;
+}
+
+#password_log {
   width: 350px;
   height: 50px;
   margin: auto;
