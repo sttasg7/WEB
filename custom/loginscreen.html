@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HAR OS Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link href="mine.css" rel="stylesheet" />
+    <link href="login2.css" rel="stylesheet" />
+    <link rel="icon" href="https://i.imgur.com/qY7kRzP.png" type="img/png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container">
+            <img src="har.png" id="navicon" height="50px" width="auto" alt="HAR Observation & Statistics">
+            <div class="collapse-navbar-collapse" style="padding-left: 60%;">
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="faq.html">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="d-grid gap-2 d-md-block" style="margin-right: -5%">
+                <button type=" button" class="btn btn-outline-secondary" id="navlogin">Sign In</button>
+                <button type="button" class="btn btn-primary" id="butsignup">Sign Up</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="alert alert-success alert-dismissible" id="success" style="display:none;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+    </div>
+    <div class="alert alert-danger alert-dismissible" id="error" style="display:none;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+    </div>
+
+
+    <!-- Welcome Text-->
+    <h1 class="text-center" style="padding-top: 20px; color: #0271d8">Welcome to HAR Observation & Statistics</h1>
+
+    <!-- Image -->
+    <div class="container" align="center">
+        <img height="110px" width="auto" align="center" alt="HAR Observation & Statistics" src="har-dark.png">
+    </div>
+
+
+    <!-- Input Boxes -->
+    <div class="div">
+        <form method="POST" class="container" id="inputbox" style="padding-top: 50px;">
+            <p class="text-center fs-18 text-dark m-t-150" style="margin-left: 37px;">
+                Enter your username and password to continue...
+            </p>
+            <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
+                <div class="col-sm-1">
+                    <input type="email" id="email_log" name="em" class="form-control" placeholder="someone@example.com"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Password:</label>
+                <div class="col-sm-1">
+                    <input type="password" id="password_log" name="pw" id="mailaddress" minlength="8"
+                        pattern="^(?=.{8,}$)(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$" class="form-control">
+                </div>
+            </div>
+
+
+            <!-- Submit Buttons -->
+            <div class="d-grid gap-2 d-md-block text-right btn-sign">
+                <button class="btn btn-outline-secondary" type="submit" name="save" id="butlogin">Sign In</button>
+                <button class="btn btn-dark" type="button" id="signupref">Sign Up</button>
+                <p style="float: right;" id="singprompt">No account? Sign Up!</p>
+            </div>
+        </form>
+    </div>
+    <!--
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright float-left">
+                <p class="mt-5 mb-3 text-muted">Made by CR7-SKE &copy;2021</p>
+            </div>
+        </div>
+    </footer>
+    -->
+
+    <footer class="text-center text-white fixed-bottom">
+        <!-- Grid container -->
+        <div class="container p-4"></div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="bg-dark text-primary text-center p-3">
+            CEID © 2021 Copyright: Παναγώτης Καπνίσης - Τάσσης Στέφανος
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script src="log_sign.js"></script>
+</body>
+
+</html>
