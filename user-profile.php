@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +10,6 @@
     <title>User Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="mine.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"/>
     <link rel="icon" href="https://i.imgur.com/qY7kRzP.png" type="img/png">
 
 </head>
@@ -16,29 +19,36 @@
 <body>
     <div class="container-flex">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-          <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-light text-decoration-none">
+        <a href="user-profile.php" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-light text-decoration-none">
             <img src=https://i.imgur.com/MtazLc2.png height="50px" width="auto" alt="HAR Observation & Statistics">
           </a>
     
           <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="user-profile.php" class="nav-link px-2 link-light">Home</a></li>
+            <li><a href="user-profile.php" class="nav-link px-2 link-light link-cur">Home</a></li>
             <li><a href="user-upload.php" class="nav-link px-2 link-light">Upload</a></li>
-            <li><a href="user-map.html" class="nav-link px-2 link-light link-cur">Map</a></li>
-            <li><a href="faq.html" class="nav-link px-2 link-light ">FAQs</a></li>
+            <li><a href="user-map.html" class="nav-link px-2 link-light">Map</a></li>
+            <li><a href="faq.html" class="nav-link px-2 link-light">FAQs</a></li>
             <li><a href="about.html" class="nav-link px-2 link-light">About</a></li>
           </ul>
     
           <div class="col-md-3 text-end">            
-            <form action="logout.php" method="post"> 
-                <input type="submit" class="btn btn-danger" name="logout" value="Log Out"></input></form>
-            </div>
+          <form action="logout.php" method="post"> 
+              <input type="submit" class="btn btn-danger" name="logout" value="Log Out"></input></form>
+          </div>
         </header>
     </div>
     
-    <div class="container"><div id="mapid"></div></div>
-         
-    
-<footer class="footer">
+    <div class="container">
+      
+        Hello Mr. <?php echo $_SESSION['username']?> 
+
+
+    </div>  
+      
+<div class="divider"></div>
+
+
+      <footer class="footer">
         <div class="container">
             <div class="copyright float-left">
                 <p class="mt-5 mb-3 text-muted"> Made by CR7-SKE &copy;2021</p>
@@ -53,8 +63,6 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" ></script>
-<script src="map.js"></script>
 
 </body>
 </html>

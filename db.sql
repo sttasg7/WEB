@@ -37,3 +37,11 @@ CREATE TABLE IF NOT EXISTS har_data
     REFERENCES users (username) ON UPDATE CASCADE ON DELETE CASCADE
    
 );
+
+DROP TABLE IF EXISTS serverloc;
+CREATE TABLE IF NOT EXISTS serverloc
+(   
+    s_ip VARCHAR(100) UNIQUE,
+    s_lat VARCHAR(100),
+    s_lon VARCHAR(100)
+);

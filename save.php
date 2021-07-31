@@ -29,8 +29,9 @@
 		$check=mysqli_query($conn,"select * from users where email='$email' and password='$password'");
 		if (mysqli_num_rows($check)>0)
 		{
+			$row = $check->fetch_assoc();
 			$_SESSION['email']=$email;
-			$_SESSION['username']=$username;
+			$_SESSION['username']=$row['username'];
 			echo json_encode(array("statusCode"=>200));
 		}
 		else{

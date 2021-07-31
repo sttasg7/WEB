@@ -15,12 +15,7 @@ $(document).ready(function() {
 		$("#log_txt").hide();
 		$("#sign_txt").hide();
 	});
-	$('#register2').on('click', function() {
-		$("#register_form").show();
-		$("#login_form").hide();
-		$("#log_txt").hide();
-		$("#sign_txt").hide();
-	});
+	
 	$('#butsave').on('click', function() {
 		$("#butsave").attr("disabled", "disabled");
 		var username = $('#username').val();
@@ -36,18 +31,24 @@ $(document).ready(function() {
 					email: email,
 					password: password						
 				},
+				
 				cache: false,
 				success: function(dataResult){
 					var dataResult = JSON.parse(dataResult);
 					if(dataResult.statusCode==200){
 						$("#butsave").removeAttr("disabled");
 						$('#register_form').find('input:text').val('');
-						$("#success").show();
-						$('#success').html('Registration successful, use the login form to connect!'); 						
+						alert("Registration Successful, please Log In");
+						//$("#success").show();
+						//$('#success').html('Registration successful, use the login form to connect!'); 	
+						$("#register_form").hide();		
+						$("#login_form").show();
+															
 					}
 					else if(dataResult.statusCode==201){
-						$("#error").show();
-						$('#error').html('Email or username already exists !');
+						//$("#error").show();
+						//$('#error').html('Email or username already exists !');
+						alert("Email or username already exists!");
 					}
 					
 				}
@@ -70,16 +71,17 @@ $(document).ready(function() {
 					email: email,
 					password: password						
 				},
+				
 				cache: false,
 				success: function(dataResult){
 					var dataResult = JSON.parse(dataResult);
 					if(dataResult.statusCode==200){
-						location.href = "user-profile.html";						
+						location.href = "user-profile.php";						
 					}
 					else if(dataResult.statusCode==201){
-						$("#error").show();
-						$('#error').html('Invalid Email or Password !');
-						
+						//$("#error").show();
+						//$('#error').html('Invalid Email or Password !');
+						alert("Your inputs are not valid!");
 					}
 					
 				}
@@ -90,34 +92,34 @@ $(document).ready(function() {
 		}
 	});
 
-	$('#username').focus(function(){
-		$('#error').hide();
-		$('#success').hide();
-		$("#butsave").removeAttr("disabled", "disabled");
+	 $('#username').focus(function(){
+		//$('#error').hide();
+		//$('#success').hide();
+		$("#butsave").removeAttr("disabled");
 	})
 
 	$('#password').focus(function(){
-		$('#error').hide();
-		$('#success').hide();
-		$("#butsave").removeAttr("disabled", "disabled");
+		//$('#error').hide();
+		//$('#success').hide();
+		$("#butsave").removeAttr("disabled");
 	})
 
 	$('#email').focus(function(){
-		$('#error').hide();
-		$('#success').hide();
-		$("#butsave").removeAttr("disabled", "disabled");
+		//$('#error').hide();
+		//$('#success').hide();
+		$("#butsave").removeAttr("disabled");
 	})
 
 	$('#email_log').focus(function(){
-		$('#error').hide();
-		$('#success').hide();
-		$("#butLogin").removeAttr("disabled", "disabled");
+		//$('#error').hide();
+		//$('#success').hide();
+		$("#butLogin").removeAttr("disabled");
 	})
 
 	$('#password_log').focus(function(){
-		$('#error').hide();
-		$('#success').hide();
-		$("#butLogin").removeAttr("disabled", "disabled");
-	})
+		//$('#error').hide();
+		//$('#success').hide();
+		$("#butLogin").removeAttr("disabled");
+	}) 
 
 });
