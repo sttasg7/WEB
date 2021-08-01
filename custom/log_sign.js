@@ -84,4 +84,8 @@ $(document).ready(function() {
 		location.href = "register.html";
 	});
 
+	$('#navicon').on('click', function() {
+        location.href = "index.html";
+    });
+
 });

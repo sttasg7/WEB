@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Login Page</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+	<link href="mine.css" rel="stylesheet" />
+	<link rel="icon" href="har.png" type="img/png">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<div class="container">
+			<img src="har.png" id="navicon" height="50px" width="auto" alt="HAR Observation & Statistics"
+				style="margin-left: -50px;">
+			<div class="collapse-navbar-collapse" style="padding-left: 60%;">
+				<ul class="nav justify-content-end">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="faq.html">FAQs</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="about.html">About</a>
+					</li>
+				</ul>
+			</div>
+			<div class="d-grid gap-2 d-md-block" style="margin-right: -5%">
+				<button type=" button" class="btn btn-outline-secondary" id="navlogin">Sign In</button>
+				<button type="button" class="btn btn-primary" id="butsignup">Sign Up</button>
+			</div>
+		</div>
+	</nav>
+
+	<div class="alert alert-success alert-dismissible" id="success" style="display:none;">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+	</div>
+	<div class="alert alert-danger alert-dismissible" id="error" style="display:none;">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+	</div>
+
+	<div class="container" align="center" style="padding-top: 20px;">
+		<h3 id="wlc">Welcome to <br>
+			<img height="110px" width="auto" alt="HAR Observation & Statistics" src="har-dark.png">
+		</h3>
+		<h4 id="log_txt">If you have an account, please <br>
+			<button type="button" class="btn btn-success btn-sm float-center" id="login">Login</button>
+		</h4>
+	</div>
+	<div class="container" align="center" margin-top="100px">
+		<h4 id="sign_txt">If you don't have an account,<br> you can press below to<br>
+			<button type="button" class="btn btn-success btn-sm float-right" id="register">Register</button>
+		</h4>
+	</div>
+
+	<script src="log_sign.js"></script>
+	<script src="index.js"></script>
+</body>
+
+</html>
