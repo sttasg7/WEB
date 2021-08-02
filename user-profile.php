@@ -11,6 +11,7 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="mine.css" rel="stylesheet">
     <link rel="icon" href="https://i.imgur.com/qY7kRzP.png" type="img/png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 <style>
@@ -42,13 +43,46 @@ session_start();
       
         Hello Mr. <?php echo $_SESSION['username']?> 
 
+        <!-- ΕΙΝΑΙ ΕΝΤΕΛΩΣ ΧΥΜΑ, ΘΕΛΟΥΝ STYLING -->
+
+        <div id="entries"></div>
+        <div id="last-entry"></div><br><br><br><br>
+
+
+        <input id="toggle" type="button" value="change info" class="btn btn-success" onclick=toggleform()>
+        <div id="change-pass">
+            <form id="register_form" name="form1" method="post">
+		    <div class="container" id="inputbox">
+			    <p class="text-center fs-18 text-dark m-t-150">Change the field you want and press Change!</p>
+                <div class="mb-3 row">
+			    	<label for="username" class="col-sm-2 col-form-label">Username:</label>
+	    			<div class="col-sm-1">
+				    	<input type="username" id="username" class="form-control" value="<?php echo $_SESSION['username']?>" >
+				    </div>
+			    </div>
+		    	<div class="mb-3 row">
+				    <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
+			        <div class="col-sm-1">
+				    	<input type="email" id="email" class="form-control" id="exampleFormControlInput1" value="<?php echo $_SESSION['email']?>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+				    </div>
+			    </div>
+		    	<div class="mb-3 row">
+		    		<label for="inputPassword" class="col-sm-2 col-form-label">Password:</label>
+		        		<div class="col-sm-1">
+		    			<input type="password" id="password" minlength="8" pattern="(?=.*\d)(?=.*[A-Z])(?=.*\W.*)" class="form-control">
+		        		</div>
+		    	</div>
+                
+
+		    <input type="button" name="save" class="btn btn-primary" value="Change!" id="butchange">
+        
+	        </form>
+        </div>
+
 
     </div>  
       
-<div class="divider"></div>
-
-
-      <footer class="footer">
+<footer class="footer">
         <div class="container">
             <div class="copyright float-left">
                 <p class="mt-5 mb-3 text-muted"> Made by CR7-SKE &copy;2021</p>
@@ -63,6 +97,6 @@ session_start();
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
+<script src="home.js"></script>
 </body>
 </html>

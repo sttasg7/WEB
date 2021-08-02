@@ -56,6 +56,7 @@ include 'logincheck.php';
         </form>
         <br><br>
         <p hidden class="text-center" id="pleasewait">Please wait for the file to process</p>
+        <div id="success" class="faq-ans" hidden>Upload successful.</div>
 
 
     </div>  

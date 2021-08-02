@@ -1,43 +1,62 @@
 var parsed;
 var modified;
-var userIP; var city; var city_lat; var city_long; var isp;
+var userIP; var city; var city_lat; var city_long; var isp; var check;
 data = new Array();
 document.getElementById('myFile').addEventListener('change', function selectedFileChanged() {
     $('#sendtoserver').attr("disabled", "disabled");
     $('#exportslim').attr("disabled", "disabled");
     $('#pleasewait').removeAttr("hidden");
+    data = [];
     const reader = new FileReader();
     reader.onload = function fileReadCompleted() {
         parsed = JSON.parse(reader.result);
         if (typeof parsed.log == 'undefined' && parsed[0].url != 'undefined') { //Check if file is already at the needed format
-            modified = parsed;
+            data.push(parsed);
         } else {
             for (i = 0; i < parsed.log.entries.length; i++) {
-                let host, contentType, cacheControl, pragma, expires,
-                    age = '0';
-                lastModified = '0';
+                let host, contentType, cacheControl, pragma, expires, age, lastModified;
+                
                 for (j = 0; j < parsed.log.entries[i].request.headers.length; j++) {
-                    if (parsed.log.entries[i].request.headers[j].name == "Host") {
+                    if (parsed.log.entries[i].request.headers[j].name == "Host" || parsed.log.entries[i].request.headers[j].name == "host") {
                         host = parsed.log.entries[i].request.headers[j].value
-                    } else if (parsed.log.entries[i].request.headers[j].name == "Content-Type") {
+                    } else if (parsed.log.entries[i].request.headers[j].name == "Content-Type" || parsed.log.entries[i].request.headers[j].name == "content-type") {
                         contentType = parsed.log.entries[i].request.headers[j].value;
-                    } else if (parsed.log.entries[i].request.headers[j].name == "Cache-Control") {
+                    } else if (parsed.log.entries[i].request.headers[j].name == "Cache-Control" || parsed.log.entries[i].request.headers[j].name == "cache-control") {
                         cacheControl = parsed.log.entries[i].request.headers[j].value;
-                    } else if (parsed.log.entries[i].request.headers[j].name == "Pragma") {
+                    } else if (parsed.log.entries[i].request.headers[j].name == "Pragma" || parsed.log.entries[i].request.headers[j].name == "pragma") {
                         pragma = parsed.log.entries[i].request.headers[j].value;
-                    } else if (parsed.log.entries[i].request.headers[j].name == "Expires") {
+                    } else if (parsed.log.entries[i].request.headers[j].name == "Expires" || parsed.log.entries[i].request.headers[j].name == "expires") {
                         expires = parsed.log.entries[i].request.headers[j].value;
-                    } else if (parsed.log.entries[i].request.headers[j].name == "Age") {
+                    } else if (parsed.log.entries[i].request.headers[j].name == "Age" || parsed.log.entries[i].request.headers[j].name == "age") {
                         age = parsed.log.entries[i].request.headers[j].value;
-                    } else if (parsed.log.entries[i].request.headers[j].name == "Last-Modified") {
+                    } else if (parsed.log.entries[i].request.headers[j].name == "Last-Modified" || parsed.log.entries[i].request.headers[j].name == "last-modified") {
                         lastModified = parsed.log.entries[i].request.headers[j].value;
                     }
                 }
-                
-                /* url = parsed.log.entries[i].request.url;
-                ip = parsed.log.entries[i].serverIPAddress;
-                temp = ip;//.replace("[", "");
-                temp2 = temp;//.replace("]", ""); //Quick fix for ipv6 */
+                for (k = 0; k < parsed.log.entries[i].response.headers.length; k++) {
+                    if (parsed.log.entries[i].response.headers[k].name == "Host" || parsed.log.entries[i].response.headers[k].name == "host") {
+                        host = parsed.log.entries[i].response.headers[k].value
+                    } else if (parsed.log.entries[i].response.headers[k].name == "Content-Type" || parsed.log.entries[i].response.headers[k].name == "content-type") {
+                        contentType = parsed.log.entries[i].response.headers[k].value;
+                    } else if (parsed.log.entries[i].response.headers[k].name == "Cache-Control" || parsed.log.entries[i].response.headers[k].name == "cache-control") {
+                        cacheControl = parsed.log.entries[i].response.headers[k].value;
+                    } else if (parsed.log.entries[i].response.headers[k].name == "Pragma" || parsed.log.entries[i].response.headers[k].name == "pragma") {
+                        pragma = parsed.log.entries[i].response.headers[k].value;
+                    } else if (parsed.log.entries[i].response.headers[k].name == "Expires" || parsed.log.entries[i].response.headers[k].name == "expires") {
+                        expires = parsed.log.entries[i].response.headers[k].value;
+                    } else if (parsed.log.entries[i].response.headers[k].name == "Age" || parsed.log.entries[i].response.headers[k].name == "age") {
+                        age = parsed.log.entries[i].response.headers[k].value;
+                    } else if (parsed.log.entries[i].response.headers[k].name == "Last-Modified" || parsed.log.entries[i].response.headers[k].name == "last-modified") {
+                        lastModified = parsed.log.entries[i].response.headers[k].value;
+                    }
+                }
+
+                url = parsed.log.entries[i].request.url;
+                let domain = (new URL(url));
+                domain = domain.hostname.replace('www.','');
+                let ipfix = parsed.log.entries[i].serverIPAddress;//.replace("[", "").replace("]", "");
+                //temp = ip.replace("[", "");
+                //ipfix = temp.replace("]", ""); //Quick fix for ipv6 */
                 
                 if (contentType == null || contentType == '') {
                     contentType = "text/html"
@@ -46,9 +65,9 @@ document.getElementById('myFile').addEventListener('change', function selectedFi
                 let modifiedHar = {
                     "startedDateTime": parsed.log.entries[i].startedDateTime,
                     "wait": parsed.log.entries[i].timings.wait,
-                    "serverIPAddress": parsed.log.entries[i].serverIPAddress,
+                    "serverIPAddress": ipfix,
                     "method": parsed.log.entries[i].request.method,
-                    "url": parsed.log.entries[i].request.url,
+                    "url": domain,
                     "status": parsed.log.entries[i].response.status,
                     "statusText": parsed.log.entries[i].response.statusText,
                     "Content_Type": contentType,
@@ -68,14 +87,12 @@ document.getElementById('myFile').addEventListener('change', function selectedFi
         $.ajax({
             dataType: "json",
             url: "getIPinfo.php",            
-            success: function(uu){
-              console.log(uu);              
+            success: function(uu){                            
               userIP = uu.query;
               isp = uu.asname;
               city = uu.city;
               city_lat = uu.lat;
-              city_long = uu.lon;
-              console.log(isp, city, userIP);              
+              city_long = uu.lon;                            
             }
           })
  
@@ -89,6 +106,8 @@ document.getElementById('myFile').addEventListener('change', function selectedFi
 
 
 function SendToServer() {
+    $('#sendtoserver').attr("disabled", "disabled");
+    $('#exportslim').attr("disabled", "disabled");
     data = JSON.stringify(data);
     $.ajax({
         url: "uploadhar.php",
@@ -103,7 +122,8 @@ function SendToServer() {
             },
         cache: false,
         success: function(response){
-            $("#PLEASE").html(response);
+            $("#sendtoserver").removeAttr("disabled", "disabled");
+            $("#success").removeAttr("hidden", "hidden");  
         }   
     });
 }

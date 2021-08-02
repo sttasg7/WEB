@@ -9,16 +9,18 @@ $city = $_POST['city'];
 $lat = $_POST['lat'];
 $long = $_POST['long'];
 $isp = $_POST['isp'];
+$cnt = 0;
 //$provider = gethostbyaddr($_SERVER['REMOTE_ADDR']);
 
-foreach($data as $i=>$value) {        
+foreach($data as $i=>$value) {   
+    $cnt++;     
     $sql="INSERT INTO har_data 
         VALUES ('$user',
                 '$value->startedDateTime',
                 '$value->serverIPAddress',
                 '$value->wait',
                 '$value->method',
-                '$value->domain',
+                '$value->url',
                 '$value->status',
                 '$value->statusText',
                 '$value->Content_Type',
@@ -35,9 +37,7 @@ foreach($data as $i=>$value) {
                 '$lat',
                 '$long'
                 )";
-    $conn->query($sql);
-    $sql="INSERT INTO serverloc VALUES ('$value->serverIPAddress','','')";
-    $conn->query($sql);
+    $conn->query($sql);    
 }
 
 $conn->close();
