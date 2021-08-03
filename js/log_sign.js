@@ -1,23 +1,6 @@
 $(document).ready(function() {
-
-	$("#register_form").hide();
-	$("#login_form").hide();
-		
-	$('#login').on('click', function() {
-		$("#login_form").show();
-		$("#register_form").hide();
-		$("#log_txt").hide();
-		$("#sign_txt").hide();
-	});
-	$('#register').on('click', function() {
-		$("#register_form").show();
-		$("#login_form").hide();
-		$("#log_txt").hide();
-		$("#sign_txt").hide();
-	});
 	
 	$('#butsave').on('click', function() {
-		$("#butsave").attr("disabled", "disabled");
 		var username = $('#username').val();
 		var email = $('#email').val();
 		var password = $('#password').val();
@@ -36,30 +19,28 @@ $(document).ready(function() {
 				success: function(dataResult){
 					var dataResult = JSON.parse(dataResult);
 					if(dataResult.statusCode==200){
-						$("#butsave").removeAttr("disabled");
 						$('#register_form').find('input:text').val('');
-						alert("Registration Successful, please Log In");
+						alert("Registration Successful, Please Log In");
 						//$("#success").show();
 						//$('#success').html('Registration successful, use the login form to connect!'); 	
-						$("#register_form").hide();		
-						$("#login_form").show();
-															
+						//location.href = "loginscreen.html";	
+						window.location.href='loginscreen.html';								
 					}
 					else if(dataResult.statusCode==201){
 						//$("#error").show();
 						//$('#error').html('Email or username already exists !');
-						alert("Email or username already exists!");
+						alert("Email or Username Already Exists!");
 					}
 					
 				}
 			});
 		}
 		else{
-			alert('Please fill all the field !');
+			alert('Please fill in all the fields!');
 		}
 	});
+	
 	$('#butlogin').on('click', function() {
-		$("#butLogin").attr("disabled", "disabled");
 		var email = $('#email_log').val();
 		var password = $('#password_log').val();
 		if(email!="" && password!="" ){
@@ -88,38 +69,24 @@ $(document).ready(function() {
 			});
 		}
 		else{
-			alert('Please fill all the field !');
+			alert('Please fill all the fields!');
 		}
 	});
 
-	 $('#username').focus(function(){
-		//$('#error').hide();
-		//$('#success').hide();
-		$("#butsave").removeAttr("disabled");
-	})
+	$('#butsignup').on('click', function() {
+		location.href = "register.html";
+	});
 
-	$('#password').focus(function(){
-		//$('#error').hide();
-		//$('#success').hide();
-		$("#butsave").removeAttr("disabled");
-	})
+	$('#navlogin').on('click', function() {
+		location.href = "login.html";
+	});
 
-	$('#email').focus(function(){
-		//$('#error').hide();
-		//$('#success').hide();
-		$("#butsave").removeAttr("disabled");
-	})
+	$('#signupref').on('click', function() {
+		location.href = "register.html";
+	});
 
-	$('#email_log').focus(function(){
-		//$('#error').hide();
-		//$('#success').hide();
-		$("#butLogin").removeAttr("disabled");
-	})
-
-	$('#password_log').focus(function(){
-		//$('#error').hide();
-		//$('#success').hide();
-		$("#butLogin").removeAttr("disabled");
-	}) 
+	$('#navicon').on('click', function() {
+        location.href = "index.html";
+    });
 
 });

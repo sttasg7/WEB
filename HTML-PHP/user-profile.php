@@ -10,6 +10,7 @@ session_start();
     <title>User Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="mine.css" rel="stylesheet">
+    <link href="login.css" rel="stylesheet">
     <link rel="icon" href="https://i.imgur.com/qY7kRzP.png" type="img/png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -18,28 +19,45 @@ session_start();
     
 </style>
 <body>
-    <div class="container-flex">
-        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-        <a href="user-profile.php" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-light text-decoration-none">
-            <img src=https://i.imgur.com/MtazLc2.png height="50px" width="auto" alt="HAR Observation & Statistics">
-          </a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container">
+            <a href="user-profile.php">
+                <img src="har.png" height="50px" width="auto" alt="HAR Observation & Statistics">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="user-profile.php">Home</a>
+                    </li>
+                    <li lass="nav-item">
+                        <a class="nav-link" href="user-upload.php">Upload</a>
+                    </li>
+                    <li lass="nav-item">
+                        <a class="nav-link" href="user-map.html">Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="faq.html">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="d-grid gap-2 d-md-block d-none d-md-block" style="margin-right: -5%">
+                <form action="logout.php" method="post">
+                    <input type="submit" class="btn btn-danger" name="logout" value="Log Out"></input>
+                </form>
+            </div>
+        </div>
+    </nav>
     
-          <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="user-profile.php" class="nav-link px-2 link-light link-cur">Home</a></li>
-            <li><a href="user-upload.php" class="nav-link px-2 link-light">Upload</a></li>
-            <li><a href="user-map.html" class="nav-link px-2 link-light">Map</a></li>
-            <li><a href="faq.html" class="nav-link px-2 link-light">FAQs</a></li>
-            <li><a href="about.html" class="nav-link px-2 link-light">About</a></li>
-          </ul>
-    
-          <div class="col-md-3 text-end">            
-          <form action="logout.php" method="post"> 
-              <input type="submit" class="btn btn-danger" name="logout" value="Log Out"></input></form>
-          </div>
-        </header>
-    </div>
-    
-    <div class="container">
+    <div class="container py-4">
       
         Hello Mr. <?php echo $_SESSION['username']?> 
 
