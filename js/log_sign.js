@@ -73,20 +73,8 @@ $(document).ready(function() {
 		}
 	});
 
-	$('#butsignup').on('click', function() {
-		location.href = "frontend/register.html";
-	});
-
-	$('#navlogin').on('click', function() {
-		location.href = "login.html";
-	});
-
 	$('#signupref').on('click', function() {
 		location.href = "register.html";
 	});
-
-	$('#navicon').on('click', function() {
-        location.href = "index.html";
-    });
 
 });
