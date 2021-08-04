@@ -39,7 +39,7 @@
 		}
 		mysqli_close($conn);
 	}
-	if($_POST['type']==3){
+/*	if($_POST['type']==3){
 		$username=$_POST['username'];
 		$email=$_POST['email'];
 		$password=$_POST['password'];
@@ -60,4 +60,6 @@
 		}
 		mysqli_close($conn);
 	}
+
+*/
 ?>

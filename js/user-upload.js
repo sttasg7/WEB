@@ -108,6 +108,7 @@ document.getElementById('myFile').addEventListener('change', function selectedFi
 function SendToServer() {
     $('#sendtoserver').attr("disabled", "disabled");
     $('#exportslim').attr("disabled", "disabled");
+    $('#pleasewait').removeAttr("hidden", "hidden");
     data = JSON.stringify(data);
     $.ajax({
         url: "../backend/uploadhar.php",
@@ -121,9 +122,8 @@ function SendToServer() {
             isp: isp            
             },
         cache: false,
-        success: function(response){
-            $("#sendtoserver").removeAttr("disabled", "disabled");
-            $("#success").removeAttr("hidden", "hidden");  
+        success: function(){          
+			updatelibrary();
         }   
     });
 }
@@ -145,4 +145,17 @@ function Export() {
 
     modified = JSON.stringify(data, undefined, '\t');
     DownloadJSON(modified)
+}
+
+function updatelibrary() {
+    $.ajax({
+        url: "../backend/serverlibrary.php",        
+        cache: false,  
+        success: function(res){
+          console.log(res);      
+        }
+      })
+      $("#sendtoserver").removeAttr("disabled", "disabled");
+      $("#success").removeAttr("hidden", "hidden");
+      $('#pleasewait').attr("hidden", "hidden");
 }

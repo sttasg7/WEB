@@ -1,29 +1,21 @@
+var library;
 
 $.ajax({
-  url: "../backend/getmapdata.php",
-  type: "POST",  
-  dataType: "json",
-  cache: false,  
-  success: function(res){
-    console.log(res);      
-  }
-}).then(
-  $.ajax({
-    url: "../backend/getServerInfo.php",
-    type: "POST",  
-    dataType: "json",
-    cache: false,    
-    success: function(res){
-      console.log(res);      
-    }
-  })
-);
+    url: "../backend/getmapdata.php",
+    type: "POST", 
+    dataType: "json",   
+    cache: false,
+    success: function(response){
+      load(response);
+      }     
+  });
 
 
-var testData = {
-  max: 8,
-  data: [{lat: 0, lng:46.7728, count: 5},
-         {lat: 0, lng:46.7728, count: 6}]
+
+function load(json) {
+
+var myData = {
+  data: json
 };
 
 var baseLayer = L.tileLayer(
@@ -33,8 +25,8 @@ var baseLayer = L.tileLayer(
   }
 );
 
-var cfg = {"radius": 2,
-  "maxOpacity": .8,
+var cfg = {"radius": 5,
+  "maxOpacity": .7,
   "scaleRadius": true,
   "useLocalExtrema": true,
   latField: 'lat',
@@ -47,8 +39,10 @@ var heatmapLayer = new HeatmapOverlay(cfg);
 
 var map = new L.Map('mapid', {
   center: new L.LatLng(38.2, 21.7),
-  zoom: 3,
+  zoom: 1.3,
   layers: [baseLayer, heatmapLayer]
 });
 
-heatmapLayer.setData(testData);
+heatmapLayer.setData(myData);
+
+}
