@@ -14,6 +14,46 @@ $(document).ready(function() {
         }
       })
 
+
+
+
+      $('#butsave').on('click', function() {
+        var username = $('#username').val();
+        var newpass = $('#newpass').val();
+        var oldpass = $('#oldpass').val();
+        console.log(oldpass, newpass, username);
+        $.ajax({
+            url: "../backend/save.php",
+            type: "POST",
+            data: {
+              type: 3,
+              username: username,
+              new: newpass,
+              old: oldpass					
+            },
+            cache: false,
+            success: function(dataResult){
+              var dataResult = JSON.parse(dataResult);
+              if(dataResult.statusCode==200){
+                alert("Changes Successful");
+                window.location.href='user-profile.php';               								
+              }
+              else if(dataResult.statusCode==201){
+                alert("Username Taken, Choose Something Else!");
+              }
+              else if(dataResult.statusCode==202){
+                alert("Old Password Wrong!");
+              }
+              else if(dataResult.statusCode==203){
+                alert("Failed. Please Try Again!");
+              }
+              
+            }
+          });
+        }
+        
+      );
+
     }
 )
 

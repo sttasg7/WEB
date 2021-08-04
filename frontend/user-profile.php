@@ -59,7 +59,7 @@ include '../backend/logincheck.php';
     
     <div class="container py-4">
       
-        Hello Mr. <?php echo $_SESSION['username']?> 
+        <h5> You have logged in as <b><?php echo $_SESSION['username']?></b> </h5>
 
         <!-- ΕΙΝΑΙ ΕΝΤΕΛΩΣ ΧΥΜΑ, ΘΕΛΟΥΝ STYLING -->
 
@@ -67,35 +67,41 @@ include '../backend/logincheck.php';
         <div id="last-entry"></div><br><br><br><br>
 
 
-        <input id="toggle" type="button" value="change info" class="btn btn-success" onclick=toggleform()>
-        <div id="change-pass">
-            <form id="register_form" name="form1" method="post">
-		    <div class="container" id="inputbox">
-			    <p class="text-center fs-18 text-dark m-t-150">Change the field you want and press Change!</p>
-                <div class="mb-3 row">
-			    	<label for="username" class="col-sm-2 col-form-label">Username:</label>
-	    			<div class="col-sm-1">
-				    	<input type="username" id="username" class="form-control" value="<?php echo $_SESSION['username']?>" >
-				    </div>
-			    </div>
-		    	<div class="mb-3 row">
-				    <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
-			        <div class="col-sm-1">
-				    	<input type="email" id="email" class="form-control" id="exampleFormControlInput1" value="<?php echo $_SESSION['email']?>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
-				    </div>
-			    </div>
-		    	<div class="mb-3 row">
-		    		<label for="inputPassword" class="col-sm-2 col-form-label">Password:</label>
-		        		<div class="col-sm-1">
-		    			<input type="password" id="password" minlength="8" pattern="(?=.*\d)(?=.*[A-Z])(?=.*\W.*)" class="form-control">
-		        		</div>
-		    	</div>
-                
-
-		    <input type="button" name="save" class="btn btn-primary" value="Change!" id="butchange">
-        
-	        </form>
+        <div class="change-info" id="info">
+            Below you can change your username or password. <br> Leave a field empty if you wish to not alter it. <br>
+            You have to confirm your current password in order for the changes to go through!
+         
         </div>
+
+        <div class="form d-lg-flex p-5" id="change">
+        <form class="container" method="POST">
+            <div class="mb-3 row">
+                <label for="username" class="col-sm-2 col-form-label">Username:</label>
+                <div class="col-sm-1">
+                    <input type="username" id="username" class="form-control" placeholder="<?php echo $_SESSION['username']?>">
+                </div>
+            </div>
+            
+            <div class="mb-3 row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">New Password:</label>
+                <div class="col-sm-1">
+                    <input type="password" id="newpass" minlength="8" pattern="(?=.*\d)(?=.*[A-Z])(?=.*\W.*)"
+                        class="form-control">
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Old Password:</label>
+                <div class="col-sm-1">
+                    <input type="password" id="oldpass" minlength="8" pattern="(?=.*\d)(?=.*[A-Z])(?=.*\W.*)"
+                        class="form-control">
+                </div>
+            </div>
+
+           <input type="button" name="save" class="btn btn-primary" value="Change!" id="butsave">
+         </form>
+    </div>
+        
 
 
     </div>  
