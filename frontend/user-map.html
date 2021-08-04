@@ -71,7 +71,40 @@
     </nav>
 
     <div class="container py-4">
+
+        <p align= "center">Below you can see an analysis of all HTTP connection logged in your uploaded files.</p>        
         <div id="mapid"></div>
+    
+
+    <br>
+    <br>
+   
+    
+    <button id="togbtn" class="btn-outline-secondary centre-button mb-4" onclick="myFunction()">Present data as table</button>
+        <div id="tog" style="display:none">
+
+        <div style="height:400px; overflow:auto; width:100%;">
+            <table align="center" id="table" class="hidden">
+                <colgroup style="width: 80%;">
+                    <col span="1" style="width: 33%;">
+                    <col span="1" style="width: 17%;">
+                    <col span="1" style="width: 25%;">
+                    <col span="1" style="width: 25%;">
+                 </colgroup>
+                <tr>
+                <th>IP</th>
+                <th>Visits</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    
+    <br>
+    <p align="center">Diclaimer: due to the nature of IP geolocation, some data may be inaccurate. Geolocation is done through <a href="freegeoip.app">freegoip API</a>.</p>
+
     </div>
 
 

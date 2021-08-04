@@ -4,7 +4,7 @@ include 'database.php';
 
 $user = $_SESSION['username'];
 
-$sql="SELECT serveripaddress AS ip, COUNT(serveripaddress) AS total FROM har_data WHERE username_user = $user GROUP BY serveripaddress ORDER BY serveripaddress";
+$sql="SELECT serveripaddress AS ip, COUNT(serveripaddress) AS total FROM har_data WHERE username_user = '$user' GROUP BY serveripaddress ORDER BY serveripaddress";
 $result=mysqli_query($conn,$sql);
 $s = array();
 

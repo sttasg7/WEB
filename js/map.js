@@ -14,6 +14,23 @@ $.ajax({
 
 function load(json) {
 
+  if(json){
+    var len = json.length;
+    var txt = "";
+    if(len > 0){
+        for(var i=0;i<len;i++){
+            if(json[i].lat){
+                txt += "<tr><td>"+json[i].ip+"</td><td>"+json[i].count+"</td><td>"+json[i].lat+"</td><td>"+json[i].lng+"</td></tr>";
+            }
+        }
+        if(txt != ""){
+            $("#table").append(txt);
+        }
+    }
+  }
+
+
+
 var myData = {
   data: json
 };
@@ -45,4 +62,17 @@ var map = new L.Map('mapid', {
 
 heatmapLayer.setData(myData);
 
+}
+
+function myFunction() {
+  var x = document.getElementById("tog");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    $("#mapid").hide();
+    $("#togbtn").html("Show map");
+  } else {
+    x.style.display = "none";
+    $("#mapid").show();
+    $("#togbtn").html("Show Table");
+  }
 }
