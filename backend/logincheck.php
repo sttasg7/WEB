@@ -12,6 +12,6 @@ if(isset($_SESSION['username'])) { /*
     // CHECK TO STOP USERS FROM ADMIN PAGES 
 }
 else {
-    header("Location: login.html");
+    header("Location: ./index.html");
 }
 ?>

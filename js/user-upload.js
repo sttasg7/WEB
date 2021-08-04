@@ -86,7 +86,7 @@ document.getElementById('myFile').addEventListener('change', function selectedFi
     
         $.ajax({
             dataType: "json",
-            url: "getIPinfo.php",            
+            url: "../backend/getIPinfo.php",            
             success: function(uu){                            
               userIP = uu.query;
               isp = uu.asname;
@@ -110,7 +110,7 @@ function SendToServer() {
     $('#exportslim').attr("disabled", "disabled");
     data = JSON.stringify(data);
     $.ajax({
-        url: "uploadhar.php",
+        url: "../backend/uploadhar.php",
         type: "POST",
         data: {
             data: data,

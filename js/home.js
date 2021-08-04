@@ -5,7 +5,7 @@ $(document).ready(function() {
     
     $.ajax({
         type: "POST",
-        url: "get-user-stats.php",
+        url: "../backend/get-user-stats.php",
         cache: false,          
         success: function(response){ 
           var info = JSON.parse(response);          

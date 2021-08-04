@@ -6,7 +6,7 @@ $(document).ready(function() {
 		var password = $('#password').val();
 		if(username!="" && email!="" && password!="" ){
 			$.ajax({
-				url: "save.php",
+				url: "../backend/save.php",
 				type: "POST",
 				data: {
 					type: 1,
@@ -24,7 +24,7 @@ $(document).ready(function() {
 						//$("#success").show();
 						//$('#success').html('Registration successful, use the login form to connect!'); 	
 						//location.href = "loginscreen.html";	
-						window.location.href='loginscreen.html';								
+						window.location.href='../index.html';								
 					}
 					else if(dataResult.statusCode==201){
 						//$("#error").show();
@@ -45,7 +45,7 @@ $(document).ready(function() {
 		var password = $('#password_log').val();
 		if(email!="" && password!="" ){
 			$.ajax({
-				url: "save.php",
+				url: "../backend/save.php",
 				type: "POST",
 				data: {
 					type:2,
@@ -57,7 +57,7 @@ $(document).ready(function() {
 				success: function(dataResult){
 					var dataResult = JSON.parse(dataResult);
 					if(dataResult.statusCode==200){
-						location.href = "user-profile.php";						
+						location.href = "../frontend/user-profile.php";						
 					}
 					else if(dataResult.statusCode==201){
 						//$("#error").show();
@@ -74,7 +74,7 @@ $(document).ready(function() {
 	});
 
 	$('#butsignup').on('click', function() {
-		location.href = "register.html";
+		location.href = "frontend/register.html";
 	});
 
 	$('#navlogin').on('click', function() {
