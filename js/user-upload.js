@@ -9,6 +9,9 @@ document.getElementById('myFile').addEventListener('change', function selectedFi
     data = [];
     const reader = new FileReader();
     reader.onload = function fileReadCompleted() {
+
+        //ADD CHECK FOR VALID FILES
+
         parsed = JSON.parse(reader.result);
         if (typeof parsed.log == 'undefined' && parsed[0].url != 'undefined') { //Check if file is already at the needed format
             data.push(parsed);
@@ -54,9 +57,9 @@ document.getElementById('myFile').addEventListener('change', function selectedFi
                 url = parsed.log.entries[i].request.url;
                 let domain = (new URL(url));
                 domain = domain.hostname.replace('www.','');
-                let ipfix = parsed.log.entries[i].serverIPAddress;//.replace("[", "").replace("]", "");
-                //temp = ip.replace("[", "");
-                //ipfix = temp.replace("]", ""); //Quick fix for ipv6 */
+                let ipfix1 = parsed.log.entries[i].serverIPAddress;
+                let ipfix2 = ipfix1.replace("[", "");
+                let ipfix = ipfix2.replace("]", ""); //Quick fix for ipv6 */
                 
                 if (contentType == null || contentType == '') {
                     contentType = "text/html"

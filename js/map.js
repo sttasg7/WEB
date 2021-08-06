@@ -38,15 +38,15 @@ function load(json) {
   var baseLayer = L.tileLayer(
     'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18
+    maxZoom: 10
   }
   );
 
   var cfg = {
-    "radius": 5,
+    "radius": 50,
     "maxOpacity": .7,
-    "scaleRadius": true,
-    "useLocalExtrema": true,
+    "scaleRadius": false,
+    "useLocalExtrema": false,
     latField: 'lat',
     lngField: 'lng',
     valueField: 'count'
@@ -57,7 +57,7 @@ function load(json) {
 
   var map = new L.Map('mapid', {
     center: new L.LatLng(38.2, 21.7),
-    zoom: 1.3,
+    zoom: 1.75,
     layers: [baseLayer, heatmapLayer]
   });
 

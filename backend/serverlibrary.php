@@ -21,6 +21,8 @@ if ($result->num_rows > 0) {
         }     
 } else {}
 
+/* 
+do i even use that?
 
 if($_POST['type']==33) {
     $data = json_decode($_POST['data']);
@@ -46,5 +48,5 @@ if($_POST['type']==33) {
 }
 
 $conn->close();
-
+*/
 ?>
