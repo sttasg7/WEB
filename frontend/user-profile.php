@@ -110,7 +110,11 @@ include '../backend/logincheck.php';
          </form>
     </div>
         
-
+    <div class="d-grid gap-2" style="margin-right: -5%">
+                <form action="../backend/logout.php" method="post">
+                    <input type="submit" class="btn btn-danger" name="logout" value="Log Out"></input>
+                </form>
+            </div>
 
     </div>  
       
