@@ -22,9 +22,17 @@ include '../backend/logincheck.php';
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container">
+        <?php 
+        if ($loginst == 1){ ?>
+            <a href="../index.html">
+                <img src="../pictures/har.png" height="50px" width="auto" alt="HAR Observation & Statistics">
+            </a>  
+        <?php } else { ?>
             <a href="../frontend/user-profile.php">
                 <img src="../pictures/har.png" height="50px" width="auto" alt="HAR Observation & Statistics">
-            </a>
+            </a>  
+        <?php } ?> 
+            
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -41,10 +49,10 @@ include '../backend/logincheck.php';
                         <a class="nav-link" href="../frontend/user-map.html">Map</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="../frontend/faq.html">FAQs</a>
+                        <a class="nav-link" aria-current="page" href="../frontend/faq.php">FAQs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../frontend/about.html">About</a>
+                        <a class="nav-link" href="../frontend/about.php">About</a>
                     </li>
                 </ul>
             </div>
@@ -109,7 +117,7 @@ include '../backend/logincheck.php';
 <footer class="footer">
         <div class="container">
             <div class="copyright float-left">
-                <p class="mt-5 mb-3 text-muted"> Made by CR7-SKE &copy;2021</p>
+                <p class="mt-5 mb-3 text-muted">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</p>
             </div>
         </div>
     </footer>

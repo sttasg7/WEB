@@ -1,29 +1,3 @@
-#email_log {
-  width: 350px;
-  height: 50px;
-  margin: auto;
-  position: relative;
-  border-width: thin;
-}
-
-#password_log {
-  width: 350px;
-  height: 50px;
-  margin: auto;
-  position: relative;
-  border-width: thin;
-}
-
-#inputbox {
-  position: relative;
-  left: 60%;
-  top: 40%;
-  height: 200px;
-  margin-top: -100px;
-  width: 500px;
-  margin-left: 70%;
-}
-
 .btn-sign-in {
   position: absolute;
   top: 90%;

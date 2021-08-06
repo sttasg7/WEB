@@ -8,20 +8,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="../css/mine.css" rel="stylesheet">
-    <link href="../css/login.css" rel="stylesheet">    
+    <link href="../css/login.css" rel="stylesheet">
     <link rel="icon" href="https://i.imgur.com/qY7kRzP.png" type="img/png">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!--Leaflet stuff-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-            integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-            crossorigin=""/>
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
 
-   <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-            crossorigin=""></script>
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
 
     <script src="../js/heatmap.js"></script>
     <script src="../js/pwied-heatmap.js"></script>
@@ -54,10 +54,10 @@
                         <a class="nav-link active" href="../frontend/user-map.html">Map</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="../frontend/faq.html">FAQs</a>
+                        <a class="nav-link" aria-current="page" href="../frontend/faq.php">FAQs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../frontend/about.html">About</a>
+                        <a class="nav-link" href="../frontend/about.php">About</a>
                     </li>
                 </ul>
             </div>
@@ -72,38 +72,40 @@
 
     <div class="container py-4">
 
-        <p align= "center">Below you can see an analysis of all HTTP connection logged in your uploaded files.</p>        
+        <p align="center">Below you can see an analysis of all HTTP connection logged in your uploaded files.</p>
         <div id="mapid"></div>
-    
 
-    <br>
-    <br>
-   
-    
-    <button id="togbtn" class="btn-outline-secondary centre-button mb-4" onclick="myFunction()">Present data as table</button>
+
+        <br>
+        <br>
+
+
+        <button id="togbtn" class="btn-outline-secondary centre-button mb-4" onclick="myFunction()">Present data as
+            table</button>
         <div id="tog" style="display:none">
 
-        <div style="height:400px; overflow:auto; width:100%;">
-            <table align="center" id="table" class="hidden">
-                <colgroup style="width: 80%;">
-                    <col span="1" style="width: 33%;">
-                    <col span="1" style="width: 17%;">
-                    <col span="1" style="width: 25%;">
-                    <col span="1" style="width: 25%;">
-                 </colgroup>
-                <tr>
-                <th>IP</th>
-                <th>Visits</th>
-                <th>Latitude</th>
-                <th>Longitude</th>
-                </tr>
-            </table>
+            <div style="height:400px; overflow:auto; width:100%;">
+                <table align="center" id="table" class="hidden">
+                    <colgroup style="width: 80%;">
+                        <col span="1" style="width: 33%;">
+                        <col span="1" style="width: 17%;">
+                        <col span="1" style="width: 25%;">
+                        <col span="1" style="width: 25%;">
+                    </colgroup>
+                    <tr>
+                        <th>IP</th>
+                        <th>Visits</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                    </tr>
+                </table>
+            </div>
         </div>
-    </div>
-    
-    
-    <br>
-    <p align="center">Diclaimer: due to the nature of IP geolocation, some data may be inaccurate. Geolocation is done through <a href="freegeoip.app">freegoip API</a>.</p>
+
+
+        <br>
+        <p align="center">Diclaimer: due to the nature of IP geolocation, some data may be inaccurate. Geolocation is
+            done through <a href="freegeoip.app">freegoip API</a>.</p>
 
     </div>
 

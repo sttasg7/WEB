@@ -1,3 +1,7 @@
+<?php
+include '../backend/logincheck.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,9 +21,17 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container">
+        <?php 
+        if ($loginst == 1){ ?>
             <a href="../index.html">
                 <img src="../pictures/har.png" height="50px" width="auto" alt="HAR Observation & Statistics">
-            </a>
+            </a>  
+        <?php } else { ?>
+            <a href="../frontend/user-profile.php">
+                <img src="../pictures/har.png" height="50px" width="auto" alt="HAR Observation & Statistics">
+            </a>  
+        <?php } ?> 
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -27,25 +39,27 @@
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../frontend/faq.html">FAQs</a>
+                        <a class="nav-link" aria-current="page" href="../frontend/faq.php">FAQs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../frontend/about.html">About</a>
+                        <a class="nav-link" href="../frontend/about.php">About</a>
                     </li>
                 </ul>
             </div>
+
             <div class="d-grid gap-2 d-md-block d-none d-md-block" style="margin-right: -5%">
-                <a href="../frontend/login.html">
-                    <button type=" button" class="btn btn-outline-secondary">Sign In </button></a>
-                <a href="../frontend/register.html">
+                <a href="../frontend/login.php">
+                    <button type=" button" class="btn btn-outline-secondary">Sign In</button></a>
+                <a href="../frontend/register.php">
                     <button type="button" class="btn btn-primary">Sign Up</button></a>
             </div>
+
         </div>
     </nav>
 
 
     <!-- Welcome Text-->
-    <h1 class="text-center" id="welcome" style="padding-top: 20px; color: #0271d8">Welcome to HAR Observation &
+    <h1 class="text-center py-4" id="welcome" style="padding-top: 20px; color: #0271d8">Welcome to HAR Observation &
         Statistics</h1>
 
     <!-- Image -->
@@ -58,27 +72,24 @@
     <div class="form d-lg-flex p-5" id="welcome">
         <form class="container" method="POST">
             <div class="mb-3 row">
-                <label for="username" class="col-sm-2 col-form-label">Username:</label>
-                <div class="col-sm-1">
-                    <input type="username" id="username" class="form-control" placeholder="username">
-                </div>
+
             </div>
             <div class="mb-3 row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
                 <div class="col-sm-1">
-                    <input type="email" id="email" class="form-control" id="exampleFormControlInput1"
+                    <input type="email" id="email_log" name="em" class="form-control" id="exampleFormControlInput1"
                         placeholder="someone@example.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="inputPassword" class="col-sm-2 col-form-label">Password:</label>
                 <div class="col-sm-1">
-                    <input type="password" id="password" minlength="8" pattern="(?=.*\d)(?=.*[A-Z])(?=.*\W.*)"
-                        class="form-control">
+                    <input type="password" id="password_log" name="pw" minlength="8"
+                        pattern="(?=.*\d)(?=.*[A-Z])(?=.*\W.*)" class="form-control">
                 </div>
             </div>
 
-            <input type="button" name="save" class="btn btn-primary" value="Register!" id="butsave">
+            <input type="button" name="save" class="btn btn-primary" value="Login!" id="butlogin">
         </form>
     </div>
 

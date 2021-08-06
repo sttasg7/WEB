@@ -1,3 +1,7 @@
+<?php
+include '../backend/logincheck.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,12 +24,42 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container">
+        <?php 
+        if ($loginst == 1){ ?>
+            <a href="../index.html">
+                <img src="../pictures/har.png" height="50px" width="auto" alt="HAR Observation & Statistics">
+            </a>  
+        <?php } else { ?>
             <a href="../frontend/user-profile.php">
                 <img src="../pictures/har.png" height="50px" width="auto" alt="HAR Observation & Statistics">
-            </a>
+            </a>  
+        <?php } ?> 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
+            <?php 
+            if ($loginst == 1){ ?>
+
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../frontend/faq.php">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../frontend/about.php">About</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="d-grid gap-2 d-md-block d-none d-md-block" style="margin-right: -5%">
+                <a href="../frontend/login.php">
+                    <button type=" button" class="btn btn-outline-secondary">Sign In </button></a>
+                <a href="../frontend/register.php">
+                    <button type="button" class="btn btn-primary">Sign Up</button></a>
+            </div>
+
+            <?php } else { ?>
 
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto justify-content-end">
@@ -39,10 +73,10 @@
                         <a class="nav-link" href="../frontend/user-map.html">Map</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../frontend/faq.html">FAQs</a>
+                        <a class="nav-link active" aria-current="page" href="../frontend/faq.php">FAQs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../frontend/about.html">About</a>
+                        <a class="nav-link" href="../frontend/about.php">About</a>
                     </li>
                 </ul>
             </div>
@@ -52,6 +86,9 @@
                     <input type="submit" class="btn btn-danger" name="logout" value="Log Out"></input>
                 </form>
             </div>
+
+            <?php } ?>
+
         </div>
     </nav>
 
@@ -62,7 +99,8 @@
 
     <div class="container">
         <div class="h4 faq-que">What is HAR OS?</div>
-        <div class="p faq-ans">HAR OS is a tool which processes HAR files given by the user and displays exported data on
+        <div class="p faq-ans">HAR OS is a tool which processes HAR files given by the user and displays exported data
+            on
             a map.</div>
 
         <div class="h4 faq-que">What is a HAR file?</div>
@@ -71,17 +109,40 @@
             More info about them <a href="http://www.softwareishard.com/blog/har-12-spec/">here</a>.</div>
 
         <div class="h4 faq-que">How can I upload a HAR file?</div>
-        <div class="p faq-ans">Easy! Use the <a href="../frontend/user-upload.php">Upload</a> option</div>
 
+        <div class="p faq-ans">Easy! Use the 
+        <?php 
+        if ($loginst == 1){ ?>
+            <a href="#" onclick="loginalert()">Upload</a>
+        <?php } else { ?>
+            <a href="../frontend/user-upload.php">Upload</a> 
+        <?php } ?>  
+        option</div> 
         <div class="h4 faq-que">And then what?</div>
-        <div class="p faq-ans">Then you can see an analysis of all recorded connections on your personal <a
-                href="../frontend/user-map.html">Map</a></div>
+        <div class="p faq-ans">Then you can see an analysis of all recorded connections on your personal 
+        <?php 
+        if ($loginst == 1){ ?>
+            <a href="#" onclick="mapalert()">Map</a>
+        <?php } else { ?>
+            <a href="../frontend/user-map.html">Map</a>
+        <?php } ?>   
+        
+            
+        </div>
 
         <div class="h4 faq-que">There are sensitive info on my HAR file</div>
         <div class="p faq-ans">Don't worry about it! <br>
             Every file uploaded to the server is parsed through our privacy tool. You can use the privacy tool yourself,
             use the <div class="btn btn-info">Export</div>
-            option on our <a href="../frontend/user-upload.php">Upload</a> page and you'll get a new HAR file with all private info
+            option on our 
+            <?php 
+            if ($loginst == 1){ ?>
+                <a href="#" onclick="loginalert()">Upload</a>
+            <?php } else { ?>
+                <a href="../frontend/user-upload.php">Upload</a> 
+            <?php } ?>
+            page and you'll get a new HAR file with all
+            private info
             discarded</div>
 
         <div class="h4 faq-que">So which data do you keep?</div>
@@ -179,6 +240,15 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 
+    <script>
+    function loginalert() {
+        alert("You must be logged in to Upload!");
+    }
+
+    function mapalert() {
+        alert("You must be logged in see the Map!");
+    }
+    </script>
 
 </body>
 
