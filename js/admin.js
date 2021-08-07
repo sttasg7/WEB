@@ -31,10 +31,10 @@ $(document).ready(function(){
         },
         options: {
             legend: {
-                "display": true
+                display: true
               },
               tooltips: {
-                "enabled": true
+                enabled: true
               },  
               plugins: {
                   title: {
@@ -47,6 +47,10 @@ $(document).ready(function(){
     
     var type = 0;    
     //updateChart(type, chart);
+    $("#basics").on('click', function(){
+      basicInfo();
+    })
+
     $("#methodstable").on('click', function(){
       type = 0;
       showTable(type);
@@ -56,6 +60,12 @@ $(document).ready(function(){
       type = 1;
       showTable(type);
     })
+
+    $("#agestable").on('click', function(){
+      type = 2;
+      showTable(type);
+    })
+    
     
     $("#methods").on('click', function(){
         type = 0;
@@ -67,7 +77,7 @@ $(document).ready(function(){
         updateChart(type, chart);
     });
 
-    $("#graph").on('click', function(){
+    $("#ages").on('click', function(){
         type = 2;
         updateChart(type, chart);
     });
@@ -78,25 +88,31 @@ $(document).ready(function(){
 function updateChart(type, chart) {  
     $("#table").hide();
     var f = JSON.parse(json);
-    var l,d,txt;
+    var l,d,txt,unit;
     if(type==0){
         l = f.methods.map(function(e) {return e.name;});
         d = f.methods.map(function(e) {return e.count;});
         txt = "Methods";
+        unit = 'Entries';
         //oops wrong question addfilters(type, l, d);
       } else if(type==1) {
         l = f.status.map(function(e) {return e.name;});
         d = f.status.map(function(e) {return e.count;});
         txt = "Response Codes";
+        unit = 'Entries';
         //addfilters(type, l, d);
-      } else {
-        l = ["a","b"];
-        d = ["8","2"];
+      } else if(type==2){
+        l = f.ages.map(function(e) {return e.content;});
+        d = f.ages.map(function(e) {return e.avg;});
+        txt = "Average Age Per Content Type";
+        unit = 'Age';
       }
     
-    const c = palette('tol', d.length).map(function(hex) {return '#' + hex;});
+    
+    const c = palette('mpn65', d.length).map(function(hex) {return '#' + hex;});
     chart.data.datasets[0].data = d;
     chart.data.labels = l;
+    chart.data.datasets[0].label = unit;
     chart.data.datasets[0].backgroundColor = c;
     chart.options.plugins.title.text = txt;
     chart.update();
@@ -114,25 +130,47 @@ function showTable(type) {
     l = f.methods.map(function(e) {return e.name;});
     d = f.methods.map(function(e) {return e.count;});
     txt = "Methods";
+    v1 = "Methods";
+    v2 = "Count";
     //oops wrong question addfilters(type, l, d);
   } else if(type==1) {
     l = f.status.map(function(e) {return e.name;});
     d = f.status.map(function(e) {return e.count;});
     txt = "Response Codes";
+    v1 = "Code";
+    v2 = "Count";
     //addfilters(type, l, d);
-  } else {
-    l = ["a","b"];
-    d = ["8","2"];
+  } else if(type==2){
+    l = f.ages.map(function(e) {return e.content;});
+    d = f.ages.map(function(e) {return e.avg;});
+    txt = "Average Age Per Content Type";
+    v1 = "Content";
+    v2 = "Average Age in msec"
   }
 
-  x += "<table class='table table-bordered'><caption>"+txt+"</caption><table>";
+  x += "<table class='table table-bordered'><caption>"+txt+"</caption><table><tbody><tr><th scope='row'>"+v1+"</th><th>"+v2+"</th></tr>";
   for(let i=0; i<l.length; i++) {
-    x += "<tr><th scope='row'>"+l[i]+"</th><td>"+d[i]+"</td></tr>";
+    x += "<tr><td>"+l[i]+"</td><td>"+d[i]+"</td></tr>";
   }
   x +="</tbody>";
 
   $("#table").append(x);
 }
+
+function basicInfo() {
+  $("#table").empty();
+  $("#xanax").hide();
+  $("#table").show();
+  var f = JSON.parse(json);
+  const users = f.counts[0].users;
+  const ISPs = f.counts[1].ISP;
+  const domains = f.counts[1].domains;
+  let x ="<div><b>Number of unique users registered:</b> "+users+"<br><hr><b>Number of unique domains logged:</b> "+domains+"<br><hr><b>Number of unique ISPs logged:</b> "+ISPs+"<br></div>";
+  $("#table").append(x);
+}
+
+
+
 
 /*
 function addfilters(type, str, dt) {
