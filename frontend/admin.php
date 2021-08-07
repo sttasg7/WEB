@@ -4,6 +4,9 @@ include '../backend/logincheck.php';
 
 <!DOCTYPE html>
 <html lang="en">
+
+    <?php if ($loginst == 2){?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -109,8 +112,30 @@ include '../backend/logincheck.php';
 
 </div>
 
-    
+<div class="mb-3 row"></div>
+<div class="mb-3 row"></div>
+<div class="mb-3 row"></div>
+<div class="mb-3 row"></div>
+<div class="mb-3 row"></div>
+<div class="mb-3 row"></div>
+<div class="mb-3 row"></div>
+<div class="mb-3 row"></div>
+<div class="mb-3 row"></div>
+<div class="mb-3 row"></div>
+<div class="mb-3 row"></div>
+            
+<footer class="footer mt-auto py-3 bg-light d-none d-sm-block">
+    <div class="container">
+        <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</span>
+    </div>
+</footer>  
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
+<?php } else {?>
+
+    <h1>Access Forbidden</h1>
+
+<?php } ?>
 </body>
 </html>
