@@ -32,6 +32,17 @@ include '../backend/logincheck.php';
     .bb {
         background: lightgrey;
     }
+
+    th {
+        background: lightgrey;
+    },
+
+    td {
+        background: white;
+    }
+    tr:nth-child(even) {
+        background-color: white;
+    }
 </style>
 <body>
 <!-- Navbar -->
@@ -83,28 +94,40 @@ include '../backend/logincheck.php';
 <div class="container py-3">
     <section style="display: flex; flex-direction: row; ">
         <div style="width:20%;">
-        <ul class="navbar-nav bb">            
-            <li class="sb-main">Methods</li>
-            <li class="sb-sub"><input type="button" name="save" class="btn-sm btn-outline-secondary" value="Table" id="methodstable"></li>
-            <li class="sb-sub"><input type="button" name="save" class="btn-sm btn-outline-secondary" value="Graph" id="methods"></li>
-            <li class="sb-main">Status</li>
-            <li class="sb-sub"><input type="button" name="save" class="btn-sm btn-outline-secondary" value="Table" id="statusstable"></li>
-            <li class="sb-sub"><input type="button" name="save" class="btn-sm btn-outline-secondary" value="Graph" id="status"></li>
-            <li class="sb-main"><input type="button" name="save" class="btn btn-primary" value="Graph" id="graph"></li>
+        <ul class="navbar-nav bb d-flex align-items-stretch">      
+            <li class="sb-main d-flex bd-highlight">
+                <div class="p-1 flex-grow-1 bd-highlight">Basic Stats</div> 
+                <input type="button" name="save" class="btn-sm btn-outline-secondary ms-5" value="Show" id="basics">
+            </li>     
+            <li class="sb-main d-flex bd-highlight">
+                <div class="p-1 flex-grow-1 bd-highlight">Methods</div>
+                <input type="button" name="save" class="btn-sm btn-outline-secondary p-1 bd-highlight" value="Table" id="methodstable">
+                <input type="button" name="save" class="btn-sm btn-outline-info p-1 bd-highlight" value="Graph" id="methods">
+            </li>
+            <li class="sb-main d-flex bd-highlight">
+                <div class="p-1 flex-grow-1 bd-highlight">Response Codes</div>
+                <input type="button" name="save" class="btn-sm btn-outline-secondary p-1 bd-highlight" value="Table" id="statusstable">
+                <input type="button" name="save" class="btn-sm btn-outline-info p-1 bd-highlight" value="Graph" id="status">
+            </li>
+            <li class="sb-main d-flex bd-highlight">
+                <div class="p-1 flex-grow-1 bd-highlight">Average Age per Content Type</div>
+                <input type="button" name="save" class="btn-sm btn-outline-secondary p-1 bd-highlight" value="Table" id="agestable">
+                <input type="button" name="save" class="btn-sm btn-outline-info p-1 bd-highlight" value="Graph" id="ages">
+            </li>
         </ul>
         </div>
 
-        <div id="xanax" style="width:60%; margin-left: 2%; border-style: solid;">
+        <div id="xanax" style="width:40%; margin-left: 12%;">
         <canvas id="ch1"></canvas>                       
         </div>
-        <div id="table" style="width:60%; margin-left: 2%; border-style: solid;" class="text-center"></div>
+        <div id="table" style="width:40%; margin-left: 12%;" class="text-center"></div>
 
         <div style="width:20%; margin-left:2%">
         <ul id="filt" class="navbar-nav bb"></ul>
         
         </div>
 
-</section>
+    </section>
 
 
 </div>

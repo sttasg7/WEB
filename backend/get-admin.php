@@ -49,7 +49,9 @@ if($type == 1) {
     $result=mysqli_query($conn,$sql);
 
     while($data=mysqli_fetch_array($result)){  
-        $s['ages'][] =  array('content' => $data['type'], 'avg_age' => $data['age']);    
+       // $age = (int) $data['age'];
+        $round = round($data['age'],2);
+        $s['ages'][] =  array('content' => $data['type'], 'avg' => $round);    
     }
 
     
