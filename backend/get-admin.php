@@ -2,7 +2,7 @@
 session_start();
 include 'database.php';
 
-$type = 4;//$_POST['type'];
+$type = $_POST['type'];
 
 //Admin question 1
 if($type == 1) {

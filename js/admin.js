@@ -34,12 +34,18 @@ $(document).ready(function(){
                 display: true
               },
               tooltips: {
-                enabled: true
+                enabled: true,
               },  
               plugins: {
                   title: {
                     display: true,
                     text: ""
+                  },
+                  tooltips: {
+                    display: true,
+                    position: 'top',
+                    align: 'start',
+                    reverse: true
                   }
               }
           }
@@ -104,7 +110,7 @@ function updateChart(type, chart) {
       } else if(type==2){
         l = f.ages.map(function(e) {return e.content;});
         d = f.ages.map(function(e) {return e.avg;});
-        txt = "Average Age Per Content Type";
+        txt = "Average Age Per Content Type in msec";
         unit = 'Age';
       }
     
@@ -165,7 +171,7 @@ function basicInfo() {
   const users = f.counts[0].users;
   const ISPs = f.counts[1].ISP;
   const domains = f.counts[1].domains;
-  let x ="<div><b>Number of unique users registered:</b> "+users+"<br><hr><b>Number of unique domains logged:</b> "+domains+"<br><hr><b>Number of unique ISPs logged:</b> "+ISPs+"<br></div>";
+  let x ="<div><b>Users registered:</b>   "+users+"<br><hr><b>Domains logged:</b>   "+domains+"<br><hr><b>ISPs logged:</b>   "+ISPs+"<br></div>";
   $("#table").append(x);
 }
 

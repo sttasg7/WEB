@@ -16,20 +16,9 @@ include '../backend/logincheck.php';
     <link href="../css/login.css" rel="stylesheet">
     <link rel="icon" href="https://i.imgur.com/qY7kRzP.png" type="img/png">    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <!--Leaflet stuff-->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin="" />
-
-    <!-- Make sure you put this AFTER Leaflet's CSS -->
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
-
-    <script src="../js/heatmap.js"></script>
-    <script src="../js/pwied-heatmap.js"></script>
-    <script src="../js/admin-map.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js"></script>
+    <script src="../js/palette.js"></script>
+    <script src="../js/admin-analysis.js"></script>
 
 </head>
 <style>
@@ -98,27 +87,42 @@ include '../backend/logincheck.php';
             </div>
         </div>
     </nav>
-
-<div class="container py-3">
-    <div id="mapid"></div>
-
-    <div><img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png" alt="Green"> Users<br>
-    <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png" alt="Violet"> Servers<br>
-     Line weight (thickness) affected by number of connections. <br>
-     Line opacity affected by number of servers on the same location. <br>
-     Click on markers or lines for info.</div>
+<div class="container py-1"></div>
+<div class="container">
     <section style="display: flex; flex-direction: row; ">
-        
-        
-
-        <div id="xanax" style="width:40%; margin-left: 12%;" class="py-4">
-        <canvas id="ch1"></canvas>                       
+        <div style="width:20%;">
+        <ul class="navbar-nav py-4 d-flex align-items-stretch bg-dark"> 
+            <li class="sb-main d-flex bd-highlight bg-dark">
+                <div class="p-1 flex-grow-1 bd-highlight">Content Type</div>
+                <input type="button" name="save" class="btn-sm btn-outline-secondary p-1 bd-highlight" value="Table" id="ct_table">
+                <input type="button" name="save" class="btn-sm btn-outline-info p-1 bd-highlight" value="Graph" id="ct_graph">
+            </li>
+            <li class="sb-main d-flex bd-highlight bg-dark">
+                <div class="p-1 flex-grow-1 bd-highlight">Day of Week</div>
+                <input type="button" name="save" class="btn-sm btn-outline-secondary p-1 bd-highlight" value="Table" id="day_table">
+                <input type="button" name="save" class="btn-sm btn-outline-info p-1 bd-highlight" value="Graph" id="day_graph">
+            </li>
+            <li class="sb-main d-flex bd-highlight bg-dark">
+                <div class="sb-sub p-1 flex-grow-1 bd-highlight">HTTP Method</div>
+                <input type="button" name="save" class="btn-sm btn-outline-secondary p-1 bd-highlight" value="Table" id="method_table">
+                <input type="button" name="save" class="btn-sm btn-outline-info p-1 bd-highlight" value="Graph" id="method_graph">
+            </li>
+            <li class="sb-main d-flex bd-highlight bg-dark">
+                <div class="sb-sub p-1 flex-grow-1 bd-highlight">Internet Provider</div>
+                <input type="button" name="save" class="btn-sm btn-outline-secondary p-1 bd-highlight" value="Table" id="isp_table">
+                <input type="button" name="save" class="btn-sm btn-outline-info p-1 bd-highlight" value="Graph" id="isp_graph">
+            </li>
+        </ul>
         </div>
-        <div id="table" style="width:40%; margin-left: 12%;" class="text-center py-4"></div>
+
+        <div id="xanax" style="width:60%; margin-left: 2%;" class="py-4">
+            <canvas id="ch1"></canvas>                       
+        </div>
+
+        <div id="table" style="width:60%; margin-left: 2%;" class="text-center py-4">aaaa</div>
 
         <div style="width:20%; margin-left:2%">
-        <ul id="filt" class="navbar-nav bb"></ul>
-        
+            <ul id="filt" class="navbar-nav bg-dark sb-main"></ul>
         </div>
 
     </section>

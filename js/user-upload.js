@@ -57,7 +57,7 @@ document.getElementById('myFile').addEventListener('change', function selectedFi
                 url = parsed.log.entries[i].request.url;
                 let domain = (new URL(url));
                 domain = domain.hostname.replace('www.','');
-                let ipfix1 = parsed.log.entries[i].serverIPAddress;
+                let ipfix1 = parsed.log.entries[i].serverIPAddress || "";
                 let ipfix2 = ipfix1.replace("[", "");
                 let ipfix = ipfix2.replace("]", ""); //Quick fix for ipv6 */
                 
