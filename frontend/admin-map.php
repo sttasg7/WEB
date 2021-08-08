@@ -16,9 +16,20 @@ include '../backend/logincheck.php';
     <link href="../css/login.css" rel="stylesheet">
     <link rel="icon" href="https://i.imgur.com/qY7kRzP.png" type="img/png">    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js"></script>
-    <script src="../js/palette.js"></script>
-    <script src="../js/admin.js"></script>
+
+    <!--Leaflet stuff-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
+    <script src="../js/heatmap.js"></script>
+    <script src="../js/pwied-heatmap.js"></script>
+    <script src="../js/admin-map.js"></script>
 
 </head>
 <style>
@@ -88,31 +99,16 @@ include '../backend/logincheck.php';
         </div>
     </nav>
 
-<div class="container">
+<div class="container py-3">
+    <div id="mapid"></div>
+
+    <div><img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png" alt="Green"> Users<br>
+    <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png" alt="Violet"> Servers<br>
+     Line weight (thickness) affected by number of connections. <br>
+     Click on markers or lines for info.</div>
     <section style="display: flex; flex-direction: row; ">
-        <div style="width:20%;">
-        <ul class="navbar-nav py-4 d-flex align-items-stretch bg-dark">      
-            <li class="sb-main d-flex bd-highlight bg-dark">
-                <div class="p-1 flex-grow-1 bd-highlight">Basic Stats</div> 
-                <input type="button" name="save" class="btn-sm btn-outline-secondary ms-5" value="Show" id="basics">
-            </li>     
-            <li class="sb-main d-flex bd-highlight bg-dark">
-                <div class="p-1 flex-grow-1 bd-highlight">Methods</div>
-                <input type="button" name="save" class="btn-sm btn-outline-secondary p-1 bd-highlight" value="Table" id="methodstable">
-                <input type="button" name="save" class="btn-sm btn-outline-info p-1 bd-highlight" value="Graph" id="methods">
-            </li>
-            <li class="sb-main d-flex bd-highlight bg-dark">
-                <div class="p-1 flex-grow-1 bd-highlight">Response Codes</div>
-                <input type="button" name="save" class="btn-sm btn-outline-secondary p-1 bd-highlight" value="Table" id="statusstable">
-                <input type="button" name="save" class="btn-sm btn-outline-info p-1 bd-highlight" value="Graph" id="status">
-            </li>
-            <li class="sb-main d-flex bd-highlight bg-dark">
-                <div class="sb-sub p-1 flex-grow-1 bd-highlight">Average Age per Content Type</div>
-                <input type="button" name="save" class="btn-sm btn-outline-secondary p-1 bd-highlight" value="Table" id="agestable">
-                <input type="button" name="save" class="btn-sm btn-outline-info p-1 bd-highlight" value="Graph" id="ages">
-            </li>
-        </ul>
-        </div>
+        
+        
 
         <div id="xanax" style="width:40%; margin-left: 12%;" class="py-4">
         <canvas id="ch1"></canvas>                       

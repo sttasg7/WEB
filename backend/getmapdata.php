@@ -13,7 +13,6 @@ while($data=mysqli_fetch_array($result)){
 }
 
 $s = json_encode($s);
-$conn->query($sql);
 
 $search = '';
 $cnt = 0;

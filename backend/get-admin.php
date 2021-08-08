@@ -2,7 +2,7 @@
 session_start();
 include 'database.php';
 
-$type = 1; //$_POST['type'];
+$type = 4;//$_POST['type'];
 
 //Admin question 1
 if($type == 1) {
@@ -98,12 +98,19 @@ if($type == 3) {
 //Admin question 4
 if($type == 4) {
 
-    $sql="SELECT serveripaddress AS sip, COUNT(serveripaddress) AS cnt, userip AS uip FROM har_data GROUP BY serveripaddress";
+    $sql="SELECT serveripaddress AS sip, COUNT(serveripaddress) AS cnt, userip AS uip, latitude_city AS lat, longitude_city AS lon FROM har_data GROUP BY serveripaddress";
     $result=mysqli_query($conn,$sql);
     $s = array();
 
     while($data=mysqli_fetch_array($result)){  
-        $s[] =  array('user' => $data['uip'], 'server' => $data['sip'], 'count' => $data['cnt']);    
+        $xx = $data['sip'];
+        $serverll = "SELECT s_lat AS slat, s_lon AS slon FROM serverloc WHERE s_ip = '$xx'";
+        $res2=mysqli_query($conn,$serverll);
+        while($location=mysqli_fetch_array($res2)){ 
+            $slat = $location['slat'];
+            $slon = $location['slon'];
+        }
+        $s[] =  array('user' => $data['uip'], 'ulat' => $data['lat'], 'ulon' => $data['lon'], 'server' => $data['sip'], 'slat' => $slat, 'slon' => $slon, 'count' => $data['cnt']);    
     }
 
     //push eveything in one json
