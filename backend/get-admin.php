@@ -81,12 +81,12 @@ if($type == 2) {
 //Admin question 3
 if($type == 3) {
 
-    $sql="SELECT content_type AS ct, cache_control AS cache, expires AS expires, starteddatetime AS dt, isp AS isp FROM har_data";
+    $sql="SELECT content_type AS ct, cache_control AS cache, expires AS expires, last_modified AS dt, isp AS isp FROM har_data";
     $result=mysqli_query($conn,$sql);
     $s = array();
 
     while($data=mysqli_fetch_array($result)){  
-        $s[] =  array('content' => $data['ct'], 'date' => $data['dt'], 'cache' => $data['cache'], 'isp' => $data['isp']);    
+        $s[] =  array('content' => $data['ct'], 'date' => $data['dt'], 'cache' => $data['cache'], 'expires' => $data['expires'], 'isp' => $data['isp']);    
     }
 
     //push eveything in one json

@@ -1,3 +1,8 @@
+<?php
+include '../backend/logincheck.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,11 +38,19 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container">
+            <?php 
+        if ($loginst == 1){ ?>
+            <a href="../index.html">
+                <img src="../pictures/har.png" height="50px" width="auto" alt="HAR Observation & Statistics">
+            </a>
+            <?php } else { ?>
             <a href="../frontend/user-profile.php">
                 <img src="../pictures/har.png" height="50px" width="auto" alt="HAR Observation & Statistics">
             </a>
+            <?php } ?>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -51,7 +64,7 @@
                         <a class="nav-link" href="../frontend/user-upload.php">Upload</a>
                     </li>
                     <li lass="nav-item">
-                        <a class="nav-link active" href="../frontend/user-map.html">Map</a>
+                        <a class="nav-link active" href="../frontend/user-map.php">Map</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="../frontend/faq.php">FAQs</a>
@@ -59,13 +72,26 @@
                     <li class="nav-item">
                         <a class="nav-link" href="../frontend/about.php">About</a>
                     </li>
+                    <?php if ($loginst == 2){ ?>
+                    <li class="nav-item link-cur">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                                data-bs-toggle="dropdown" aria-expanded="false">Admin Tools</button>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                <li><a class="dropdown-item" href="admin.php">Basic Stats</a></li>
+                                <li><a class="dropdown-item" href="admin-analysis.php">Timings Analysis</a></li>
+                                <li><a class="dropdown-item" href="admin-headers.php">Headers Analysis</a></li>
+                                <li><a class="dropdown-item" href="admin-map.php">Connections Map</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <?php } ?>
+                    <li class="nav-item px-1">
+                        <form action="../backend/logout.php" method="post"><input type="submit" class="btn btn-danger"
+                                name="logout" value="Log Out"></input>
+                        </form>
+                    </li>
                 </ul>
-            </div>
-
-            <div class="d-grid gap-2 d-md-block d-none d-md-block" style="margin-right: -5%">
-                <form action="../backend/logout.php" method="post">
-                    <input type="submit" class="btn btn-danger" name="logout" value="Log Out"></input>
-                </form>
             </div>
         </div>
     </nav>
@@ -118,8 +144,8 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
     <script src="../js/map.js"></script>
 

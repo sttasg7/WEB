@@ -216,7 +216,7 @@ function addChart() {
             data: [],
             borderWidth: 2,
             borderColor: "rgb(11,11,11)",
-            backgroundColor: "rgb(133,233,333)"
+            backgroundColor: palette('mpn65', 24).map(function (hex) { return '#' + hex; })
           }]
         },
         options: {

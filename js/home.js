@@ -9,11 +9,19 @@ $(document).ready(function() {
         cache: false,          
         success: function(response){ 
           var info = JSON.parse(response);          
-          lastentry.innerHTML = "Your last upload was on: " + info.last;
-          entriescount.innerHTML = "Number of entries: " + info.count;                            
+          lastentry.innerHTML = "Your last upload was on: <b>" + info.last +"</b>";
+          entriescount.innerHTML = "Number of entries: <b>" + info.count+"</b>";                            
         }
       })
 
+      $('#b1').on('click', function() { 
+        let x = document.getElementById("hidb1");
+        if (x.hidden) {
+          x.removeAttribute("hidden");
+        } else {
+          $("#hidb1").attr("hidden","hidden");
+        }        
+      });
 
 
 
