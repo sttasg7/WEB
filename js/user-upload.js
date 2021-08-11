@@ -1,6 +1,7 @@
 var parsed;
 var modified;
-var userIP; var city; var city_lat; var city_long; var isp; var check;
+var userIP; var city; var city_lat; var city_long; var isp;
+var check = 0;
 data = new Array();
 document.getElementById('myFile').addEventListener('change', function selectedFileChanged() {
     $('#sendtoserver').attr("disabled", "disabled");
@@ -9,96 +10,109 @@ document.getElementById('myFile').addEventListener('change', function selectedFi
     data = [];
     const reader = new FileReader();
     reader.onload = function fileReadCompleted() {
+        try {
+            parsed = JSON.parse(reader.result);
+            check = 1;
+        } catch (e) {
+            $('#sendtoserver').attr("disabled", "disabled");
+            $('#exportslim').attr("disabled", "disabled");
+            $('#pleasewait').html("Your file is not compatible. <br> Please use a .har log. <br> Check FAQ on how to obtain them");
+            $('#pleasewait').removeAttr("hidden");
+            check = 0;
+        };
 
-        //ADD CHECK FOR VALID FILES
+        if (check == 1) {
+            if (typeof parsed.log == 'undefined' && parsed[0].url != 'undefined') {
+                $('#exportslim').attr("disabled", "disabled");
+                $('#pleasewait').html("You can't use the Export option as this log has already been processed and slimmed down. <br> You may upload it to the server.");
+                $('#pleasewait').removeAttr("hidden");
+            } else {
+                $('#pleasewait').html("Please wait for the file to process");
+                $('#pleasewait').removeAttr("hidden");
+                for (i = 0; i < parsed.log.entries.length; i++) {
+                    let host, contentType, cacheControl, pragma, expires, age, lastModified;
 
-        parsed = JSON.parse(reader.result);
-        if (typeof parsed.log == 'undefined' && parsed[0].url != 'undefined') { //Check if file is already at the needed format
-            data.push(parsed);
-        } else {
-            for (i = 0; i < parsed.log.entries.length; i++) {
-                let host, contentType, cacheControl, pragma, expires, age, lastModified;
-                
-                for (j = 0; j < parsed.log.entries[i].request.headers.length; j++) {
-                    if (parsed.log.entries[i].request.headers[j].name == "Host" || parsed.log.entries[i].request.headers[j].name == "host") {
-                        host = parsed.log.entries[i].request.headers[j].value
-                    } else if (parsed.log.entries[i].request.headers[j].name == "Content-Type" || parsed.log.entries[i].request.headers[j].name == "content-type") {
-                        contentType = parsed.log.entries[i].request.headers[j].value;
-                    } else if (parsed.log.entries[i].request.headers[j].name == "Cache-Control" || parsed.log.entries[i].request.headers[j].name == "cache-control") {
-                        cacheControl = parsed.log.entries[i].request.headers[j].value;
-                    } else if (parsed.log.entries[i].request.headers[j].name == "Pragma" || parsed.log.entries[i].request.headers[j].name == "pragma") {
-                        pragma = parsed.log.entries[i].request.headers[j].value;
-                    } else if (parsed.log.entries[i].request.headers[j].name == "Expires" || parsed.log.entries[i].request.headers[j].name == "expires") {
-                        expires = parsed.log.entries[i].request.headers[j].value;
-                    } else if (parsed.log.entries[i].request.headers[j].name == "Age" || parsed.log.entries[i].request.headers[j].name == "age") {
-                        age = parsed.log.entries[i].request.headers[j].value;
-                    } else if (parsed.log.entries[i].request.headers[j].name == "Last-Modified" || parsed.log.entries[i].request.headers[j].name == "last-modified") {
-                        lastModified = parsed.log.entries[i].request.headers[j].value;
+                    for (j = 0; j < parsed.log.entries[i].request.headers.length; j++) {
+                        if (parsed.log.entries[i].request.headers[j].name == "Host" || parsed.log.entries[i].request.headers[j].name == "host") {
+                            host = parsed.log.entries[i].request.headers[j].value
+                        } else if (parsed.log.entries[i].request.headers[j].name == "Content-Type" || parsed.log.entries[i].request.headers[j].name == "content-type") {
+                            contentType = parsed.log.entries[i].request.headers[j].value;
+                        } else if (parsed.log.entries[i].request.headers[j].name == "Cache-Control" || parsed.log.entries[i].request.headers[j].name == "cache-control") {
+                            cacheControl = parsed.log.entries[i].request.headers[j].value;
+                        } else if (parsed.log.entries[i].request.headers[j].name == "Pragma" || parsed.log.entries[i].request.headers[j].name == "pragma") {
+                            pragma = parsed.log.entries[i].request.headers[j].value;
+                        } else if (parsed.log.entries[i].request.headers[j].name == "Expires" || parsed.log.entries[i].request.headers[j].name == "expires") {
+                            expires = parsed.log.entries[i].request.headers[j].value;
+                        } else if (parsed.log.entries[i].request.headers[j].name == "Age" || parsed.log.entries[i].request.headers[j].name == "age") {
+                            age = parsed.log.entries[i].request.headers[j].value;
+                        } else if (parsed.log.entries[i].request.headers[j].name == "Last-Modified" || parsed.log.entries[i].request.headers[j].name == "last-modified") {
+                            lastModified = parsed.log.entries[i].request.headers[j].value;
+                        }
                     }
-                }
-                for (k = 0; k < parsed.log.entries[i].response.headers.length; k++) {
-                    if (parsed.log.entries[i].response.headers[k].name == "Host" || parsed.log.entries[i].response.headers[k].name == "host") {
-                        host = parsed.log.entries[i].response.headers[k].value
-                    } else if (parsed.log.entries[i].response.headers[k].name == "Content-Type" || parsed.log.entries[i].response.headers[k].name == "content-type") {
-                        contentType = parsed.log.entries[i].response.headers[k].value;
-                    } else if (parsed.log.entries[i].response.headers[k].name == "Cache-Control" || parsed.log.entries[i].response.headers[k].name == "cache-control") {
-                        cacheControl = parsed.log.entries[i].response.headers[k].value;
-                    } else if (parsed.log.entries[i].response.headers[k].name == "Pragma" || parsed.log.entries[i].response.headers[k].name == "pragma") {
-                        pragma = parsed.log.entries[i].response.headers[k].value;
-                    } else if (parsed.log.entries[i].response.headers[k].name == "Expires" || parsed.log.entries[i].response.headers[k].name == "expires") {
-                        expires = parsed.log.entries[i].response.headers[k].value;
-                    } else if (parsed.log.entries[i].response.headers[k].name == "Age" || parsed.log.entries[i].response.headers[k].name == "age") {
-                        age = parsed.log.entries[i].response.headers[k].value;
-                    } else if (parsed.log.entries[i].response.headers[k].name == "Last-Modified" || parsed.log.entries[i].response.headers[k].name == "last-modified") {
-                        lastModified = parsed.log.entries[i].response.headers[k].value;
+                    for (k = 0; k < parsed.log.entries[i].response.headers.length; k++) {
+                        if (parsed.log.entries[i].response.headers[k].name == "Host" || parsed.log.entries[i].response.headers[k].name == "host") {
+                            host = parsed.log.entries[i].response.headers[k].value
+                        } else if (parsed.log.entries[i].response.headers[k].name == "Content-Type" || parsed.log.entries[i].response.headers[k].name == "content-type") {
+                            contentType = parsed.log.entries[i].response.headers[k].value;
+                        } else if (parsed.log.entries[i].response.headers[k].name == "Cache-Control" || parsed.log.entries[i].response.headers[k].name == "cache-control") {
+                            cacheControl = parsed.log.entries[i].response.headers[k].value;
+                        } else if (parsed.log.entries[i].response.headers[k].name == "Pragma" || parsed.log.entries[i].response.headers[k].name == "pragma") {
+                            pragma = parsed.log.entries[i].response.headers[k].value;
+                        } else if (parsed.log.entries[i].response.headers[k].name == "Expires" || parsed.log.entries[i].response.headers[k].name == "expires") {
+                            expires = parsed.log.entries[i].response.headers[k].value;
+                        } else if (parsed.log.entries[i].response.headers[k].name == "Age" || parsed.log.entries[i].response.headers[k].name == "age") {
+                            age = parsed.log.entries[i].response.headers[k].value;
+                        } else if (parsed.log.entries[i].response.headers[k].name == "Last-Modified" || parsed.log.entries[i].response.headers[k].name == "last-modified") {
+                            lastModified = parsed.log.entries[i].response.headers[k].value;
+                        }
                     }
-                }
 
-                url = parsed.log.entries[i].request.url;
-                let domain = (new URL(url));
-                domain = domain.hostname.replace('www.','');
-                let ipfix1 = parsed.log.entries[i].serverIPAddress || "";
-                let ipfix2 = ipfix1.replace("[", "");
-                let ipfix = ipfix2.replace("]", ""); //Quick fix for ipv6 */
-                
-                if (contentType == null || contentType == '') {
-                    contentType = "text/html"
-                }
-                contentType = contentType.split(';')[0]; //to clear not needed values
-                let modifiedHar = {
-                    "startedDateTime": parsed.log.entries[i].startedDateTime,
-                    "wait": parsed.log.entries[i].timings.wait,
-                    "serverIPAddress": ipfix,
-                    "method": parsed.log.entries[i].request.method,
-                    "url": domain,
-                    "status": parsed.log.entries[i].response.status,
-                    "statusText": parsed.log.entries[i].response.statusText,
-                    "Content_Type": contentType,
-                    "Cache_Control": cacheControl,
-                    "Pragma": pragma,
-                    "Expires": expires,
-                    "Age": age,
-                    "Last_Modified": lastModified,
-                    "Host": host,
+                    url = parsed.log.entries[i].request.url;
+                    let domain = (new URL(url));
+                    domain = domain.hostname.replace('www.', '');
+                    let ipfix1 = parsed.log.entries[i].serverIPAddress || "";
+                    let ipfix2 = ipfix1.replace("[", "");
+                    let ipfix = ipfix2.replace("]", ""); //Quick fix for ipv6 */
 
+                    if (contentType == null || contentType == '') {
+                        contentType = "text/html"
+                    }
+                    contentType = contentType.split(';')[0]; //to clear not needed values
+                    let modifiedHar = {
+                        "startedDateTime": parsed.log.entries[i].startedDateTime,
+                        "wait": parsed.log.entries[i].timings.wait,
+                        "serverIPAddress": ipfix,
+                        "method": parsed.log.entries[i].request.method,
+                        "url": domain,
+                        "status": parsed.log.entries[i].response.status,
+                        "statusText": parsed.log.entries[i].response.statusText,
+                        "Content_Type": contentType,
+                        "Cache_Control": cacheControl,
+                        "Pragma": pragma,
+                        "Expires": expires,
+                        "Age": age,
+                        "Last_Modified": lastModified,
+                        "Host": host,
+
+                    }
+                    data.push(modifiedHar);
                 }
-                data.push(modifiedHar);
+                $('#pleasewait').attr("hidden", "hidden");
             }
         }
-    
-    
+
         $.ajax({
             dataType: "json",
-            url: "../backend/getIPinfo.php",            
-            success: function(uu){                            
-              userIP = uu.query;
-              isp = uu.asname;
-              city = uu.city;
-              city_lat = uu.lat;
-              city_long = uu.lon;                            
+            url: "../backend/getIPinfo.php",
+            success: function (uu) {
+                userIP = uu.query;
+                isp = uu.asname;
+                city = uu.city;
+                city_lat = uu.lat;
+                city_long = uu.lon;
             }
-          })
- 
+        })
+
     };
     reader.readAsText(this.files[0]);
     console.log(data);
@@ -122,12 +136,12 @@ function SendToServer() {
             city: city,
             lat: city_lat,
             long: city_long,
-            isp: isp            
-            },
+            isp: isp
+        },
         cache: false,
-        success: function(){          
-			updatelibrary();
-        }   
+        success: function () {
+            updatelibrary();
+        }
     });
 }
 
@@ -145,20 +159,19 @@ function DownloadJSON(argument) {
 }
 
 function Export() {
-
     modified = JSON.stringify(data, undefined, '\t');
     DownloadJSON(modified)
 }
 
 function updatelibrary() {
     $.ajax({
-        url: "../backend/serverlibrary.php",        
-        cache: false,  
-        success: function(res){
-          console.log(res);      
+        url: "../backend/serverlibrary.php",
+        cache: false,
+        success: function (res) {
+            console.log(res);
         }
-      })
-      $("#sendtoserver").removeAttr("disabled", "disabled");
-      $("#success").removeAttr("hidden", "hidden");
-      $('#pleasewait').attr("hidden", "hidden");
+    })
+    $("#sendtoserver").removeAttr("disabled", "disabled");
+    $("#success").removeAttr("hidden", "hidden");
+    $('#pleasewait').attr("hidden", "hidden");
 }

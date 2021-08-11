@@ -106,7 +106,7 @@ tr:nth-child(even) {
         </div>
     </nav>
     <div class="container d-flex">
-        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 20%">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
             <hr>
             <b><a href="admin.php" class="d-flex text-white text-center  text-decoration-none">Basic
                     Info</a></b>

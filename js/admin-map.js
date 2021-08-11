@@ -62,14 +62,14 @@ function load(json) {
 
   json.forEach(json => {
     var marker = L.marker([json.slat, json.slon], {icon: serverIcon}).addTo(map);
-    marker.bindPopup("IP: "+json.server+"<br> Lat: "+json.slat+"<br> Long: "+json.slon+"");
+    marker.bindPopup("IP: "+json.server+"<br>Latitude: "+json.slat+"<br>Longitude: "+json.slon+"");
     var marker = L.marker([json.ulat, json.ulon], {icon: userIcon}).addTo(map);
-    marker.bindPopup("IP: "+json.user+"<br> Lat: "+json.ulat+"<br> Long: "+json.ulon+"");
+    marker.bindPopup("IP: "+json.user+"<br>Latitude: "+json.ulat+"<br>Longitude: "+json.ulon+"");
     var latlngs = [[json.slat, json.slon],[json.ulat, json.ulon]]; 
     var w = Math.max(x * parseInt(json.count)/max, 2);
     w = Math.min(w, 10);
     var polyline = L.polyline(latlngs, {color: 'red', weight: w, opacity: 0.4}).addTo(map);
-    polyline.bindPopup("User IP: "+json.user+"<br> Server IP: "+json.server+"<br> Connections: "+json.count+"");
+    polyline.bindPopup("User IP: "+json.user+"<br>Server IP: "+json.server+"<br>Connections: "+json.count+"");
   });
 
 }

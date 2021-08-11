@@ -98,7 +98,7 @@ include '../backend/logincheck.php';
             <input type="button" id="exportslim" value="Export" class="btn btn-info" onclick="Export();">
         </form>
         <br><br>
-        <p hidden class="text-center" id="pleasewait">Please wait for the file to process</p>
+        <p hidden class="faq-ans text-center" id="pleasewait">Please wait for the file to process</p>
         <div id="success" class="faq-ans" hidden>Upload successful.</div>
 
 

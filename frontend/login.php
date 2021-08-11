@@ -21,16 +21,16 @@ include '../backend/logincheck.php';
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container">
-        <?php 
+            <?php 
         if ($loginst == 1){ ?>
             <a href="../index.html">
                 <img src="../pictures/har.png" height="50px" width="auto" alt="HAR Observation & Statistics">
-            </a>  
-        <?php } else { ?>
+            </a>
+            <?php } else { ?>
             <a href="../frontend/user-profile.php">
                 <img src="../pictures/har.png" height="50px" width="auto" alt="HAR Observation & Statistics">
-            </a>  
-        <?php } ?> 
+            </a>
+            <?php } ?>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
@@ -80,6 +80,7 @@ include '../backend/logincheck.php';
                     <input type="email" id="email_log" name="em" class="form-control" id="exampleFormControlInput1"
                         placeholder="someone@example.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                 </div>
+                <span class="criteria" id="email-invalid" style="color: red" hidden>Please fill field.</span>
             </div>
             <div class="mb-3 row">
                 <label for="inputPassword" class="col-sm-2 col-form-label">Password:</label>
@@ -87,6 +88,7 @@ include '../backend/logincheck.php';
                     <input type="password" id="password_log" name="pw" minlength="8"
                         pattern="(?=.*\d)(?=.*[A-Z])(?=.*\W.*)" class="form-control">
                 </div>
+                <span class="criteria" id="pass-invalid" style="color: red" hidden>Please fill field.</span>
             </div>
 
             <input type="button" name="save" class="btn btn-primary" value="Login!" id="butlogin">
@@ -100,8 +102,8 @@ include '../backend/logincheck.php';
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 
     <script src="../js/log_sign.js"></script>
 </body>

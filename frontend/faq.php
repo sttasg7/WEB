@@ -163,7 +163,7 @@ include '../backend/logincheck.php';
 
         <div class="h4 faq-que">So which data do you keep?</div>
         <div class="p faq-ans">Only vital ones for the analysis. More specifically these: <br>
-            <div class="container">
+            <div class="container py-3">
                 <table class="table table-bordered">
 
                     <tbody>

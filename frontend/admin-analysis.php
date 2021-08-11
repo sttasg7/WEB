@@ -28,7 +28,7 @@ include '../backend/logincheck.php';
     color: white;
     background-color: rgb(55, 55, 55);
     font-family: calibri;
-    font-size: 123%;
+    font-size: 100%;
 }
 
 th {
@@ -106,7 +106,7 @@ tr:nth-child(even) {
         </div>
     </nav>
     <div class="container d-flex">
-        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 20%">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
             <hr>
             <b><a href="admin-analysis.php" class="d-flex text-white text-center  text-decoration-none">Timings
                     Analysis</a></b>
