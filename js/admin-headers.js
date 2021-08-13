@@ -1,19 +1,22 @@
 var filterList = new Array();
 let type = 5; //1 for a, 2 for b, 5 for c
 var chart;
-let json;
+let json; //des admin-analysis.js ti grafw gia ayto kai to type, edw nomizw einai kalytera san global
 
 $(document).ready(function () {
   addChartA();
   $("#filt").hide();
   $("#xanax").hide();
   $("#table").hide();
-  load();
+  load(); //admin-analysis.js grammh 103. ginetai mia fora to load() edw, mou fainetai swstotero
 
+
+  //edw ta koumpia einai 95% idia me to admin-analysis, des ekei gia ekshghsh. monh diafora oti ta graph den einai idia se ola ta erwthmata
+  //gia ayto yparxoyn addChartA kai B (kai TablesA kai B). A -> erwthma 1, B -> 2-3
   $("#ttl_graph").on('click', function () {
     chart.destroy();
     type = 1;
-    addChartA();    
+    addChartA();
     $("#filt").show();
     $("#xanax").show();
     $("#table").hide();
@@ -41,7 +44,7 @@ $(document).ready(function () {
     chart.destroy();
     addChartA();
     type = 1;
-    updateChart(json,1);
+    updateChart(json, 1);
     $("#filt").show();
     $("#xanax").hide();
     $("#table").show();
@@ -89,7 +92,7 @@ function load() {
 };
 
 
-function addFilters(json) {
+function addFilters(json) { //idia logikh me to admin-analysis, des ekei
   $("#filt").empty();
 
   var arr = [''];
@@ -188,20 +191,25 @@ function updateChart(json, type) {
   let bucket = new String();
   if (type == 1) {
     json.forEach(json => {
-      let dt = new Date(json.date);
-      let exp = new Date(json.expires);
+      let dt = new Date(json.date); //den xreiazontai auta, ta kanw parakatw
+      let exp = new Date(json.expires); //den xreiazontai auta, ta kanw parakatw
 
-      if (filterList[json.content] == 1 && filterList[json.isp] == 1) {
+      if (filterList[json.content] == 1 && filterList[json.isp] == 1) { //edw einai dyo filtra (Content_Type / ISP) opote koitame kai ta dyo
         if (json.cache.includes("max-age")) {
+          /* 
+          twra koitame an yparxei sto cache_control h directiva max-age
+          epeidh to cache_control periexei polla directives, kanoume diafora string methods gia na paroume mono auto pou 8eloume
+          */
           let x = json.cache.lastIndexOf("max-age=") + 8;
           let temp = json.cache.substring(x, json.cache.length);
-          let maxage = temp.split('=').pop().split(',')[0];
-          ttl = parseInt(maxage) || 0;
-          ttl = Math.max(ttl, 0);
+          let maxage = temp.split('=').pop().split(',')[0]; //mhn rwthseis kan pws to vrhka, evala ena console.log(maxage) kai dokimasa 40 methods
+          ttl = parseInt(maxage) || 0; //apofeygoume ta undefined
+          ttl = Math.max(ttl, 0); //kapoia exoun arnhtikes times
           if (ttl > 0) { ttlarray.push(ttl); }
           maxttl = Math.max(maxttl, ttl);
-        } else if (json.expires) {
-          if (json.date) {
+        }
+        else if (json.expires) { //paromoia fash me max-age, koitame an yparxei to expires
+          if (json.date) { //kai to last-modified
             let dt = new Date(json.date);
             let exp = new Date(json.expires);
             ttl = (exp - dt) || 0;
@@ -213,17 +221,14 @@ function updateChart(json, type) {
       }
     });
 
-
+    //vrhkame (gr.209, 217) to megalytero TTL opote kanoume 10 buckets me mege8os maxttl/10
     bucket = [];
     for (let k = 1; k < 12; k++) {
-      bucket.push(humanizeDuration(maxttl / 10 * k, {largest: 2 }));
-      //bucket ",";
+      bucket.push(humanizeDuration(maxttl / 10 * k, { largest: 2 })); //humanizeDuration apo to human-times.js gia na mas dwsei mono xronia kai mhnes      
     }
-    //bucket = bucket.slice(0, -1);
-    //bucket += "]";
 
     let count = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    ttlarray.forEach(e => {
+    ttlarray.forEach(e => { //ftiaxame (gr.208, 216) ena array "ttlarray" me ola ta TTL kai twra ta vazoume se buckets
       if (e <= maxttl / 10) { count[0]++; return; }
       if (e <= maxttl / 10 * 2) { count[1]++; return; }
       if (e <= maxttl / 10 * 3) { count[2]++; return; }
@@ -238,18 +243,21 @@ function updateChart(json, type) {
 
     chart.data.labels = bucket;
     chart.data.datasets[0].data = count;
-    //chart.options.scales.xAxes[0].ticks.max = maxttl * 9/10;
-    //chart.options.scales.xAxes[1].ticks.max = maxttl;
     chart.update();
-    tablesA();
+    tablesA(); /* doulevei diaforetika apo to admin-analysis
+    ekei ka8e table eftiaxne to chart kai epairne stoixeia apo ekei
+    edw ka8e chart ftiaxnei to table gia na einai etoimo
 
-  } else if (type == 2) {
+    MALLON EDW LHPEI MIA if pou trexei to tablesA() 'h to tablesB() analoga to type. gia auto den emfanizei ton pinaka. 
+    */
+
+  } else if (type == 2) { //erwthma 2. pio aplo apo to erwthma 1, 8elei apla pososto
     let maxstale = 0;
     let minfresh = 0;
     let count = 0;
     json.forEach(json => {
       if (filterList[json.content] == 1 && filterList[json.isp] == 1) {
-        if (json.cache.includes("max-stale")) { maxstale++; }
+        if (json.cache.includes("max-stale")) { maxstale++; } //opote kanoume apla metrhma ola ta includes
         if (json.cache.includes("min-fresh")) { minfresh++; }
         count++;
       }
@@ -261,7 +269,7 @@ function updateChart(json, type) {
     chart.data.datasets[0].data = xxxxx;
     chart.update();
 
-  } else if (type == 5) {
+  } else if (type == 5) { //omoiws me to erwthma 2
     let public = 0;
     let private = 0;
     let nocache = 0;
@@ -291,7 +299,7 @@ function updateChart(json, type) {
 
 }
 
-
+//ta alla pio katw einai apla ta grafhmata
 function addChartA() {
   let myChart = document.getElementById('ch1').getContext('2d');
   chart = new Chart(myChart, {
@@ -313,18 +321,18 @@ function addChartA() {
           display: true,
           barPercentage: 1.9,
           ticks: {
-              max: 3,
+            max: 3,
           }
-       }, {
-         display: true,
-         ticks: {
-           autoSkip: false,
-           max: 4,
+        }, {
+          display: true,
+          ticks: {
+            autoSkip: false,
+            max: 4,
           }
         }],
         yAxes: [{
           ticks: {
-            beginAtZero:true
+            beginAtZero: true
           }
         }]
       }
@@ -333,7 +341,7 @@ function addChartA() {
 };
 
 function addChartB() {
-  const c = palette('tol', type).map(function (hex) { return '#' + hex; });
+  const c = palette('tol', type).map(function (hex) { return '#' + hex; }); //edw fainetai giati exw to type = 5 gia to erwthma 3, glytwsa mia if :P
   let myChart = document.getElementById('ch1').getContext('2d');
   chart = new Chart(myChart, {
     type: 'doughnut',
@@ -364,42 +372,42 @@ function addChartB() {
   });
 };
 
-function tablesA() {  
+function tablesA() {
   $("#table").empty();
-  let data = chart.data.datasets[0].data || undefined; 
-  let labels = chart.data.labels || undefined; 
+  let data = chart.data.datasets[0].data || undefined;
+  let labels = chart.data.labels || undefined;
   console.log(data, labels);
   let txt = 'Wait';
   v1 = "Age<br>(seconds)";
   v2 = "# of entries"
   let x = '';
-  x += "<table class='table table-bordered'><table><tbody><tr><th scope='row'>"+v1+"</th><th>"+v2+"</th></tr>";
-  for(let i=0; i<10; i++) {
-    if(data[i]==data[i-1] || data[i]==0) {
+  x += "<table class='table table-bordered'><table><tbody><tr><th scope='row'>" + v1 + "</th><th>" + v2 + "</th></tr>";
+  for (let i = 0; i < 10; i++) {
+    if (data[i] == data[i - 1] || data[i] == 0) {
 
     } else {
-    x += "<tr><td>"+humanizeDuration(labels[i])+" or less</td><td>"+data[i]+"</td></tr>";
+      x += "<tr><td>" + humanizeDuration(labels[i]) + " or less</td><td>" + data[i] + "</td></tr>";
     }
   }
-  x +="</tbody>";
+  x += "</tbody>";
 
   $("#table").append(x);
 }
 
-function tablesB() {  
+function tablesB() {
   $("#table").empty();
-  let data = chart.data.datasets[0].data || undefined; 
+  let data = chart.data.datasets[0].data || undefined;
   let labels = chart.data.labels || undefined;
   v1 = "Directive";
   v2 = "% of entries"
   let x = '';
-  x += "<table class='table table-bordered'><table><tbody><tr><th scope='row'>"+v1+"</th><th>"+v2+"</th></tr>";
-  for(let i=0; i<10; i++) {
-    if(data[i]==data[i-1] || data[i]==0) {} else {
-      x += "<tr><td>"+humanizeDuration(labels[i])+" or less</td><td>"+data[i]+"</td></tr>";
+  x += "<table class='table table-bordered'><table><tbody><tr><th scope='row'>" + v1 + "</th><th>" + v2 + "</th></tr>";
+  for (let i = 0; i < 10; i++) {
+    if (data[i] == data[i - 1] || data[i] == 0) { } else {
+      x += "<tr><td>" + humanizeDuration(labels[i]) + " or less</td><td>" + data[i] + "</td></tr>";
     }
   }
-  x +="</tbody>";
+  x += "</tbody>";
 
   $("#table").append(x);
 }

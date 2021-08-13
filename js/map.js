@@ -1,5 +1,7 @@
 var library;
 
+
+//des admin-map.js, den nomizw oti kanw kati koulo genika edw. ez pz
 $.ajax({
   url: "../backend/getmapdata.php",
   type: "POST",

@@ -1,7 +1,7 @@
 <?php  
 include 'database.php';
 
-$sql="SELECT * FROM serverloc WHERE s_lat = '' OR s_lon = ''";
+$sql="SELECT * FROM serverloc WHERE s_lat = '' OR s_lon = ''"; //vriskoume poioi server den exoun ginei geoloc stoixeia
 $result=mysqli_query($conn,$sql);
 
 if ($result->num_rows > 0) {
@@ -19,34 +19,5 @@ if ($result->num_rows > 0) {
         $update = "UPDATE serverloc SET s_lat = '$lat[$i]', s_lon = '$lon[$i]' WHERE s_ip='$ip[$i]'";
         $conn->query($update);
         }     
-} else {}
-
-/* 
-do i even use that?
-
-if($_POST['type']==33) {
-    $data = json_decode($_POST['data']);
-    $search = '';
-    $cnt = 0;
-
-    foreach($data as $i=>$value) {
-        $cnt++;
-        $search .= "s_ip = '$value->ip'";
-        if($cnt<count($data)) {
-            $search .= " OR "; 
-        }
-    }      
-    $sql="SELECT * FROM serverloc WHERE ".$search;
-    $result=mysqli_query($conn,$sql);
-    $rows = array();
-
-    while($r = mysqli_fetch_assoc($result)) {
-        $rows[] = $r;
-    }
-    
-    echo json_encode($rows);
-}
-
-$conn->close();
-*/
+} 
 ?>

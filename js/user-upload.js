@@ -1,19 +1,25 @@
+/* to process tou arxeiou ginetai sth javascript mesa sto browser. 
+mono otan pathsei o user to Upload, exoume epikoinwnia me ton server, pou tou stelnoume mono ta apaitoumena entries. 
+oso den to pataei, emeis den vlepoume tipota.
+ara eimaste komple se auto pou zhtaei na yparxei privacy
+*/
+
 var parsed;
 var modified;
 var userIP; var city; var city_lat; var city_long; var isp;
 var check = 0;
 data = new Array();
-document.getElementById('myFile').addEventListener('change', function selectedFileChanged() {
-    $('#sendtoserver').attr("disabled", "disabled");
+document.getElementById('myFile').addEventListener('change', function selectedFileChanged() { //listener koitaei an epele3e arxeio o xrhsths
+    $('#sendtoserver').attr("disabled", "disabled"); //kryvoume ola ta alerts
     $('#exportslim').attr("disabled", "disabled");
-    $('#pleasewait').removeAttr("hidden");
+    $('#pleasewait').removeAttr("hidden"); //emfanizoume ena Please Wait oso trexei to reader.onload (gr.18)
     data = [];
-    const reader = new FileReader();
+    const reader = new FileReader(); 
     reader.onload = function fileReadCompleted() {
-        try {
+        try { //kanoume try/catch se periptwsh pou o xrhsths diale3ei akyro arxeio (.png, .exe, .zip, .jar ktl)
             parsed = JSON.parse(reader.result);
-            check = 1;
-        } catch (e) {
+            check = 1; //an einai komple pame gr.30
+        } catch (e) { 
             $('#sendtoserver').attr("disabled", "disabled");
             $('#exportslim').attr("disabled", "disabled");
             $('#pleasewait').html("Your file is not compatible. <br> Please use a .har log. <br> Check FAQ on how to obtain them");
@@ -22,14 +28,14 @@ document.getElementById('myFile').addEventListener('change', function selectedFi
         };
 
         if (check == 1) {
-            if (typeof parsed.log == 'undefined' && parsed[0].url != 'undefined') {
-                $('#exportslim').attr("disabled", "disabled");
+            if (typeof parsed.log == 'undefined' && parsed[0].url != 'undefined') { //checkaroume an to arxeio einai hdh apo Export
+                $('#exportslim').attr("disabled", "disabled"); //an einai, den ton afhnoume na to kanei pali Export, giati gamietai ligo h diadikasia kai megalwnei xwris logo to arxeio
                 $('#pleasewait').html("You can't use the Export option as this log has already been processed and slimmed down. <br> You may upload it to the server.");
                 $('#pleasewait').removeAttr("hidden");
             } else {
                 $('#pleasewait').html("Please wait for the file to process");
-                $('#pleasewait').removeAttr("hidden");
-                for (i = 0; i < parsed.log.entries.length; i++) {
+                $('#pleasewait').removeAttr("hidden"); //emfanizoume ena Please Wait oso trexei h diadikasia
+                for (i = 0; i < parsed.log.entries.length; i++) { //koitame to log grammh grammh kai opou vroume stoixeio pou 8eloume to pairnoume -> gr.87
                     let host, contentType, cacheControl, pragma, expires, age, lastModified;
 
                     for (j = 0; j < parsed.log.entries[i].request.headers.length; j++) {
@@ -78,7 +84,7 @@ document.getElementById('myFile').addEventListener('change', function selectedFi
                         contentType = "text/html"
                     }
                     contentType = contentType.split(';')[0]; //to clear not needed values
-                    let modifiedHar = {
+                    let modifiedHar = { //ftiaxnoume ena Object me ola ta stoixeia pou phrame -> gr.104
                         "startedDateTime": parsed.log.entries[i].startedDateTime,
                         "wait": parsed.log.entries[i].timings.wait,
                         "serverIPAddress": ipfix,
@@ -95,13 +101,13 @@ document.getElementById('myFile').addEventListener('change', function selectedFi
                         "Host": host,
 
                     }
-                    data.push(modifiedHar);
+                    data.push(modifiedHar); //kai to vazoume se ena array
                 }
                 $('#pleasewait').attr("hidden", "hidden");
             }
         }
 
-        $.ajax({
+        $.ajax({ //kaloume to getIPinfo gia na paroume ta stoixeia tou user pou kanei upload (mia fora arkei)
             dataType: "json",
             url: "../backend/getIPinfo.php",
             success: function (uu) {
@@ -116,7 +122,7 @@ document.getElementById('myFile').addEventListener('change', function selectedFi
     };
     reader.readAsText(this.files[0]);
     console.log(data);
-    $('#sendtoserver').removeAttr("disabled", "disabled");
+    $('#sendtoserver').removeAttr("disabled", "disabled"); //afou teleiwse to process eley8erwnoume ta koumpakia kai kryvoume ta alerts
     $('#exportslim').removeAttr("disabled", "disabled");
     $('#pleasewait').attr("hidden", "hidden");
 });
@@ -140,7 +146,7 @@ function SendToServer() {
         },
         cache: false,
         success: function () {
-            updatelibrary();
+            updatelibrary(); //molis teleiwsei to upload sth db, kanoume kai update th vivlio8hkh me tous server mas
         }
     });
 }
@@ -163,6 +169,8 @@ function Export() {
     DownloadJSON(modified)
 }
 
+
+//kanei update to serverloc (des serverlibrary.php)
 function updatelibrary() {
     $.ajax({
         url: "../backend/serverlibrary.php",

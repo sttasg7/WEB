@@ -1,11 +1,12 @@
 var library;
 
+//kanoume AJAX kai molis teleiwsei kanei thn load
 $.ajax({
   url: "../backend/get-admin.php",
   type: "POST",
-  dataType: "json",
+  dataType: "json", //an deis se alla AJAX, kanw sto success ena JSON.parse gia na parw ta data. einai to idio me to na oriseis to dataType ex arxhs sthn klhsh.
   data: {
-      type: 4
+    type: 4
   },
   cache: false,
   success: function (response) {
@@ -14,7 +15,7 @@ $.ajax({
 });
 
 
-
+//ki edw isws to json na empaine san global
 function load(json) {
 
   var baseLayer = L.tileLayer(
@@ -30,6 +31,7 @@ function load(json) {
     layers: [baseLayer]
   });
 
+  //na 8ymh8w na to valw ki auto sto About me ta tools
   var userIcon = new L.Icon({
     iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
     shadowUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-shadow.png',
@@ -48,28 +50,28 @@ function load(json) {
     shadowSize: [41, 41]
   });
 
-  
+  //to max to xrhsimopoiw, to sum efage poulo nomizw. alla as' ta kai vlepoume
   let max = 0;
   let sum = 0;
   let x = json.length;
   json.forEach(json => {
-      if(parseInt(json.count)>max){ 
-          max = parseInt(json.count);
-        }
-      sum += parseInt(json.count);
-    });
- 
+    if (parseInt(json.count) > max) {
+      max = parseInt(json.count);
+    }
+    sum += parseInt(json.count);
+  });
+
 
   json.forEach(json => {
-    var marker = L.marker([json.slat, json.slon], {icon: serverIcon}).addTo(map);
-    marker.bindPopup("IP: "+json.server+"<br>Latitude: "+json.slat+"<br>Longitude: "+json.slon+"");
-    var marker = L.marker([json.ulat, json.ulon], {icon: userIcon}).addTo(map);
-    marker.bindPopup("IP: "+json.user+"<br>Latitude: "+json.ulat+"<br>Longitude: "+json.ulon+"");
-    var latlngs = [[json.slat, json.slon],[json.ulat, json.ulon]]; 
-    var w = Math.max(x * parseInt(json.count)/max, 2);
+    var marker = L.marker([json.slat, json.slon], { icon: serverIcon }).addTo(map);
+    marker.bindPopup("IP: " + json.server + "<br>Latitude: " + json.slat + "<br>Longitude: " + json.slon + "");
+    var marker = L.marker([json.ulat, json.ulon], { icon: userIcon }).addTo(map);
+    marker.bindPopup("IP: " + json.user + "<br>Latitude: " + json.ulat + "<br>Longitude: " + json.ulon + "");
+    var latlngs = [[json.slat, json.slon], [json.ulat, json.ulon]];
+    var w = Math.max(x * parseInt(json.count) / max, 2);
     w = Math.min(w, 10);
-    var polyline = L.polyline(latlngs, {color: 'red', weight: w, opacity: 0.4}).addTo(map);
-    polyline.bindPopup("User IP: "+json.user+"<br>Server IP: "+json.server+"<br>Connections: "+json.count+"");
+    var polyline = L.polyline(latlngs, { color: 'red', weight: w, opacity: 0.4 }).addTo(map);
+    polyline.bindPopup("User IP: " + json.user + "<br>Server IP: " + json.server + "<br>Connections: " + json.count + "");
   });
 
 }

@@ -1,5 +1,7 @@
 var json;
 var check = 0;
+
+//Ajax sthn arxh na paroume dedomena
 $.ajax({
     type: "POST",
     url: "../backend/get-admin.php",
@@ -8,10 +10,11 @@ $.ajax({
     },
     cache: false,
     success: function(response){
-      json = response;
+      json = response; //edw to xrhsimopoiw san global
     }
   });
 
+//an diavases to admin-analysis, ta parakatw einai apla, idia diadikasia
 $(document).ready(function(){
     $("#xanax").hide();
     $("#table").hide();
@@ -52,7 +55,6 @@ $(document).ready(function(){
     });
     
     var type = 0;    
-    //updateChart(type, chart);
     $("#basics").on('click', function(){
       basicInfo();
     })

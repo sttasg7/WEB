@@ -2,7 +2,7 @@
 include 'database.php';
 session_start();
 
-$data = json_decode($_POST['data']);
+$data = json_decode($_POST['data']); //pairnoume ola ta har_data pou esteile to user-upload.js
 $user = $_SESSION['username'];
 $userIP = $_POST['userip'];
 $city = $_POST['city'];
@@ -14,7 +14,7 @@ $last = count($data);
 $bulk = '';
 $srv = '';
 
-foreach($data as $i=>$value) {  
+foreach($data as $i=>$value) {  //prospelasi kai pros8hkh se ena $bulk string gia na ta valei me ena query
     $cnt++;     
 
     $bulk .= "('$user',
@@ -33,12 +33,12 @@ foreach($data as $i=>$value) {
     '$value->Last_Modified',
     '$value->Host',
     default,
-    '$userIP',
+    '$userIP', 
     '$isp',
     '$city',
     '$lat',
     '$long')";
-
+    //ta teleftaia 5 einai panta idia se ka8e entry
     $srv .= "('$value->serverIPAddress','','')";
 
     if($cnt<$last) {
