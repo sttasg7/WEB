@@ -44,10 +44,10 @@ include '../backend/logincheck.php';
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../frontend/faq.php">FAQs</a>
+                        <a class="nav-link" aria-current="page" href="../frontend/faq.php">FAQs</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../frontend/about.php">About</a>
+                        <a class="nav-link active" href="../frontend/about.php">About</a>
                     </li>
                 </ul>
             </div>
@@ -138,26 +138,8 @@ include '../backend/logincheck.php';
     </div>
     <div class="mb-3 row">
     </div>
-    <div class="mb-3 row">
-    </div>
-    <div class="mb-3 row">
-    </div>
-    <div class="mb-3 row">
-    </div>
-    <div class="mb-3 row">
-    </div>
-    <div class="mb-3 row">
-    </div>
-    <div class="mb-3 row">
-    </div>
-    <div class="mb-3 row">
-    </div>
-    <div class="mb-3 row">
-    </div>
-    <div class="mb-3 row">
-    </div>
-    <div class="mb-3 row">
-    </div>
+   
+ 
 
     </div>
 

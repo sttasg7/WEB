@@ -59,7 +59,7 @@ $(document).ready(function() {
 	$('#butsave').on('click', function() {
 		if($('#username').val() == '') {
 			$("#username").attr("class", "form-control border-3 border-danger");
-			$("#user-invalid").html("Please fill field");
+			$("#user-invalid").html("Please fill in a username");
 			$("#user-invalid").removeAttr("hidden");
 		} else {
 			var username = $('#username').val();
@@ -79,6 +79,9 @@ $(document).ready(function() {
 		var password = $('#password').val();
 		if(passcheck == 0) {
 			$("#password").attr("class", "form-control border-3 border-danger");
+			//TO SEE
+			//$("#password").html("Please provide a valid password")
+			//$("#password").removeAttr("hidden");
 		} else {
 			$("#password").attr("class", "form-control border-3 border-success");
 		}

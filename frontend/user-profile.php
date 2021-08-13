@@ -132,11 +132,61 @@ include '../backend/logincheck.php';
 
         </div>
     </div>
-    <footer class="footer">
+
+    <div class="mb-3 row">
+
+</div>
+<div class="mb-3 row">
+
+    </div>
+    <div class="mb-3 row">
+
+    </div>
+    <div class="mb-3 row">
+
+    </div>
+    <div class="mb-3 row">
+
+    </div>
+    <div class="mb-3 row">
+
+    </div>
+    <div class="mb-3 row">
+
+    </div>
+    <div class="mb-3 row">
+
+    </div>
+    <div class="mb-3 row">
+
+    </div>
+    <div class="mb-3 row">
+
+    </div>
+    <div class="mb-3 row">
+
+    </div>
+    <div class="mb-3 row">
+
+    </div>
+    <div class="mb-3 row">
+
+    </div>
+    <div class="mb-3 row">
+
+    </div>
+    <div class="mb-3 row">
+
+    </div>
+    <div class="mb-3 row">
+
+    </div>
+    <div class="mb-1 row">
+
+    </div>
+    <footer class="footer mt-auto py-3 bg-light d-none d-sm-block">
         <div class="container">
-            <div class="copyright float-left">
-                <p class="mt-5 mb-3 text-muted">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</p>
-            </div>
+            <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</span>
         </div>
     </footer>
 
