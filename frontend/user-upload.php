@@ -6,6 +6,8 @@ include '../backend/logincheck.php';
 <!DOCTYPE html>
 <html lang="en">
 
+<?php if ($loginst != 1){?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -175,6 +177,13 @@ include '../backend/logincheck.php';
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script src="../js/user-upload.js"></script>
+
+    <?php } else {?>
+
+        <h1>Access Forbidden</h1>
+
+    <?php } ?>
+
 </body>
 
 </html>

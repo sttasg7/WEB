@@ -6,6 +6,8 @@ include '../backend/logincheck.php';
 <!DOCTYPE html>
 <html lang="en">
 
+<?php if ($loginst != 1){?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -149,6 +151,12 @@ include '../backend/logincheck.php';
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"></script>
     <script src="../js/map.js"></script>
 
+    <?php } else {?>
+
+        <h1>Access Forbidden</h1>
+
+    <?php } ?>
+    
 </body>
 
 </html>

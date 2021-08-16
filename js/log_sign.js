@@ -79,9 +79,6 @@ $(document).ready(function() {
 		var password = $('#password').val();
 		if(passcheck == 0) {
 			$("#password").attr("class", "form-control border-3 border-danger");
-			//TO SEE
-			//$("#password").html("Please provide a valid password")
-			//$("#password").removeAttr("hidden");
 		} else {
 			$("#password").attr("class", "form-control border-3 border-success");
 		}
