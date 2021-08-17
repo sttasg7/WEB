@@ -9,6 +9,8 @@ $(document).ready(function() {
 
 	$("#password").on('keyup', function() {
 		let x = this.value;
+		$('#butsave').attr("class", "btn btn-danger");
+		$("#password").attr("class", "form-control border-3 border-danger");
 		$("#char8").css("color","red");
 		$("#symb").css("color","red");
 		$("#numb").css("color","red");
@@ -25,10 +27,9 @@ $(document).ready(function() {
 		if(x.length > 7) {
 			$("#char8").css("color","green");
 		};
-		if(x.match(numb) && x.match(symb) && x.match(cap) && x.length > 7) {
+		if(crit(x)) {
 			$('#butsave').attr("class", "btn btn-success");
 			$("#password").attr("class", "form-control border-3 border-success");
-			passcheck = 1;
 		}
 	});
 
@@ -76,13 +77,13 @@ $(document).ready(function() {
 			emailcheck = 0;			
 		}
 
-		var password = $('#password').val();
-		if(passcheck == 0) {
+		if($('#password').val() == '') {
 			$("#password").attr("class", "form-control border-3 border-danger");
 		} else {
-			$("#password").attr("class", "form-control border-3 border-success");
+			var password = $('#password').val();
 		}
-		if(username!="" && email!="" && password!="" && passcheck == 1 && emailcheck == 1){
+
+		if(username!="" && email!="" && password!="" && crit(password) && emailcheck == 1){
 			$.ajax({
 				url: "../backend/save.php",
 				type: "POST",
@@ -169,4 +170,13 @@ $(document).ready(function() {
 		location.href = "register.html";
 	});
 
+function crit(x) {
+	if(x.match(numb) && x.match(symb) && x.match(cap) && x.length > 7) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 });
+

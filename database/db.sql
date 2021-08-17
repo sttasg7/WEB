@@ -6,7 +6,8 @@ CREATE TABLE IF NOT EXISTS users
 (
 username VARCHAR(100) NOT NULL PRIMARY KEY,
 email varchar(300) UNIQUE NOT NULL,
-password varchar(200) NOT NULL
+password varchar(200) NOT NULL,
+admin int(1) NOT NULL DEFAULT 0
 );
 
 DROP TABLE IF EXISTS har_data;

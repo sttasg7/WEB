@@ -46,8 +46,6 @@ th {
     background: lightgrey;
 }
 
-,
-
 td {
     background: white;
 }
