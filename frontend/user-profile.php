@@ -17,7 +17,9 @@ include '../backend/logincheck.php';
 
 </head>
 <style>
-
+    .form {
+        margin-left: 0%;
+    }
 </style>
 
 <body>
@@ -112,7 +114,7 @@ include '../backend/logincheck.php';
 
         <input id="b1" type="button" value="Change Account Credentials" class="btn btn-outline-danger">
 
-        <div id="hidb1" hidden>
+        <div class="py-3" id="hidb1" hidden>
             <div class="change-info" id="info">
                 Below you can change your username or password. <br> Leave a field empty if you wish to not alter it.
                 <br>
@@ -124,6 +126,14 @@ include '../backend/logincheck.php';
                         <label for="username" class="col-sm-2 col-form-label">Username:</label>
                         <div class="col-sm-1">
                             <input type="username" id="username" class="form-control" placeholder="<?php echo $_SESSION['username'] ?>">
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3 row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Old Password:</label>
+                        <div class="col-sm-1">
+                            <input type="password" id="oldpass" minlength="8" pattern="(?=.*\d)(?=.*[A-Z])(?=.*\W.*)" class="form-control">
                         </div>
                     </div>
 
@@ -139,13 +149,6 @@ include '../backend/logincheck.php';
                             <span id="numb">a number</span> and
                             <span id="capl">a capital letter</span>.
                         </p>
-                    </div>
-
-                    <div class="mb-3 row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">Old Password:</label>
-                        <div class="col-sm-1">
-                            <input type="password" id="oldpass" minlength="8" pattern="(?=.*\d)(?=.*[A-Z])(?=.*\W.*)" class="form-control">
-                        </div>
                     </div>
 
                     <input type="button" name="save" class="btn btn-primary" value="Change!" id="butsave">
