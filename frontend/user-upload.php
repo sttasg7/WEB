@@ -17,7 +17,7 @@ include '../backend/logincheck.php';
     <link href="../css/mine.css" rel="stylesheet">
     <link href="../css/login.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="icon" href="https://i.imgur.com/qY7kRzP.png" type="img/png">
+    <link rel="icon" href="../pictures/favicon.png" type="img/png">
 
 </head>
 <style>

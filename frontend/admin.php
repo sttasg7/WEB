@@ -15,7 +15,7 @@ include '../backend/logincheck.php';
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="../css/mine.css" rel="stylesheet">
     <link href="../css/login.css" rel="stylesheet">
-    <link rel="icon" href="https://i.imgur.com/qY7kRzP.png" type="img/png">
+    <link rel="icon" href="../pictures/favicon.png" type="img/png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js"></script>
     <script src="../js/palette.js"></script>
@@ -34,8 +34,6 @@ include '../backend/logincheck.php';
 th {
     background: lightgrey;
 }
-
-,
 
 td {
     background: white;

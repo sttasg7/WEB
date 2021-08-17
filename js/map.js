@@ -10,6 +10,29 @@ $.ajax({
   }
 });
 
+var baseLayer = L.tileLayer(
+  'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 10
+  }
+);
+
+var cfg = {
+  "radius": 50,
+  "maxOpacity": .7,
+  "scaleRadius": false,
+  "useLocalExtrema": false,
+  latField: 'lat',
+  lngField: 'lng',
+  valueField: 'count'
+};
+var heatmapLayer = new HeatmapOverlay(cfg);
+
+var map = new L.Map('mapid', {
+  center: new L.LatLng(38.2, 21.7),
+  zoom: 1.75,
+  layers: [baseLayer, heatmapLayer]
+});
 
 
 function load(json) {
@@ -29,40 +52,11 @@ function load(json) {
     }
   }
 
-
-
   var myData = {
     data: json
   };
 
-  var baseLayer = L.tileLayer(
-    'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 10
-  }
-  );
-
-  var cfg = {
-    "radius": 50,
-    "maxOpacity": .7,
-    "scaleRadius": false,
-    "useLocalExtrema": false,
-    latField: 'lat',
-    lngField: 'lng',
-    valueField: 'count'
-  };
-
-
-  var heatmapLayer = new HeatmapOverlay(cfg);
-
-  var map = new L.Map('mapid', {
-    center: new L.LatLng(38.2, 21.7),
-    zoom: 1.75,
-    layers: [baseLayer, heatmapLayer]
-  });
-
   heatmapLayer.setData(myData);
-
 }
 
 function myFunction() {

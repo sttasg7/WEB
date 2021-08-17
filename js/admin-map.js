@@ -66,8 +66,10 @@ function load(json) {
     var marker = L.marker([json.ulat, json.ulon], {icon: userIcon}).addTo(map);
     marker.bindPopup("IP: "+json.user+"<br>Latitude: "+json.ulat+"<br>Longitude: "+json.ulon+"");
     var latlngs = [[json.slat, json.slon],[json.ulat, json.ulon]]; 
-    var w = Math.max(x * parseInt(json.count)/max, 2);
-    w = Math.min(w, 10);
+    //var w = Math.max(x * parseInt(json.count)/max, 2);
+    //w = Math.min(w, 10);
+    var y = json.count/max*10;
+    var w = Math.max(y,1.5);
     var polyline = L.polyline(latlngs, {color: 'red', weight: w, opacity: 0.4}).addTo(map);
     polyline.bindPopup("User IP: "+json.user+"<br>Server IP: "+json.server+"<br>Connections: "+json.count+"");
   });

@@ -126,12 +126,12 @@ function addFilters() {
     $("#filt").empty();
     i = 0;
     arr = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    let x = "<div id='filters'><h3 align='center'>Filters</h3><hr><input type='button' value='Choose All' id='fall'><input type='button' value='Choose None' id='fnone'><hr>";
+    let x = "<div id='filters'><h3 align='center'>Filters</h3><form class='d-flex justify-content-md-center'><input type='button' class='btn btn-info' id='filterbtn' name='filter' value='Apply'></input></form><hr><input type='button' value='Choose All' id='fall'><input type='button' value='Choose None' id='fnone'><hr>";
     arr.forEach(arr => {
       x += '<li"><input type="checkbox" value="' + arr + '" id="f' + i + '"">  ' + arr + '</li><br>';
       i++;
     });
-    x += '<form><input type="button" class="btn btn-info" id="filterbtn" name="filter" value="Filter"></input></form></div>'; //filter button
+    x += '</div>'; //filter button
     $("#filt").append(x);
   } else {
     for (var i = 0; i < json.length; i++) {
@@ -143,12 +143,12 @@ function addFilters() {
 
     $("#filt").empty();
     i = 0;
-    let x = "<div id='filters'><h3 align='center'>Filters</h3><hr><input type='button' value='Choose All' id='fall'><input type='button' value='Choose None' id='fnone'><hr>";
+    let x = "<div id='filters'><h3 align='center'>Filters</h3><form class='d-flex justify-content-md-center'><input type='button' class='btn btn-info' id='filterbtn' name='filter' value='Apply'></input></form><hr><input type='button' value='Choose All' id='fall'><input type='button' value='Choose None' id='fnone'><hr>";
     arr.forEach(arr => {
       x += '<li"><input type="checkbox" value="' + arr + '" id="f' + i + '"">  ' + arr + '</li><br>';
       i++;
     });
-    x += '<form><input type="button" class="btn btn-info" id="filterbtn" name="filter" value="Filter"></input></form></div>'; //filter button
+    x += '</div>'; //filter button
     $("#filt").append(x);
   }
 
