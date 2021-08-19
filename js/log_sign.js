@@ -122,12 +122,12 @@ $(document).ready(function() {
 		var password = $('#password_log').val();
 		if(email == '') {
 			$("#email_log").attr("class", "form-control border-3 border-danger");
-			$("#email-invalid").html("Please fill field");
+			$("#email-invalid").html("Please fill in your e-mail");
 			$("#email-invalid").removeAttr("hidden");
 		}
 		if(password == '') {
 			$("#password_log").attr("class", "form-control border-3 border-danger");
-			$("#pass-invalid").html("Please fill field");
+			$("#pass-invalid").html("Please fill in your password");
 			$("#pass-invalid").removeAttr("hidden");
 		}
 

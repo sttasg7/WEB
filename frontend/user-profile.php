@@ -68,7 +68,7 @@ include '../backend/logincheck.php';
                             <a class="nav-link" href="../frontend/about.php">About</a>
                         </li>
                         <?php if ($loginst == 2) { ?>
-                            <li class="nav-item link-cur">
+                            <li class="nav-item link-cur" style="margin-left: 2%;">
                                 <div class="dropdown">
                                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">Admin Tools</button>
                                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
@@ -113,7 +113,6 @@ include '../backend/logincheck.php';
         <h5> You have logged in as: <b><?php echo $_SESSION['username'] ?></b> </h5>
         <hr>
 
-        <!-- ΕΙΝΑΙ ΕΝΤΕΛΩΣ ΧΥΜΑ, ΘΕΛΟΥΝ STYLING -->
 
         <div id="entries"></div>
         <div id="last-entry"></div>
@@ -130,24 +129,24 @@ include '../backend/logincheck.php';
             <div class="form d-lg-flex py-5" id="change">
                 <form class="container" method="POST">
                     <div class="mb-3 row">
-                        <label for="username" class="col-sm-2 col-form-label">Username:</label>
+                        <label for="username" class="col-sm-2 col-form-label fs-5 fw-light">Username:</label>
                         <div class="col-sm-1">
-                            <input type="username" id="username" class="form-control" placeholder="<?php echo $_SESSION['username'] ?>">
+                            <input type="username" id="username" class="form-control" style="background-color:rgba(255,255,255, 0.6);" placeholder="<?php echo $_SESSION['username'] ?>">
                         </div>
                     </div>
 
 
                     <div class="mb-3 row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">Old Password:</label>
+                        <label for="inputPassword" class="col-sm-2 col-form-label fs-5 fw-light">Old Password:</label>
                         <div class="col-sm-1">
-                            <input type="password" id="oldpass" minlength="8" pattern="(?=.*\d)(?=.*[A-Z])(?=.*\W.*)" class="form-control">
+                            <input type="password" id="oldpass" minlength="8" pattern="(?=.*\d)(?=.*[A-Z])(?=.*\W.*)" class="form-control" style="background-color:rgba(255,255,255, 0.6);">
                         </div>
                     </div>
 
                     <div class="mb-3 row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">New Password:</label>
+                        <label for="inputPassword" class="col-sm-2 col-form-label fs-5 fw-light">New Password:</label>
                         <div class="col-sm-1">
-                            <input type="password" id="newpass" minlength="8" pattern="(?=.*\d)(?=.*[A-Z])(?=.*\W.*)" class="form-control">
+                            <input type="password" id="newpass" minlength="8" pattern="(?=.*\d)(?=.*[A-Z])(?=.*\W.*)" class="form-control" style="background-color:rgba(255,255,255, 0.6);">
                         </div>
                         <p class="criteria">Your password must be
                             <span id="char8"> 8 characters long</span>
@@ -158,7 +157,7 @@ include '../backend/logincheck.php';
                         </p>
                     </div>
 
-                    <input type="button" name="save" class="btn btn-danger" value="Change!" id="butsave">
+                    <input type="button" name="save" class="btn btn-outline-danger" value="Change!" id="butsave">
                 </form>
             </div>
 

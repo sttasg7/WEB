@@ -367,36 +367,38 @@ function addChartB() {
 };
 
 function tablesA() {
+  $("#table").empty();
   let data = chart.data.datasets[0].data || undefined; 
   let labels = chart.data.labels || undefined; 
   let txt = 'Wait';
   v1 = "Age<br>(seconds)";
   v2 = "# of entries"
   let x = '';
-  x += "<table id='tableid' class='table table-bordered'><table><tbody><tr><th scope='row'>"+v1+"</th><th>"+v2+"</th></tr>";
+  x += "<table id='tableid' class='table table-bordered table-light'><tbody><tr><th scope='row' class='table-dark'>"+v1+"</th><th class='table-dark'>"+v2+"</th></tr>";
   for(let i=0; i<10; i++) {
     if(data[i]==data[i-1] || data[i]==0 || data[i]==undefined) {} else {
     x += "<tr><td>"+labels[i]+" or less</td><td>"+data[i]+"</td></tr>";
     }
   }
-  x +="</tbody>";
+  x +="</tbody></table>";
 
   $("#table").append(x);
 }
 
 function tablesB() {
+  $("#table").empty();
   let data = chart.data.datasets[0].data || undefined; 
   let labels = chart.data.labels || undefined;
   v1 = "Directive";
   v2 = "% of entries"
   let x = '';
-  x += "<table id='tableid' class='table table-bordered'><table><tbody><tr><th scope='row'>"+v1+"</th><th>"+v2+"</th></tr>";
+  x += "<table id='tableid' class='table table-bordered table-light'><tbody><tr><th scope='row' class='table-dark'>"+v1+"</th><th class='table-dark'>"+v2+"</th></tr>";
   for(let i=0; i<labels.length; i++) {
     if(data[i]==data[i-1] || data[i]==0) {} else {
       x += "<tr><td>"+labels[i]+"</td><td>"+(Math.round(data[i] * 100) / 100).toFixed(2);+"</td></tr>";
     }
   }
-  x +="</tbody>";
+  x +="</tbody></table>";
 
   $("#table").append(x);
 }

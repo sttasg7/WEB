@@ -8,7 +8,7 @@ include '../backend/logincheck.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
+    <title>HAR OS About Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="../css/mine.css" rel="stylesheet">
@@ -85,7 +85,7 @@ include '../backend/logincheck.php';
                     </li>
 
                     <?php if ($loginst == 2){ ?>
-                    <li class="nav-item link-cur">
+                    <li class="nav-item link-cur" style="margin-left: 2%;">
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
                                 data-bs-toggle="dropdown" aria-expanded="false">Admin Tools</button>
@@ -111,15 +111,12 @@ include '../backend/logincheck.php';
         </div>
     </nav>
 
-    <div class="mb-3 row">
-    </div>
-
-    <div class="container" align="center">
+    <div class="container" align="center" style="margin-top: 2%;">
         <img height="110px" class="invert" width="auto" align="center" alt="HAR Observation & Statistics"
             src="../pictures/har-dark.png">
     </div>
 
-    <div class="py-4 container text-center">
+    <div class="py-4 container text-center" style="margin-bottom: 2%;">
         <p>This is a project created by CEID UPatras students Panos & Stefanos for the "Programming and Systems on
             the World Wide Web" course on the 8th semester.</p>
         <p>You can visit the project's <a href="https://github.com/sttasg7/WEB">github</a> page to monitor our progress
@@ -134,18 +131,6 @@ include '../backend/logincheck.php';
             <a href="https://www.chartjs.org/">Chart.js</a><br>
             <a href="https://github.com/EvanHahn/HumanizeDuration.js">Time humanizer</a><br>
             <a href="https://github.com/google/palette.js/tree/master">Color Palette</a><br>
-    </div>
-
-
-
-    </div>
-    <div class="mb-3 row">
-    </div>
-    <div class="mb-4 row">
-    </div>
-   
- 
-
     </div>
 
 

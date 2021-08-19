@@ -8,7 +8,7 @@ include '../backend/logincheck.php';
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HAR OS Sign Up</title>
+    <title>HAR OS Sign In</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link href="../css/mine.css" rel="stylesheet" />
@@ -16,6 +16,14 @@ include '../backend/logincheck.php';
     <link rel="icon" href="../pictures/favicon.png" type="img/png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
+<style>
+	body {
+		background-image: url('../pictures/blu.jpg');
+		/*background-image: url('../pictures/abstr.png');*/
+		background-size: cover;
+	}
+</style>
 
 <body>
     <!-- Navbar -->
@@ -58,44 +66,46 @@ include '../backend/logincheck.php';
     </nav>
 
 
-    <!-- Welcome Text-->
-    <h1 class="text-center py-4" id="welcome" style="padding-top: 20px; color: #0271d8">Welcome to HAR Observation &
-        Statistics</h1>
-
     <!-- Image -->
-    <div class="container" align="center">
+    <div class="container" align="center" style="padding-top: 20px;">
         <img height="110px" class="invert" width="auto" align="center" alt="HAR Observation & Statistics"
             src="../pictures/har-dark.png">
     </div>
 
+    <!-- Welcome Text-->
+    <p class="text-center py-4 fs-3 fw-light" id="welcome">Welcome to HAR Observation &
+        Statistics
+    </p>
+
+    <p class="text-center fs-3 fw-light" style="margin-top: -2%;">
+        Please fill in your username and password if you have an account
+    </p>
+
     <!-- Input Boxes -->
-    <div class="form d-lg-flex p-5" id="welcome">
+    <div class="form d-lg-flex py-4" id="welcome">
         <form class="container" method="POST">
             <div class="mb-3 row">
-
-            </div>
-            <div class="mb-3 row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
+                <label for="staticEmail" class="col-sm-2 col-form-label fw-light fs-5">Email:</label>
                 <div class="col-sm-1">
                     <input type="email" id="email_log" name="em" class="form-control" id="exampleFormControlInput1"
-                        placeholder="someone@example.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                        placeholder="someone@example.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" style="background-color:rgba(255,255,255, 0.6);">
                 </div>
                 <span class="criteria" id="email-invalid" style="color: red" hidden>Please fill field.</span>
             </div>
             <div class="mb-3 row">
-                <label for="inputPassword" class="col-sm-2 col-form-label">Password:</label>
+                <label for="inputPassword" class="col-sm-2 col-form-label fw-light fs-5">Password:</label>
                 <div class="col-sm-1">
                     <input type="password" id="password_log" name="pw" minlength="8"
-                        pattern="(?=.*\d)(?=.*[A-Z])(?=.*\W.*)" class="form-control">
+                        pattern="(?=.*\d)(?=.*[A-Z])(?=.*\W.*)" class="form-control" style="background-color:rgba(255,255,255, 0.6);">
                 </div>
                 <span class="criteria" id="pass-invalid" style="color: red" hidden>Please fill field.</span>
             </div>
 
-            <input type="button" name="save" class="btn btn-primary" value="Login!" id="butlogin">
+            <input type="button" name="save" class="btn btn-outline-dark" value="Login!" id="butlogin">
         </form>
     </div>
 
-    <footer class="footer mt-auto py-3 bg-light d-none d-sm-block">
+    <footer class="footer mt-auto py-3 bg-dark d-none d-sm-block">
         <div class="container">
             <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</span>
         </div>

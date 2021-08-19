@@ -65,7 +65,7 @@ body {
                         <a class="nav-link" href="../frontend/about.php">About</a>
                     </li>
                     <?php if ($loginst == 2){ ?>
-                    <li class="nav-item link-cur">
+                    <li class="nav-item link-cur" style="margin-left: 2%;">
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
                                 data-bs-toggle="dropdown" aria-expanded="false">Admin Tools</button>

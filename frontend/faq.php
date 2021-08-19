@@ -8,7 +8,7 @@ include '../backend/logincheck.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
+    <title>HAR OS FAQ</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="../css/mine.css" rel="stylesheet">
@@ -88,7 +88,7 @@ include '../backend/logincheck.php';
                     </li>
 
                     <?php if ($loginst == 2){ ?>
-                    <li class="nav-item link-cur">
+                    <li class="nav-item link-cur" style="margin-left: 2%;">
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
                                 data-bs-toggle="dropdown" aria-expanded="false">Admin Tools</button>

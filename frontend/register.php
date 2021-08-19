@@ -17,6 +17,14 @@ include '../backend/logincheck.php';
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
+<style>
+	body {
+		background-image: url('../pictures/blu.jpg');
+		/*background-image: url('../pictures/abstr.png');*/
+		background-size: cover;
+	}
+</style>
+
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
@@ -54,40 +62,39 @@ include '../backend/logincheck.php';
         </div>
     </nav>
 
-
-    <!-- Welcome Text-->
-    <h1 class="text-center" id="welcome" style="padding-top: 20px; color: #0271d8">Welcome to HAR Observation &
-        Statistics</h1>
-
     <!-- Image -->
-    <div class="container" align="center">
+    <div class="container" align="center" style="padding-top: 20px;">
         <img height="110px" class="invert" width="auto" align="center" alt="HAR Observation & Statistics"
             src="../pictures/har-dark.png">
     </div>
 
+    <p class="text-center fs-3 fw-light py-4">
+        Please fill in the fileds below to create an account
+    </p>
+
     <!-- Input Boxes -->
-    <div class="form d-lg-flex p-5" id="welcome">
+    <div class="form d-lg-flex py-2" id="welcome" style="padding-left: 50px;">
         <form class="container" method="POST">
             <div class="mb-3 row">
-                <label for="username" class="col-sm-2 col-form-label">Username:</label>
+                <label for="username" class="col-sm-2 col-form-label fw-light fs-5">Username:</label>
                 <div class="col-sm-1">
-                    <input type="username" id="username" class="form-control" placeholder="username">
+                    <input type="username" id="username" class="form-control" placeholder="username" style="background-color:rgba(255,255,255, 0.6);">
                 </div>
                 <span class="criteria" id="user-invalid" style="color: red" hidden>Username is taken.</span>
             </div>
             <div class="mb-3 row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
+                <label for="staticEmail" class="col-sm-2 col-form-label fw-light fs-5">Email:</label>
                 <div class="col-sm-1">
                     <input type="email" id="email" class="form-control" id="exampleFormControlInput1"
-                        placeholder="someone@example.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                        placeholder="someone@example.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" style="background-color:rgba(255,255,255, 0.6);">
                 </div>
                 <span class="criteria" id="email-invalid" style="color: red" hidden>An account already exists with this email.</span>
             </div>
             <div class="mb-3 row">
-                <label for="inputPassword" class="col-sm-2 col-form-label">Password:</label>
+                <label for="inputPassword" class="col-sm-2 col-form-label fw-light fs-5">Password:</label>
                 <div class="col-sm-1">
                     <input type="password" id="password" minlength="8" pattern="(?=.*\d)(?=.*[A-Z])(?=.*\W.*)"
-                        class="form-control">
+                        class="form-control" style="background-color:rgba(255,255,255, 0.6);">
                 </div>
                 <p class="criteria">Your password must be
                     <span id="char8"> 8 characters long</span>
@@ -98,11 +105,11 @@ include '../backend/logincheck.php';
                 </p>
             </div>
 
-            <input type="button" name="save" class="btn btn-primary" value="Register!" id="butsave">
+            <input type="button" name="save" class="btn btn-outline-dark" value="Register!" id="butsave" style="margin-bottom: 3%;">
         </form>
     </div>
 
-    <footer class="footer mt-auto py-3 bg-light d-none d-sm-block">
+    <footer class="footer mt-auto py-3 bg-dark d-none d-sm-block">
         <div class="container">
             <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</span>
         </div>
