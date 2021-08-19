@@ -39,33 +39,32 @@ $(document).ready(function () {
 
   $("#ttl_table").on('click', function () {
     chart.destroy();
-    addChartA();
     type = 1;
-    updateChart(json,1);
+    addChartA();
+    $("#table").empty();    
     $("#filt").show();
     $("#xanax").hide();
     $("#table").show();
-    tablesA();
   });
 
   $("#stale_table").on('click', function () {
     chart.destroy();
     type = 2;
     addChartB();
+    $("#table").empty();
     $("#filt").show();
     $("#xanax").hide();
     $("#table").show();
-    tablesB();
   });
 
   $("#cache_table").on('click', function () {
     chart.destroy();
     type = 5;
     addChartB();
+    $("#table").empty();
     $("#filt").show();
     $("#xanax").hide();
     $("#table").show();
-    tablesB();
   });
 
 });
@@ -82,14 +81,14 @@ function load() {
     cache: false,
     success: function (response) {
       json = JSON.parse(response);
-      addFilters(json);
+      addFilters();
     }
   });
 
 };
 
 
-function addFilters(json) {
+function addFilters() {
   $("#filt").empty();
 
   var arr = [''];
@@ -150,7 +149,7 @@ function addFilters(json) {
         filterList[found] = 0;
       }
     };
-    updateChart(json, type);
+    updateChart();
   });
 
   $("#fall").on('click', function () {
@@ -182,7 +181,7 @@ function addFilters(json) {
 };
 
 
-function updateChart(json, type) {
+function updateChart() {
   let ttlarray = new Array();
   let maxttl = 0;
   let bucket = new String();
@@ -217,10 +216,8 @@ function updateChart(json, type) {
     bucket = [];
     for (let k = 1; k < 12; k++) {
       bucket.push(humanizeDuration(maxttl / 10 * k, {largest: 2 }));
-      //bucket ",";
     }
-    //bucket = bucket.slice(0, -1);
-    //bucket += "]";
+    
 
     let count = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     ttlarray.forEach(e => {
@@ -238,8 +235,6 @@ function updateChart(json, type) {
 
     chart.data.labels = bucket;
     chart.data.datasets[0].data = count;
-    //chart.options.scales.xAxes[0].ticks.max = maxttl * 9/10;
-    //chart.options.scales.xAxes[1].ticks.max = maxttl;
     chart.update();
     tablesA();
 
@@ -257,9 +252,14 @@ function updateChart(json, type) {
     let xxxxx = [];
     let pct_stale = (maxstale / count) || 0;
     let pct_fresh = (minfresh / count) || 0;
-    xxxxx.push(pct_fresh, pct_stale);
+    xxxxx.push(pct_fresh, pct_stale, 100-pct_fresh-pct_stale);
     chart.data.datasets[0].data = xxxxx;
+    chart.data.labels = ["Min-Fresh", "Max-Stale", "Neither"];
+    chart.options.plugins.title.text = "Percentage of directives";
+    chart.options.plugins.title.diplay = true;
+    chart.data.datasets[0].backgroundColor = palette('tol', 3).map(function (hex) { return '#' + hex; });
     chart.update();
+    tablesB();
 
   } else if (type == 5) {
     let public = 0;
@@ -286,7 +286,10 @@ function updateChart(json, type) {
     chart.data.datasets[0].data = x;
     chart.data.labels = ["Public", "Private", "No Cache", "No Store", "No directive"];
     chart.options.plugins.title.text = "Percentage of directives"
+    chart.data.datasets[0].backgroundColor = palette('tol', 5).map(function (hex) { return '#' + hex; });
+    chart.options.plugins.title.diplay = true;
     chart.update();
+    tablesB();
   }
 
 }
@@ -297,7 +300,7 @@ function addChartA() {
   chart = new Chart(myChart, {
     type: 'bar',
     data: {
-      labels: [0],
+      labels: ["apply filters"],
       datasets: [{
         label: 'Age (less than)',
         backgroundColor: "rgb(255, 0, 0)",
@@ -333,16 +336,15 @@ function addChartA() {
 };
 
 function addChartB() {
-  const c = palette('tol', type).map(function (hex) { return '#' + hex; });
   let myChart = document.getElementById('ch1').getContext('2d');
   chart = new Chart(myChart, {
     type: 'doughnut',
     data: {
-      labels: ["max-stale", "min-fresh"],
+      labels: ["apply filters"],
       datasets: [{
         label: "Percentage",
         borderColor: "rgb(11,11,11)",
-        backgroundColor: c,
+        backgroundColor: "rgb(11,11,11)",
         borderWidth: 1,
         data: [],
 
@@ -355,8 +357,8 @@ function addChartB() {
           position: 'top',
         },
         title: {
-          display: true,
-          text: 'Percentage of max-stale and min-fresh directives'
+          display: false,
+          text: ''
         }
       }
 
@@ -364,21 +366,17 @@ function addChartB() {
   });
 };
 
-function tablesA() {  
-  $("#table").empty();
+function tablesA() {
   let data = chart.data.datasets[0].data || undefined; 
   let labels = chart.data.labels || undefined; 
-  console.log(data, labels);
   let txt = 'Wait';
   v1 = "Age<br>(seconds)";
   v2 = "# of entries"
   let x = '';
-  x += "<table class='table table-bordered'><table><tbody><tr><th scope='row'>"+v1+"</th><th>"+v2+"</th></tr>";
+  x += "<table id='tableid' class='table table-bordered'><table><tbody><tr><th scope='row'>"+v1+"</th><th>"+v2+"</th></tr>";
   for(let i=0; i<10; i++) {
-    if(data[i]==data[i-1] || data[i]==0) {
-
-    } else {
-    x += "<tr><td>"+humanizeDuration(labels[i])+" or less</td><td>"+data[i]+"</td></tr>";
+    if(data[i]==data[i-1] || data[i]==0 || data[i]==undefined) {} else {
+    x += "<tr><td>"+labels[i]+" or less</td><td>"+data[i]+"</td></tr>";
     }
   }
   x +="</tbody>";
@@ -386,17 +384,16 @@ function tablesA() {
   $("#table").append(x);
 }
 
-function tablesB() {  
-  $("#table").empty();
+function tablesB() {
   let data = chart.data.datasets[0].data || undefined; 
   let labels = chart.data.labels || undefined;
   v1 = "Directive";
   v2 = "% of entries"
   let x = '';
-  x += "<table class='table table-bordered'><table><tbody><tr><th scope='row'>"+v1+"</th><th>"+v2+"</th></tr>";
-  for(let i=0; i<10; i++) {
+  x += "<table id='tableid' class='table table-bordered'><table><tbody><tr><th scope='row'>"+v1+"</th><th>"+v2+"</th></tr>";
+  for(let i=0; i<labels.length; i++) {
     if(data[i]==data[i-1] || data[i]==0) {} else {
-      x += "<tr><td>"+humanizeDuration(labels[i])+" or less</td><td>"+data[i]+"</td></tr>";
+      x += "<tr><td>"+labels[i]+"</td><td>"+(Math.round(data[i] * 100) / 100).toFixed(2);+"</td></tr>";
     }
   }
   x +="</tbody>";
