@@ -53,6 +53,12 @@ td {
 tr:nth-child(even) {
     background-color: white;
 }
+
+body {
+    background-image: url('../pictures/blu.jpg');
+    /*background-image: url('../pictures/abstr.png');*/
+    background-size: cover;
+    }
 </style>
 
 <body>
@@ -115,49 +121,23 @@ tr:nth-child(even) {
         </div>
     </nav>
 
-    <div class="container py-3">
+    <div class="container py-5">
         <div id="mapid"></div>
 
-        <div><img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png"
+        <div class="py-3"><img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png"
                 alt="Green"> Users<br>
             <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png"
-                alt="Violet"> Servers<br>
+                alt="Violet" class="py-3"> Servers<br>
             Line weight (thickness) affected by number of connections. <br>
             Line opacity affected by number of servers on the same location. <br>
             Click on markers or lines for info.
         </div>
-        <section style="display: flex; flex-direction: row; ">
-
-
-
-            <div id="xanax" style="width:40%; margin-left: 12%;" class="py-4">
-                <canvas id="ch1"></canvas>
-            </div>
-            <div id="table" style="width:40%; margin-left: 12%;" class="text-center py-4"></div>
-
-            <div style="width:20%; margin-left:2%">
-                <ul id="filt" class="navbar-nav bb"></ul>
-
-            </div>
-
-        </section>
-
-
     </div>
 
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
+    
+    
 
-    <footer class="footer mt-auto py-3 bg-light d-none d-sm-block">
+    <footer class="footer mt-auto py-3 bg-dark d-none d-sm-block">
         <div class="container">
             <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</span>
         </div>

@@ -126,9 +126,15 @@ function addFilters() {
     $("#filt").empty();
     i = 0;
     arr = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    let x = "<div id='filters'><h3 align='center'>Filters</h3><form class='d-flex justify-content-md-center'><input type='button' class='btn btn-info' id='filterbtn' name='filter' value='Apply'></input></form><hr><input type='button' value='Choose All' id='fall'><input type='button' value='Choose None' id='fnone'><hr>";
+    let x = "<div id='filters'><h3 align='center'>Filters</h3><form class='d-flex justify-content-md-center'><input type='button' class='btn btn-info' id='filterbtn' name='filter' value='Apply'></input></form><hr><input type='button' class='btn btn-secondary btn-sm' value='Choose All' id='fall' style='margin-left: 5px;'><input type='button' class='btn btn-secondary btn-sm' value='Choose None' id='fnone' style='margin-left: 10px;'><hr>";
+
+
+
     arr.forEach(arr => {
-      x += '<li"><input type="checkbox" value="' + arr + '" id="f' + i + '"">  ' + arr + '</li><br>';
+      x += '<li"><input class="form-check-input" type="checkbox" value="' + arr + '" id="f' + i + '"">  ' + arr + '</li><br>';
+      
+
+    
       i++;
     });
     x += '</div>'; //filter button
@@ -143,9 +149,9 @@ function addFilters() {
 
     $("#filt").empty();
     i = 0;
-    let x = "<div id='filters'><h3 align='center'>Filters</h3><form class='d-flex justify-content-md-center'><input type='button' class='btn btn-info' id='filterbtn' name='filter' value='Apply'></input></form><hr><input type='button' value='Choose All' id='fall'><input type='button' value='Choose None' id='fnone'><hr>";
+    let x = "<div id='filters'><h3 align='center'>Filters</h3><form class='d-flex justify-content-md-center'><input type='button' class='btn btn-info' id='filterbtn' name='filter' value='Apply'></input></form><hr><input type='button' class='btn btn-secondary btn-sm' value='Choose All' id='fall' style='margin-left: 5px;'><input type='button' class='btn btn-secondary btn-sm' value='Choose None' id='fnone' style='margin-left: 10px;'><hr>";
     arr.forEach(arr => {
-      x += '<li"><input type="checkbox" value="' + arr + '" id="f' + i + '"">  ' + arr + '</li><br>';
+      x += '<li"><input class="form-check-input" type="checkbox" value="' + arr + '" id="f' + i + '"">  ' + arr + '</li><br>';
       i++;
     });
     x += '</div>'; //filter button
@@ -261,11 +267,11 @@ function tables() {
   v1 = " Time of Day ";
   v2 = "Avg Wait<br>(msec)"
   let x = '';
-  x += "<table class='table table-bordered'><table><tbody><tr><th scope='row'>" + v1 + "</th><th>" + v2 + "</th></tr>";
+  x += "<table class='table table-borderless table-light'><tbody><tr><th scope='row' class='table-dark'>" + v1 + "</th><th class='table-dark'>" + v2 + "</th></tr>";
   for (let i = 0; i < 24; i++) {
     x += "<tr><td>" + labels[i] + "</td><td>" + data[i] + "</td></tr>";
   }
-  x += "</tbody>";
+  x += "</tbody></table>";
 
   $("#table").append(x);
 }

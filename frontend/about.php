@@ -16,7 +16,12 @@ include '../backend/logincheck.php';
     <link rel="icon" href="../pictures/favicon.png" type="img/png">
 
 </head>
-<style>
+<style>   
+    body {
+    background-image: url('../pictures/blu.jpg');
+    /*background-image: url('../pictures/abstr.png');*/
+    background-size: cover;
+    }
 
 </style>
 
@@ -136,7 +141,7 @@ include '../backend/logincheck.php';
     </div>
     <div class="mb-3 row">
     </div>
-    <div class="mb-3 row">
+    <div class="mb-4 row">
     </div>
    
  
@@ -144,7 +149,7 @@ include '../backend/logincheck.php';
     </div>
 
 
-    <footer class="footer mt-auto py-3 bg-light d-none d-sm-block">
+    <footer class="footer mt-auto py-3 bg-dark d-none d-sm-block">
         <div class="container">
             <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</span>
         </div>

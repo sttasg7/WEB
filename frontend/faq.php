@@ -16,8 +16,16 @@ include '../backend/logincheck.php';
     <link rel="icon" href="../pictures/favicon.png" type="img/png">
 
 </head>
-<style>
+<style>   
+    body {
+    background-image: url('../pictures/blu.jpg');
+    /*background-image: url('../pictures/abstr.png');*/
+    background-size: cover;
+    }
 
+    .faq-ans {
+        background: rgba(255,255,255,0.2);
+    }
 </style>
 
 <body>
@@ -164,7 +172,7 @@ include '../backend/logincheck.php';
         <div class="h4 faq-que">So which data do you keep?</div>
         <div class="p faq-ans">Only vital ones for the analysis. More specifically these: <br>
             <div class="container py-3">
-                <table class="table table-bordered">
+                <table class="table table-borderless table-hover">
 
                     <tbody>
                         <tr>
@@ -172,24 +180,24 @@ include '../backend/logincheck.php';
                             <td>startedDateTime</td>
                         </tr>
                         <tr>
-                            <th scope="row"></th>
-                            <td>timings</td>
+                            <th scope="row" class="table-dark"></th>
+                            <td class="table-dark">timings</td>
                         </tr>
                         <tr>
                             <th scope="row"></th>
                             <td>serverIPAddress</td>
                         </tr>
                         <tr>
-                            <th scope="row">timings</th>
-                            <td>wait</td>
+                            <th scope="row" class="table-dark">timings</th>
+                            <td class="table-dark">wait</td>
                         </tr>
                         <tr>
                             <th scope="row">request</th>
                             <td>method</td>
                         </tr>
                         <tr>
-                            <th scope="row"></th>
-                            <td>url</td>
+                            <th scope="row" class="table-dark"></th>
+                            <td class="table-dark">url</td>
                         </tr>
 
                         <tr>
@@ -197,8 +205,8 @@ include '../backend/logincheck.php';
                             <td>response</td>
                         </tr>
                         <tr>
-                            <th scope="row"></th>
-                            <td>status</td>
+                            <th scope="row" class="table-dark"></th>
+                            <td class="table-dark">status</td>
                         </tr>
                         <tr>
                             <th scope="row"></th>
@@ -206,32 +214,32 @@ include '../backend/logincheck.php';
                         </tr>
 
                         <tr>
-                            <th scope="row">headers</th>
-                            <td>content-type</td>
+                            <th scope="row" class="table-dark">headers</th>
+                            <td class="table-dark">content-type</td>
                         </tr>
                         <tr>
                             <th scope="row"></th>
                             <td>cache-control</td>
                         </tr>
                         <tr>
-                            <th scope="row"></th>
-                            <td>pragma</td>
+                            <th scope="row" class="table-dark"></th>
+                            <td class="table-dark">pragma</td>
                         </tr>
                         <tr>
                             <th scope="row"></th>
                             <td>expires</td>
                         </tr>
                         <tr>
-                            <th scope="row"></th>
-                            <td>age</td>
+                            <th scope="row" class="table-dark"></th>
+                            <td class="table-dark">age</td>
                         </tr>
                         <tr>
                             <th scope="row"></th>
                             <td>last-modified</td>
                         </tr>
                         <tr>
-                            <th scope="row"></th>
-                            <td>host</td>
+                            <th scope="row" class="table-dark"></th>
+                            <td class="table-dark">host</td>
                         </tr>
                     </tbody>
 
@@ -245,7 +253,7 @@ include '../backend/logincheck.php';
     <div class="divider"></div>
 
 
-    <footer class="footer mt-auto py-3 bg-light d-none d-sm-block">
+    <footer class="footer mt-auto py-3 bg-dark d-none d-sm-block">
         <div class="container">
             <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</span>
         </div>

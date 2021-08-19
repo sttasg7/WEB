@@ -154,11 +154,11 @@ function showTable(type) {
     v2 = "Average Age in msec"
   }
 
-  x += "<table class='table table-bordered'><caption>"+txt+"</caption><table><tbody><tr><th scope='row'>"+v1+"</th><th>"+v2+"</th></tr>";
+  x += "<table class='table table-bordered'><caption class='text-decoration-underline'>"+txt+"</caption><table class='table table-light'><tbody><tr><th scope='row' class='table-dark'>"+v1+"</th><th class='table-dark'>"+v2+"</th></tr>";
   for(let i=0; i<l.length; i++) {
     x += "<tr><td>"+l[i]+"</td><td>"+d[i]+"</td></tr>";
   }
-  x +="</tbody>";
+  x +="</tbody></table>";
 
   $("#table").append(x);
 }

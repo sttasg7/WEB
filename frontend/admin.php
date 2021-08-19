@@ -42,6 +42,12 @@ td {
 tr:nth-child(even) {
     background-color: white;
 }
+
+body {
+    background-image: url('../pictures/blu.jpg');
+    /*background-image: url('../pictures/abstr.png');*/
+    background-size: cover;
+    }
 </style>
 
 <body>
@@ -103,8 +109,9 @@ tr:nth-child(even) {
             </div>
         </div>
     </nav>
+    
     <div class="container d-flex">
-        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="height: 100%;">
             <hr>
             <b><a href="admin.php" class="d-flex text-white text-center  text-decoration-none">Basic
                     Info</a></b>
@@ -112,7 +119,7 @@ tr:nth-child(even) {
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="sb-main d-flex bd-highlight bg-dark">
                     <div class="p-1 flex-grow-1 bd-highlight">Basic Stats</div>
-                    <input type="button" name="save" class="btn-sm btn-outline-secondary ms-5" value="Show" id="basics">
+                    <input type="button" name="save" class="btn-sm btn-outline-secondary p-1 bd-highlight" value="Show" id="basics">
                 </li>
                 <li class="sb-main d-flex bd-highlight bg-dark">
                     <div class="p-1 flex-grow-1 bd-highlight">Methods</div>
@@ -135,36 +142,21 @@ tr:nth-child(even) {
                     <input type="button" name="save" class="btn-sm btn-outline-info p-1 bd-highlight" value="Graph"
                         id="ages">
                 </li>
+                <li>
+                    <img src="../pictures/har.png" height="150px" width="auto" alt="HAR Observation & Statistics">
+                </li>
             </ul>
         </div>
         <div id="xanax" style="width:40%; margin-left: 12%;" class="py-4">
             <canvas id="ch1"></canvas>
         </div>
-        <div id="table" style="width:40%; margin-left: 12%;" class="text-center py-4"></div>
-
-        <div style="width:20%; margin-left:2%">
-            <ul id="filt" class="navbar-nav bb"></ul>
-
-        </div>
-
-        </section>
+        <div id="table" style="width:50%; margin-left: 12%;" class="text-center py-4"></div>
 
 
     </div>
+    <div class="mb-1 row"></div>
 
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-
-    <footer class="footer mt-auto py-3 bg-light d-none d-sm-block">
+    <footer class="footer mt-auto py-3 bg-dark d-none d-sm-block">
         <div class="container">
             <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</span>
         </div>

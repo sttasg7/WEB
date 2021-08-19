@@ -34,8 +34,14 @@ include '../backend/logincheck.php';
     <script src="../js/pwied-heatmap.js"></script>
 
 </head>
-<style>
+<style>   
+    body {
+    background-image: url('../pictures/blu.jpg');
+    /*background-image: url('../pictures/abstr.png');*/
+    background-size: cover;
+    }
 
+    
 </style>
 
 <body>
@@ -100,7 +106,7 @@ include '../backend/logincheck.php';
 
     <div class="container py-4">
 
-        <p align="center">Below you can see an analysis of all HTTP connection logged in your uploaded files.</p>
+        <p align="center" class="lead"><u>Below you can see an analysis of all HTTP connection logged in your uploaded files.</u></p>
         <div id="mapid"></div>
 
 
@@ -108,19 +114,19 @@ include '../backend/logincheck.php';
         <br>
 
 
-        <button id="togbtn" class="btn-outline-secondary centre-button mb-4" onclick="myFunction()">Present data as
+        <button id="togbtn" class="btn btn-primary centre-button mb-4" onclick="myFunction()">Present data as
             table</button>
         <div id="tog" style="display:none">
 
             <div style="height:400px; overflow:auto; width:100%;">
-                <table align="center" id="table" class="hidden">
+                <table align="center" id="table" class="table table-hover table-light hidden">
                     <colgroup style="width: 80%;">
                         <col span="1" style="width: 33%;">
                         <col span="1" style="width: 17%;">
                         <col span="1" style="width: 25%;">
                         <col span="1" style="width: 25%;">
                     </colgroup>
-                    <tr>
+                    <tr class="table-dark">
                         <th>IP</th>
                         <th>Visits</th>
                         <th>Latitude</th>
@@ -132,13 +138,13 @@ include '../backend/logincheck.php';
 
 
         <br>
-        <p align="center">Diclaimer: due to the nature of IP geolocation, some data may be inaccurate. Geolocation is
+        <p align="center" class="fw-light">Diclaimer: due to the nature of IP geolocation, some data may be inaccurate. Geolocation is
             done through <a href="freegeoip.app">freegoip API</a>.</p>
 
     </div>
 
 
-    <footer class="footer mt-auto py-3 bg-light d-none d-sm-block">
+    <footer class="footer mt-auto py-3 bg-dark d-none d-sm-block">
         <div class="container">
             <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</span>
         </div>

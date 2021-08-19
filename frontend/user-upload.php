@@ -21,7 +21,11 @@ include '../backend/logincheck.php';
 
 </head>
 <style>
-
+body {
+    background-image: url('../pictures/blu.jpg');
+    /*background-image: url('../pictures/abstr.png');*/
+  background-size: cover;
+}
 </style>
 
 <body>
@@ -92,7 +96,7 @@ include '../backend/logincheck.php';
         <div class="text-center font-weight-bold fs-25 text-white m-t-25" id="lastdate"></div>
 
 
-        <p class="text-center  fs-18 text-dark m-t-150">Upload or export your HAR files. <br> Visit <a
+        <p class="text-center lead fs-18 text-dark m-t-150">Upload or export your HAR files. <br> Visit <a
                 href="faq.php">FAQ</a> for more info.</p>
         <form id="HarForm" class="text-center  fs-18 text-white m-t-50">
             <input type="file" id="myFile" class="btn btn-upload mx-2" name="filename">
@@ -103,65 +107,22 @@ include '../backend/logincheck.php';
         <p hidden class="faq-ans text-center" id="pleasewait">Please wait for the file to process</p>
         <div id="success" class="faq-ans" hidden>Upload successful.</div>
 
-
     </div>
 
-    <div class="mb-3 row">
+    <div class="mb-3 row"></div>
+    <div class="mb-3 row"></div>
+    <div class="mb-3 row"></div>
+    
 
-    </div>
-    <div class="mb-3 row">
+    <img src="../pictures/har-dark.png" height="150px" width="auto" alt="HAR Observation & Statistics" style="display: block; margin-left: auto;  margin-right: auto;">
 
-    </div>
-    <div class="mb-3 row">
+    <div class="mb-3 row"></div>
+    <div class="mb-3 row"></div>
+    <div class="mb-3 row"></div>
+    <div class="mb-3 row"></div>
+    <div class="mb-2 row"></div>
 
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-
-    <footer class="footer mt-auto py-3 bg-light d-none d-sm-block">
+    <footer class="footer mt-auto py-3 bg-dark d-none d-sm-block">
         <div class="container">
             <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</span>
         </div>

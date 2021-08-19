@@ -109,16 +109,16 @@ function addFilters(json) {
   };
 
   let i = 0; let j = 0;
-  let x = "<div id='filters'><h3 align='center'>Filters</h3><form class='d-flex justify-content-md-center'><input  type='button' class='btn btn-info' id='filterbtn' name='filter' value='Apply'></input></form><hr><input type='button' value='Choose All' id='fall'><input type='button' value='Choose None' id='fnone'><hr>";
+  let x = "<div id='filters'><h3 align='center'>Filters</h3><form class='d-flex justify-content-md-center'><input  type='button' class='btn btn-info' id='filterbtn' name='filter' value='Apply'></input></form><hr><input type='button' class='btn btn-secondary btn-sm' value='Choose All' id='fall' style='margin-left: 5px;'><input type='button' class='btn btn-secondary btn-sm' value='Choose None' id='fnone' style='margin-left: 10px;'><hr>";
   arr.forEach(arr => {
-    x += '<li"><input type="checkbox" value="' + arr + '" id="f' + i + '"">  ' + arr + '</li><br>';
+    x += '<li"><input type="checkbox" class="form-check-input" value="' + arr + '" id="f' + i + '"">  ' + arr + '</li><br>';
     i++;
   });
-  x += '</div><hr>Filter by ISP';
+  x += '</div><hr><h4 align="center">Filter by ISP</h4>';
 
-  x += "<div id='ispfilters'><input type='button' value='Choose All' id='ispall'><input type='button' value='Choose None' id='ispnone'><hr>";
+  x += "<div id='ispfilters'><input type='button' class='btn btn-secondary btn-sm' value='Choose All' id='ispall' style='margin-left: 5px;'><input type='button' class='btn btn-secondary btn-sm' value='Choose None' id='ispnone' style='margin-left: 10px;'><hr>";
   arr2.forEach(arr2 => {
-    x += '<li"><input type="checkbox" value="' + arr2 + '" id="isp' + j + '"">  ' + arr2 + '</li><br>';
+    x += '<li"><input type="checkbox" class="form-check-input" value="' + arr2 + '" id="isp' + j + '"">  ' + arr2 + '</li><br>';
     j++;
   });
   x += '</div>';

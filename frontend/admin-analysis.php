@@ -42,6 +42,12 @@ td {
 tr:nth-child(even) {
     background-color: white;
 }
+
+body {
+    background-image: url('../pictures/blu.jpg');
+    /*background-image: url('../pictures/abstr.png');*/
+    background-size: cover;
+    }
 </style>
 
 <body>
@@ -104,7 +110,7 @@ tr:nth-child(even) {
         </div>
     </nav>
     <div class="container d-flex">
-        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="height: 100%;">
             <hr>
             <b><a href="admin-analysis.php" class="d-flex text-white text-center  text-decoration-none">Timings
                     Analysis</a></b>
@@ -138,6 +144,9 @@ tr:nth-child(even) {
                     <input type="button" name="save" class="btn-sm btn-outline-info p-1 bd-highlight" value="Graph"
                         id="isp_graph">
                 </li>
+                <li>
+                    <img src="../pictures/har.png" height="150px" width="auto" alt="HAR Observation & Statistics">
+                </li>
             </ul>
         </div>
         <div id="xanax" style="width:60%; margin-left: 2%;" class="py-4">
@@ -146,28 +155,17 @@ tr:nth-child(even) {
 
         <div id="table" style="width:60%; margin-left: 2%;" class="text-center py-4"></div>
 
-        <div style="width:20%; margin-left:2%">
+        <div style="width:21%; margin-left:2%">
             <ul id="filt" class="navbar-nav bg-dark sb-main"></ul>
         </div>
-
-        </section>
 
 
     </div>
 
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
-    <div class="mb-3 row"></div>
+    <div class="mb-1 row"></div>
+   
 
-    <footer class="footer mt-auto py-3 bg-light d-none d-sm-block">
+    <footer class="footer mt-auto py-3 bg-dark d-none d-sm-block">
         <div class="container">
             <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</span>
         </div>

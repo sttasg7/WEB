@@ -20,6 +20,13 @@ include '../backend/logincheck.php';
     .form {
         margin-left: 0%;
     }
+   
+    body {
+    background-image: url('../pictures/blu.jpg');
+    /*background-image: url('../pictures/abstr.png');*/
+    background-size: cover;
+    }
+
 </style>
 
 <body>
@@ -101,9 +108,9 @@ include '../backend/logincheck.php';
         </div>
     </nav>
 
-    <div class="container py-4">
+    <div class="container py-4" >
 
-        <h5> You have logged in as <b><?php echo $_SESSION['username'] ?></b> </h5>
+        <h5> You have logged in as: <b><?php echo $_SESSION['username'] ?></b> </h5>
         <hr>
 
         <!-- ΕΙΝΑΙ ΕΝΤΕΛΩΣ ΧΥΜΑ, ΘΕΛΟΥΝ STYLING -->
@@ -151,65 +158,28 @@ include '../backend/logincheck.php';
                         </p>
                     </div>
 
-                    <input type="button" name="save" class="btn btn-primary" value="Change!" id="butsave">
+                    <input type="button" name="save" class="btn btn-danger" value="Change!" id="butsave">
                 </form>
             </div>
 
-        </div>
-    </div>
+        </div> <br>
 
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
+        <div class="mb-3 row"></div>
+        <div class="mb-3 row"></div>
+        <div class="mb-3 row"></div>
+        <div class="mb-3 row"></div>
+        <img src="../pictures/har-dark.png" height="150px" width="auto" alt="HAR Observation & Statistics">
 
     </div>
-    <div class="mb-3 row">
 
-    </div>
-    <div class="mb-3 row">
+    
+    <div class="mb-3 row"></div>
+    <div class="mb-3 row"></div>
+    <div class="mb-3 row"></div>
+    
 
-    </div>
-    <div class="mb-3 row">
 
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-3 row">
-
-    </div>
-    <div class="mb-1 row">
-
-    </div>
-    <footer class="footer mt-auto py-3 bg-light d-none d-sm-block">
+    <footer class="footer mt-auto py-3 bg-dark d-none d-sm-block">
         <div class="container">
             <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</span>
         </div>
