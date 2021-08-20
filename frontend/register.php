@@ -5,6 +5,9 @@ include '../backend/logincheck.php';
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+            if ($loginst == 1) { ?>
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,7 +34,7 @@ include '../backend/logincheck.php';
         <div class="container">
             <?php 
         if ($loginst == 1){ ?>
-            <a href="../index.html">
+            <a href="../index.php">
                 <img src="../pictures/har.png" height="50px" width="auto" alt="HAR Observation & Statistics">
             </a>
             <?php } else { ?>
@@ -120,6 +123,10 @@ include '../backend/logincheck.php';
     </script>
 
     <script src="../js/log_sign.js"></script>
+
+    <?php } else { 
+        header("Location: user-profile.php");
+    }?>
 </body>
 
 </html>

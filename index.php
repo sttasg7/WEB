@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 
+<?php
+            if ($loginst == 1) { ?>
+
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,7 +29,7 @@
 	<!-- Navbar -->
 	<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
 		<div class="container">
-			<a href="index.html">
+			<a href="index.php">
 				<img src="pictures/har.png" height="50px" width="auto" alt="HAR Observation & Statistics">
 			</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
@@ -89,6 +92,9 @@
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
 
+	<?php } else { 
+        header("Location: frontend/user-profile.php");
+    }?>
 </body>
 
 </html>

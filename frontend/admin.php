@@ -56,7 +56,7 @@ body {
         <div class="container">
             <?php 
         if ($loginst == 1){ ?>
-            <a href="../index.html">
+            <a href="../index.php">
                 <img src="../pictures/har.png" height="50px" width="auto" alt="HAR Observation & Statistics">
             </a>
             <?php } else { ?>
