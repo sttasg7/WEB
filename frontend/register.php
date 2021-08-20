@@ -32,16 +32,9 @@ include '../backend/logincheck.php';
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container">
-            <?php 
-        if ($loginst == 1){ ?>
             <a href="../index.php">
                 <img src="../pictures/har.png" height="50px" width="auto" alt="HAR Observation & Statistics">
             </a>
-            <?php } else { ?>
-            <a href="../frontend/user-profile.php">
-                <img src="../pictures/har.png" height="50px" width="auto" alt="HAR Observation & Statistics">
-            </a>
-            <?php } ?>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
             </button>

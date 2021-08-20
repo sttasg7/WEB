@@ -1,8 +1,12 @@
+<?php
+include '../backend/logincheck.php';
+?>
+
 <!DOCTYPE html>
 <html>
 
 <?php
-            if ($loginst == 1) { ?>
+    if ($loginst == 1) { ?>
 
 <head>
 	<meta charset="UTF-8" />
