@@ -1,5 +1,5 @@
 <?php
-include '../backend/logincheck.php';
+include 'backend/logincheck.php';
 ?>
 
 <!DOCTYPE html>
