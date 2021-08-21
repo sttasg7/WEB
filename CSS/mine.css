@@ -111,8 +111,26 @@ td {
   #ispnone {
     margin-top: 3%;
   }
-}
 
+  #admfooter {
+    border-radius: 25px;
+    height: 75px;
+    background: rgba(204, 204, 204, 0.4);
+  }
+  #admfootersec {
+    border-radius: 25px;
+    height: 40px;
+    background: rgba(204, 204, 204, 0.4);
+  }
+}
+@media screen and (min-width: 768px) {
+  #admfooter,
+  #admfootersec {
+    border-radius: 25px;
+    height: 40px;
+    background: rgba(204, 204, 204, 0.4);
+  }
+}
 @media screen and (max-width: 1200px) and (min-width: 768px) {
   #filt {
     width: 135%;

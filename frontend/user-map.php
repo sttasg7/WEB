@@ -138,9 +138,10 @@ include '../backend/logincheck.php';
 
 
         <br>
+        <div style="border-radius: 25px; background: rgba(204, 204, 204, 0.5);">
         <p align="center" class="fw-light">Diclaimer: due to the nature of IP geolocation, some data may be inaccurate. Geolocation is
             done through <a href="freegeoip.app">freegoip API</a>.</p>
-
+        </div>
     </div>
 
 

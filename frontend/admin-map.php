@@ -127,10 +127,12 @@ body {
         <div class="py-3"><img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png"
                 alt="Green"> Users<br>
             <img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png"
-                alt="Violet" class="py-3"> Servers<br>
-            Line weight (thickness) affected by number of connections. <br>
-            Line opacity affected by number of servers on the same location. <br>
-            Click on markers or lines for info.
+                alt="Violet" class="py-3"> Servers<hr>
+                <div class="fs-4">
+                    <div id="admfooter"><p class="fw-light" style="margin-left: 2%;">Line weight (thickness) affected by number of connections.</p></div> <hr>
+                    <div id="admfooter"><p class="fw-light" style="margin-left: 2%;">Line opacity affected by number of servers on the same location.</p></div> <hr>
+                    <div id="admfootersec"><p class="fw-light" style="margin-left: 2%;">Click on markers or lines for info.</p></div>
+                </div>
         </div>
     </div>
 
