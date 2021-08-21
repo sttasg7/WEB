@@ -99,7 +99,7 @@ body {
         <p class="text-center lead fs-18 text-dark m-t-150">Upload or export your HAR files. <br> Visit <a
                 href="faq.php">FAQ</a> for more info.</p>
         <form id="HarForm" class="text-center  fs-18 text-white m-t-50">
-            <input type="file" id="myFile" class="btn btn-upload mx-2" name="filename">
+            <input type="file" id="myFile" class="btn btn-upload mx-2" name="filename" accept=".har">
             <input type="button" id="sendtoserver" value="Submit" class="btn btn-dark mx-2" onclick="SendToServer();">
             <input type="button" id="exportslim" value="Export" class="btn btn-info" onclick="Export();">
         </form>

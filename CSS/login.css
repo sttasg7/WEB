@@ -32,6 +32,10 @@
   .form {
     margin-left: 0%;
   }
+
+  #tainer {
+    margin-left: -3%;
+  }
 }
 
 .criteria {

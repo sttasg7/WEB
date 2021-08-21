@@ -126,7 +126,7 @@ function addFilters() {
     $("#filt").empty();
     i = 0;
     arr = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    let x = "<div id='filters'><h3 align='center'>Filters</h3><form class='d-flex justify-content-md-center'><input type='button' class='btn btn-info' id='filterbtn' name='filter' value='Apply'></input></form><hr><input type='button' class='btn btn-secondary btn-sm' value='Choose All' id='fall' style='margin-left: 5px;'><input type='button' class='btn btn-secondary btn-sm' value='Choose None' id='fnone' style='margin-left: 10px;'><hr>";
+    let x = "<div id='filters'><h3 align='center'>Filters</h3><form class='d-flex justify-content-md-center'><input type='button' class='btn btn-info' id='filterbtn' name='filter' value='Apply'></input></form><hr><div style='width:100%; text-align:center;'><input type='button' class='btn btn-secondary btn-sm' value='Choose All' id='fall' style='margin-left: 5px; display:inline-block;'><input type='button' class='btn btn-secondary btn-sm' value='Choose None' id='fnone' style='margin-left: 10px; display: inline-block;'></div><hr>";
 
 
 
@@ -149,7 +149,7 @@ function addFilters() {
 
     $("#filt").empty();
     i = 0;
-    let x = "<div id='filters'><h3 align='center'>Filters</h3><form class='d-flex justify-content-md-center'><input type='button' class='btn btn-info' id='filterbtn' name='filter' value='Apply'></input></form><hr><input type='button' class='btn btn-secondary btn-sm' value='Choose All' id='fall' style='margin-left: 5px;'><input type='button' class='btn btn-secondary btn-sm' value='Choose None' id='fnone' style='margin-left: 10px;'><hr>";
+    let x = "<div id='filters'><h3 align='center'>Filters</h3><form class='d-flex justify-content-md-center'><input type='button' class='btn btn-info' id='filterbtn' name='filter' value='Apply'></input></form><hr><div style='width:100%; text-align:center;'><input type='button' class='btn btn-secondary btn-sm' value='Choose All' id='fall' style='margin-left: 5px; display:inline-block;'><input type='button' class='btn btn-secondary btn-sm' value='Choose None' id='fnone' style='margin-left: 10px; display:inline-block;'></div><hr>";
     arr.forEach(arr => {
       x += '<li"><input class="form-check-input" type="checkbox" value="' + arr + '" id="f' + i + '"">  ' + arr + '</li><br>';
       i++;

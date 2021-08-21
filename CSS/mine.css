@@ -84,3 +84,37 @@ td {
   background-color: rgb(55, 55, 55);
   font-family: calibri;
 }
+
+@media screen and (max-width: 768px) {
+  #xanax,
+  #table {
+    position: absolute;
+    top: 159%;
+    left: 0%;
+  }
+  #tainer {
+    position: relative;
+    left: 0%;
+  }
+
+  #filt {
+    width: 184%;
+  }
+  #filterbtn {
+    margin-left: 34%;
+  }
+
+  #fnone {
+    margin-top: 3%;
+  }
+
+  #ispnone {
+    margin-top: 3%;
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 768px) {
+  #filt {
+    width: 135%;
+  }
+}
