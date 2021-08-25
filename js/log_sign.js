@@ -2,12 +2,14 @@ var passcheck = 0;
 var emailcheck = 0;
 
 $(document).ready(function() {
+	//set regex needed for password verification
 	let numb = /(?=.*\d)/;
 	let cap = /(?=.*[A-Z])/;
 	let symb = /(?=.*\W.*)/;
 	let emailvalid = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/;
-
-	$("#password").on('keyup', function() {
+	
+	//for every field -> on each key press, check password against regex and update tooltips
+	$("#password").on('keyup', function() {		
 		let x = this.value;
 		$('#butsave').attr("class", "btn btn-danger");
 		$("#password").attr("class", "form-control border-3 border-danger");
@@ -57,8 +59,9 @@ $(document).ready(function() {
 	});
 
 
+	//when the Register button is pressed, run checks on every field. if everything is fine, proceed with an ajax to backend
 	$('#butsave').on('click', function() {
-		if($('#username').val() == '') {
+		if($('#username').val() == '') { 
 			$("#username").attr("class", "form-control border-3 border-danger");
 			$("#user-invalid").html("Please fill in a username");
 			$("#user-invalid").removeAttr("hidden");
@@ -83,7 +86,8 @@ $(document).ready(function() {
 			var password = $('#password').val();
 		}
 
-		if(username!="" && email!="" && password!="" && crit(password) && emailcheck == 1){
+		//only when everything is fine, we contact the server
+		if(username!="" && email!="" && password!="" && crit(password) && emailcheck == 1){ 
 			$.ajax({
 				url: "../backend/save.php",
 				type: "POST",
@@ -96,15 +100,15 @@ $(document).ready(function() {
 				cache: false,
 				success: function(dataResult){
 					var dataResult = JSON.parse(dataResult);
-					if(dataResult.statusCode==200){
+					if(dataResult.statusCode==200){ //success, user auto logins and gets redictered to user-profile.php
 						alert("Registration Successful");
 						window.location.href='user-profile.php';								
 					}
-					else if(dataResult.statusCode==202) {
+					else if(dataResult.statusCode==202) { //email is taken
 						$("#email").attr("class", "form-control border-3 border-danger");
 						$("#email-invalid").html("Email already exists")
 						$("#email-invalid").removeAttr("hidden");
-					} else if(dataResult.statusCode==203) {
+					} else if(dataResult.statusCode==203) { //username is taken
 						$("#username").attr("class", "form-control border-3 border-danger");
 						$("#user-invalid").html("Username taken")
 						$("#user-invalid").removeAttr("hidden");
@@ -117,6 +121,7 @@ $(document).ready(function() {
 		}
 	});
 	
+	//when the Login button is pressed, run checks on every field. if everything is fine, proceed with an ajax to backend
 	$('#butlogin').on('click', function() {
 		var email = $('#email_log').val();
 		var password = $('#password_log').val();
@@ -148,15 +153,15 @@ $(document).ready(function() {
 				cache: false,
 				success: function(dataResult){
 					var dataResult = JSON.parse(dataResult);
-					if(dataResult.statusCode==200){
+					if(dataResult.statusCode==200){ //success, user logins and gets redictered to user-profile.php
 						location.href = "user-profile.php";						
 					}
-					else if(dataResult.statusCode==201){
+					else if(dataResult.statusCode==201){ //password fail
 						$("#password_log").attr("class", "form-control border-3 border-danger");
 						$("#pass-invalid").removeAttr("hidden");
 						$("#pass-invalid").html("Password invalid");
 					}
-					else if(dataResult.statusCode==202){
+					else if(dataResult.statusCode==202){ //email fail
 						$("#email_log").attr("class", "form-control border-3 border-danger");
 						$("#email-invalid").removeAttr("hidden");
 						$("#email-invalid").html("Email not found");

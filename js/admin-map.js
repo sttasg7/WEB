@@ -1,5 +1,6 @@
 var library;
 
+//use ajax to get all data needed from backend and then load map
 $.ajax({
   url: "../backend/get-admin.php",
   type: "POST",
@@ -51,7 +52,6 @@ function load(json) {
   
   let max = 0;
   let sum = 0;
-  let x = json.length;
   json.forEach(json => {
       if(parseInt(json.count)>max){ 
           max = parseInt(json.count);
@@ -59,15 +59,14 @@ function load(json) {
       sum += parseInt(json.count);
     });
  
-
+  //add a marker for every user and server
+  //and a polyline between them, using the count value
   json.forEach(json => {
     var marker = L.marker([json.slat, json.slon], {icon: serverIcon}).addTo(map);
     marker.bindPopup("IP: "+json.server+"<br>Latitude: "+json.slat+"<br>Longitude: "+json.slon+"");
     var marker = L.marker([json.ulat, json.ulon], {icon: userIcon}).addTo(map);
     marker.bindPopup("IP: "+json.user+"<br>Latitude: "+json.ulat+"<br>Longitude: "+json.ulon+"");
     var latlngs = [[json.slat, json.slon],[json.ulat, json.ulon]]; 
-    //var w = Math.max(x * parseInt(json.count)/max, 2);
-    //w = Math.min(w, 10);
     var y = json.count/max*10;
     var w = Math.max(y,1.5);
     var polyline = L.polyline(latlngs, {color: 'red', weight: w, opacity: 0.4}).addTo(map);
@@ -76,7 +75,8 @@ function load(json) {
 
 }
 
-function myFunction() {
+//toggle button 
+function myFunction() { 
   var x = document.getElementById("tog");
   if (x.style.display === "none") {
     x.style.display = "block";

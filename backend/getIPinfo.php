@@ -1,4 +1,5 @@
 <?php
+//use ip-api for user geolocation
 
 $foruser = "http://ip-api.com/json/?fields=status,message,city,lat,lon,isp,asname,query";
 

@@ -1,5 +1,7 @@
 var json;
 var check = 0;
+
+//use ajax to get data from backend
 $.ajax({
     type: "POST",
     url: "../backend/get-admin.php",
@@ -13,7 +15,7 @@ $.ajax({
   });
 
 $(document).ready(function(){
-    $("#xanax").hide();
+    $("#xanax").hide(); //hide both divs until any button is pressed
     $("#table").hide();
 
     let myChart = document.getElementById('ch1').getContext('2d');
@@ -51,8 +53,9 @@ $(document).ready(function(){
           }
     });
     
-    var type = 0;    
-    //updateChart(type, chart);
+
+    //button actions. each button calls the corresponding function with their needed arguments
+    var type = 0;  
     $("#basics").on('click', function(){
       basicInfo();
     })
@@ -95,18 +98,18 @@ function updateChart(type, chart) {
     $("#table").hide();
     var f = JSON.parse(json);
     var l,d,txt,unit;
+    //use type to determine which labels and data to be pushed to chart
+    //l -> labels, d -> data, txt -> title, unit -> dataset label
     if(type==0){
         l = f.methods.map(function(e) {return e.name;});
         d = f.methods.map(function(e) {return e.count;});
         txt = "Methods";
         unit = 'Entries';
-        //oops wrong question addfilters(type, l, d);
       } else if(type==1) {
         l = f.status.map(function(e) {return e.name;});
         d = f.status.map(function(e) {return e.count;});
         txt = "Response Codes";
         unit = 'Entries';
-        //addfilters(type, l, d);
       } else if(type==2){
         l = f.ages.map(function(e) {return e.content;});
         d = f.ages.map(function(e) {return e.avg;});
@@ -132,20 +135,20 @@ function showTable(type) {
   $("#table").show();
   var f = JSON.parse(json);
   var x ="";
+  //use type to determine which labels and data to be pushed to chart
+  //l -> labels, d -> data, txt -> title, v1 -> table column 1 header, v2 -> table column 2 header 
   if(type==0){
     l = f.methods.map(function(e) {return e.name;});
     d = f.methods.map(function(e) {return e.count;});
     txt = "Methods";
     v1 = "Methods";
     v2 = "Count";
-    //oops wrong question addfilters(type, l, d);
   } else if(type==1) {
     l = f.status.map(function(e) {return e.name;});
     d = f.status.map(function(e) {return e.count;});
     txt = "Response Codes";
     v1 = "Code";
     v2 = "Count";
-    //addfilters(type, l, d);
   } else if(type==2){
     l = f.ages.map(function(e) {return e.content;});
     d = f.ages.map(function(e) {return e.avg;});
@@ -168,46 +171,9 @@ function basicInfo() {
   $("#xanax").hide();
   $("#table").show();
   var f = JSON.parse(json);
-  const users = f.counts[0].users;
+  const users = f.counts[0].users - 1; //eclude admin
   const ISPs = f.counts[1].ISP;
   const domains = f.counts[1].domains;
   let x ="<div><b>Users registered:</b>   "+users+"<br><hr><b>Domains logged:</b>   "+domains+"<br><hr><b>ISPs logged:</b>   "+ISPs+"<br></div>";
   $("#table").append(x);
 }
-
-
-
-
-/*
-function addfilters(type, str, dt) {
-  //empty filter div
-  $("#filt").empty();
-  i = 0;
-  //populate filter div with the amount of labels from str
-  let x ="<h6>filters</h6>";
-  str.forEach(str => {
-    x += '<li"><input type="checkbox" checked value="'+ str +'" id="f' +i+ '""><label for="'+str+'">'+str+'</label></li><br>';
-    i++;
-  });
-  x += '<form><input type="button" class="btn btn-info" id="filterbtn" name="filter" value="Filter"></input></form>'; //filter button
-  $("#filt").append(x);
-
-  //add action to filter button
-  $("#filterbtn").on('click', function(){
-    //get array with checkbox values
-    var z = [];
-    for(let j=0; j<i; j++) {
-      if($("#f"+j).is(":checked")) {z[j]="1";} 
-      else {z[j]="0";}
-        }
-      console.log(z);
-
-    //call filter function
-    filterchart(z, str, dt);
-    });
-}
-
-function filterchart(boxes, lbls, data){
-
-}
-*/

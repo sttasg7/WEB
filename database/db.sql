@@ -14,7 +14,7 @@ DROP TABLE IF EXISTS har_data;
 CREATE TABLE IF NOT EXISTS har_data
 (
     username_user VARCHAR(100) NOT NULL,
-    starteddatetime TIMESTAMP NOT NULL,
+    starteddatetime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     serveripaddress VARCHAR(100),
     wait VARCHAR(100),
     method VARCHAR(100),
@@ -46,3 +46,13 @@ CREATE TABLE IF NOT EXISTS serverloc
     s_lat VARCHAR(100),
     s_lon VARCHAR(100)
 );
+
+CREATE INDEX in1 ON har_data (username_user);
+CREATE INDEX in2 ON har_data (content_type);
+CREATE INDEX in3 ON har_data (cache_control);
+CREATE INDEX in4 ON har_data (isp);
+CREATE INDEX in5 ON har_data (age);
+CREATE INDEX in6 ON har_data (serveripaddress);
+CREATE INDEX in7 ON serverloc (s_ip);
+
+INSERT INTO users VALUES ('admin','admin','admin',1);

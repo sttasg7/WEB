@@ -1,5 +1,6 @@
 var library;
 
+//use ajax to get data from server, then use load()
 $.ajax({
   url: "../backend/getmapdata.php",
   type: "POST",
@@ -40,6 +41,8 @@ function load(json) {
   if (json) {
     var len = json.length;
     var txt = "";
+
+    //create table
     if (len > 0) {
       for (var i = 0; i < len; i++) {
         if (json[i].lat) {
@@ -59,6 +62,8 @@ function load(json) {
   heatmapLayer.setData(myData);
 }
 
+
+//toggle for map/table
 function myFunction() {
   var x = document.getElementById("tog");
   if (x.style.display === "none") {

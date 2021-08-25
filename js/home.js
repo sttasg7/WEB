@@ -1,13 +1,16 @@
+//set regex needed for password verification
 let numb = /(?=.*\d)/;
 let cap = /(?=.*[A-Z])/;
 let symb = /(?=.*\W.*)/;
 let emailvalid = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/;
+
 
 $(document).ready(function () {
   $("#change-pass").hide();
   var entriescount = document.getElementById("entries");
   var lastentry = document.getElementById("last-entry");
 
+  //ajax to get data
   $.ajax({
     type: "POST",
     url: "../backend/get-user-stats.php",
@@ -19,6 +22,7 @@ $(document).ready(function () {
     }
   })
 
+  //toggle button for the change password form
   $('#b1').on('click', function () {
     let x = document.getElementById("hidb1");
     if (x.hidden) {
@@ -29,11 +33,12 @@ $(document).ready(function () {
   });
 
 
-
+  //Change pass/name button action
   $('#butsave').on('click', function () {
     var username = $('#username').val();
     var newpass = $('#newpass').val();
     var oldpass = $('#oldpass').val();
+    //use crit function to check new password requirements. proceed only when New Password field matches them.
     if(crit(newpass)){
       $.ajax({
         url: "../backend/save.php",
@@ -68,6 +73,7 @@ $(document).ready(function () {
   });
 
 
+  //new password requirements tooltip (css colors, warnings etc)
   $('#newpass').on('keyup', function () {
     let x = this.value;
     $('#butsave').attr("class", "btn btn-danger");

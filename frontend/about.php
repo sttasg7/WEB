@@ -125,12 +125,14 @@ include '../backend/logincheck.php';
                 href="https://stackoverflow.com/">Stack Overflow</a> for their existence and <a
                 href="https://getbootstrap.com">Bootstrap</a> for their great CSS </p>
 
-        <p>Other tools used (for which we are greatly appreciative): <br>
+        <p>Other tools used (for which we are deeply grateful): <br>
             <a href="https://leafletjs.com/">Leaflet</a><br>
             <a href="https://www.patrick-wied.at/static/heatmapjs/example-heatmap-leaflet.html">Heatmap.js</a><br>
             <a href="https://www.chartjs.org/">Chart.js</a><br>
             <a href="https://github.com/EvanHahn/HumanizeDuration.js">Time humanizer</a><br>
             <a href="https://github.com/google/palette.js/tree/master">Color Palette</a><br>
+            <a href="https://github.com/pointhi/leaflet-color-markers">Leaflet Color Markers</a><br>
+            
     </div>
 
 

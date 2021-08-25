@@ -1,15 +1,25 @@
+//file processing is done entirely on user's browser via javascript.
+//server is contacted only after the user presses Upload (which uploads slim har only)
+//thus users privacy is ensured 
+
 var parsed;
 var modified;
 var userIP; var city; var city_lat; var city_long; var isp;
 var check = 0;
 data = new Array();
+
+//action listener for Select File button
 document.getElementById('myFile').addEventListener('change', function selectedFileChanged() {
     $('#sendtoserver').attr("disabled", "disabled");
     $('#exportslim').attr("disabled", "disabled");
     $('#pleasewait').removeAttr("hidden");
+    $("#success").attr("hidden", "hidden");
     data = [];
+
+    //add a FileReader on the button
     const reader = new FileReader();
     reader.onload = function fileReadCompleted() {
+        //check if the file is in the needed format
         try {
             parsed = JSON.parse(reader.result);
             check = 1;
@@ -21,16 +31,20 @@ document.getElementById('myFile').addEventListener('change', function selectedFi
             check = 0;
         };
 
+        //if the file is in .har format we check if it has been already processed
         if (check == 1) {
-            if (typeof parsed.log == 'undefined' && parsed[0].url != 'undefined') {
+            if (typeof parsed.log == 'undefined' && parsed[0].url != 'undefined') { //if it is already processed, we avoid processing it again
                 $('#exportslim').attr("disabled", "disabled");
                 $('#pleasewait').html("You can't use the Export option as this log has already been processed and slimmed down. <br> You may upload it to the server.");
                 $('#pleasewait').removeAttr("hidden");
-            } else {
+            } else { //if it's not, we run the main process
                 $('#pleasewait').html("Please wait for the file to process");
                 $('#pleasewait').removeAttr("hidden");
                 for (i = 0; i < parsed.log.entries.length; i++) {
                     let host, contentType, cacheControl, pragma, expires, age, lastModified;
+
+                    //check both request and response fields for data
+                    //grab only needed attributes                     
 
                     for (j = 0; j < parsed.log.entries[i].request.headers.length; j++) {
                         if (parsed.log.entries[i].request.headers[j].name == "Host" || parsed.log.entries[i].request.headers[j].name == "host") {
@@ -67,17 +81,24 @@ document.getElementById('myFile').addEventListener('change', function selectedFi
                         }
                     }
 
+                    //domain process
                     url = parsed.log.entries[i].request.url;
                     let domain = (new URL(url));
                     domain = domain.hostname.replace('www.', '');
+
+                    //IPv6 process
                     let ipfix1 = parsed.log.entries[i].serverIPAddress || "";
                     let ipfix2 = ipfix1.replace("[", "");
-                    let ipfix = ipfix2.replace("]", ""); //Quick fix for ipv6 */
+                    let ipfix = ipfix2.replace("]", ""); 
 
+                    //null content type process
                     if (contentType == null || contentType == '') {
                         contentType = "text/html"
                     }
-                    contentType = contentType.split(';')[0]; //to clear not needed values
+                    contentType = contentType.split(';')[0];
+
+
+                    //create an object will all extracted values
                     let modifiedHar = {
                         "startedDateTime": parsed.log.entries[i].startedDateTime,
                         "wait": parsed.log.entries[i].timings.wait,
@@ -95,12 +116,15 @@ document.getElementById('myFile').addEventListener('change', function selectedFi
                         "Host": host,
 
                     }
+
+                    //push it to "data" array
                     data.push(modifiedHar);
                 }
                 $('#pleasewait').attr("hidden", "hidden");
             }
         }
 
+        //user IP, city, lat, long process
         $.ajax({
             dataType: "json",
             url: "../backend/getIPinfo.php",
@@ -115,13 +139,14 @@ document.getElementById('myFile').addEventListener('change', function selectedFi
 
     };
     reader.readAsText(this.files[0]);
-    console.log(data);
+    console.log("Your slimmed har data", data);
     $('#sendtoserver').removeAttr("disabled", "disabled");
     $('#exportslim').removeAttr("disabled", "disabled");
     $('#pleasewait').attr("hidden", "hidden");
 });
 
 
+//when the Upload button is pressed we contact the server to insert to SQL
 function SendToServer() {
     $('#sendtoserver').attr("disabled", "disabled");
     $('#exportslim').attr("disabled", "disabled");
@@ -140,7 +165,7 @@ function SendToServer() {
         },
         cache: false,
         success: function () {
-            updatelibrary();
+            updatelibrary(); //after the upload is done, update serverloc library            
         }
     });
 }
