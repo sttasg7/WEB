@@ -107,7 +107,7 @@ include '../backend/logincheck.php';
     <div class="container py-4">
 
         <p align="center" class="lead"><u>Below you can see an analysis of all HTTP connection logged in your uploaded files.</u></p>
-        <div id="mapid"></div>
+        <div id="mapid" style="border-radius: 15px; opacity: 0.95;"></div>
 
 
         <br>

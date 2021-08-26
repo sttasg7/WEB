@@ -147,7 +147,7 @@ body {
             <canvas id="ch1"></canvas>
         </div>
 
-        <div id="table" style="width:60%; margin-left: 2%" class="text-center py-4"></div>
+        <div id="table" style="width:60%; margin-left: 2%" class="text-center py-4 admintable"></div>
 
         <div id="filterbar" style="width:21%; margin-left:2%" class="bd-highlight">
             <ul id="filt" class="navbar-nav bg-dark sb-main"></ul>

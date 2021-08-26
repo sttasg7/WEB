@@ -122,7 +122,7 @@ body {
     </nav>
 
     <div class="container py-5">
-        <div id="mapid"></div>
+        <div id="mapid" style="border-radius: 15px; opacity: 0.95;"></div>
 
         <div class="py-3"><img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png"
                 alt="Green"> Users<br>

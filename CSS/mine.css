@@ -87,11 +87,12 @@ td {
 
 @media screen and (max-width: 768px) {
   #xanax,
-  #table {
+  .admintable {
     position: absolute;
     top: 159%;
     left: 0%;
   }
+
   #tainer {
     position: relative;
     left: 0%;

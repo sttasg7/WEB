@@ -150,7 +150,7 @@ body {
         <div id="xanax" style="width:40%; margin-left: 12%;" class="py-4">
             <canvas id="ch1"></canvas>
         </div>
-        <div id="table" style="width:50%; margin-left: 12%;" class="text-center py-4"></div>
+        <div id="table" style="width:50%; margin-left: 12%;" class="text-center py-4 admintable"></div>
 
 
     </div>

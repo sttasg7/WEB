@@ -117,6 +117,15 @@ include '../backend/logincheck.php';
 
     <script src="../js/log_sign.js"></script>
 
+    <script>
+        $(document).ready(function(){
+            $('#password').keypress(function(e){
+                if(e.keyCode==13)
+            $('#butsave').click();
+            });
+        });
+    </script>
+
     <?php } else { 
         header("Location: user-profile.php");
     }?>
