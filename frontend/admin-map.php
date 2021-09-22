@@ -37,6 +37,7 @@ include '../backend/logincheck.php';
 
 </head>
 <style>
+  /*  
 .sb-main {
     padding: 2% 2% 8% 2%;
     color: white;
@@ -56,7 +57,7 @@ td {
 tr:nth-child(even) {
     background-color: white;
 }
-
+*/
 body {
     background-image: url('../pictures/blu.jpg');
     /*background-image: url('../pictures/abstr.png');*/

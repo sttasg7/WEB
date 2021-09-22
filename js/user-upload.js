@@ -150,26 +150,32 @@ document.getElementById('myFile').addEventListener('change', function selectedFi
 
 //when the Upload button is pressed we contact the server to insert to SQL
 function SendToServer() {
-    $('#sendtoserver').attr("disabled", "disabled");
-    $('#exportslim').attr("disabled", "disabled");
-    $('#pleasewait').removeAttr("hidden", "hidden");
-    data = JSON.stringify(data);
-    $.ajax({
-        url: "../backend/uploadhar.php",
-        type: "POST",
-        data: {
-            data: data,
-            userip: userIP,
-            city: city,
-            lat: city_lat,
-            long: city_long,
-            isp: isp
-        },
-        cache: false,
-        success: function () {
-            updatelibrary(); //after the upload is done, update serverloc library            
-        }
-    });
+    if( data.length !== 0 ){
+        $('#sendtoserver').attr("disabled", "disabled");
+        $('#exportslim').attr("disabled", "disabled");
+        $('#pleasewait').removeAttr("hidden", "hidden");
+        data = JSON.stringify(data);
+
+        $.ajax({
+            url: "../backend/uploadhar.php",
+            type: "POST",
+            data: {
+                data: data,
+                userip: userIP,
+                city: city,
+                lat: city_lat,
+                long: city_long,
+                isp: isp
+            },
+            cache: false,
+            success: function () {
+                updatelibrary(); //after the upload is done, update serverloc library            
+            }
+        });
+    } else{
+        $('#pleasewait').html("You have not selected any file! Please select a HAR file to Submit!");
+        $('#pleasewait').removeAttr("hidden");
+    }    
 }
 
 function DownloadJSON(argument) {
@@ -186,8 +192,13 @@ function DownloadJSON(argument) {
 }
 
 function Export() {
-    modified = JSON.stringify(data, undefined, '\t');
-    DownloadJSON(modified)
+    if( data.length !== 0 ){
+        modified = JSON.stringify(data, undefined, '\t');
+        DownloadJSON(modified)
+    } else{
+        $('#pleasewait').html("You have not selected any file! Please select a HAR file to Export!");
+        $('#pleasewait').removeAttr("hidden");
+    } 
 }
 
 function updatelibrary() {

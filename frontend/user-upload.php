@@ -90,13 +90,12 @@ body {
 
     <div class="container">
 
-        <div class="text-center font-weight-bold fs-25 text-white" id="username"></div>
+        <!-- <div class="text-center font-weight-bold fs-25 text-white" id="username"></div>
 
         <div class="text-center font-weight-bold fs-25 text-white m-t-25" id="total"></div>
-        <div class="text-center font-weight-bold fs-25 text-white m-t-25" id="lastdate"></div>
+        <div class="text-center font-weight-bold fs-25 text-white m-t-25" id="lastdate"></div>-->
 
-
-        <p class="text-center lead fs-18 text-dark m-t-150">Upload or export your HAR files. <br> Visit <a
+        <p class="text-center lead fs-18 text-dark m-t-150" style="margin-top: 50px;">Upload or export your HAR files. <br> Visit <a
                 href="faq.php">FAQ</a> for more info.</p>
         <form id="HarForm" class="text-center  fs-18 text-white m-t-50">
             <input type="file" id="myFile" class="btn btn-upload mx-2" name="filename" accept=".har">
