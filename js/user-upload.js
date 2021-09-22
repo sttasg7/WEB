@@ -25,6 +25,7 @@ document.getElementById('myFile').addEventListener('change', function selectedFi
             check = 1;
         } catch (e) {
             $('#sendtoserver').attr("disabled", "disabled");
+            $('#sendtoserver').attr("disabled", "disabled");
             $('#exportslim').attr("disabled", "disabled");
             $('#pleasewait').html("Your file is not compatible. <br> Please use a .har log. <br> Check FAQ on how to obtain them");
             $('#pleasewait').removeAttr("hidden");
@@ -34,8 +35,9 @@ document.getElementById('myFile').addEventListener('change', function selectedFi
         //if the file is in .har format we check if it has been already processed
         if (check == 1) {
             if (typeof parsed.log == 'undefined' && parsed[0].url != 'undefined') { //if it is already processed, we avoid processing it again
+                $('#sendtoserver').attr("disabled", "disabled");
                 $('#exportslim').attr("disabled", "disabled");
-                $('#pleasewait').html("You can't use the Export option as this log has already been processed and slimmed down. <br> You may upload it to the server.");
+                $('#pleasewait').html("You can't use the Export option as this log has already been processed and slimmed down. <br> You may upload the original log to the server.");
                 $('#pleasewait').removeAttr("hidden");
             } else { //if it's not, we run the main process
                 $('#pleasewait').html("Please wait for the file to process");

@@ -114,6 +114,7 @@ function crit(x) {
   }
 }
 
+//TO Delete
 function toggleform() {
   var x = document.getElementById("change-pass");
   if (x.style.display === "none") {

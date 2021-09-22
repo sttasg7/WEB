@@ -69,7 +69,7 @@ include '../backend/logincheck.php';
     </p>
 
     <!-- Input Boxes -->
-    <div class="form d-lg-flex py-2" id="welcome" style="padding-left: 50px;">
+    <div class="form d-lg-flex py-2" id="welcome" style="padding-left: 50px; margin-bottom: 80px;">
         <form class="container" method="POST">
             <div class="mb-3 row">
                 <label for="username" class="col-sm-2 col-form-label fw-light fs-5">Username:</label>
@@ -104,10 +104,10 @@ include '../backend/logincheck.php';
             <input type="button" name="save" class="btn btn-outline-dark" value="Register!" id="butsave" style="margin-bottom: 3%;">
         </form>
     </div>
-
-    <footer class="footer mt-auto py-3 bg-dark d-none d-sm-block">
+    
+    <footer class="footer mt-auto py-3 bg-dark">
         <div class="container">
-            <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</span>
+            <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος - Ιωάννης Αγγελόπουλος</span>
         </div>
     </footer>
 

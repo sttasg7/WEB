@@ -178,9 +178,9 @@ include '../backend/logincheck.php';
     
 
 
-    <footer class="footer mt-auto py-3 bg-dark d-none d-sm-block">
+    <footer class="footer mt-auto py-3 bg-dark">
         <div class="container">
-            <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</span>
+            <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος - Ιωάννης Αγγελόπουλος</span>
         </div>
     </footer>
 

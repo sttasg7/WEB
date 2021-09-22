@@ -11,17 +11,17 @@ body {
   background-color: rgb(165, 165, 165);
 }
 
-footer {
+.footer {
   width: 100%;
+  position: fixed;
   bottom: 0;
-  position: absolute;
   text-align: center;
+  z-index: 289;
 }
 
-@media screen and (min-width: 500px) {
-  footer {
+@media screen and (max-width: 1024px) {
+  .footer {
     position: relative;
-    height: 10%;
     bottom: 0;
   }
 }

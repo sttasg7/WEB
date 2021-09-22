@@ -117,7 +117,7 @@ include '../backend/logincheck.php';
     </div>
 
     <div class="py-4 container text-center" style="margin-bottom: 2%;">
-        <p>This is a project created by CEID UPatras students Panos & Stefanos for the "Programming and Systems on
+        <p>This is a project created by CEID UPatras students Panos, Stefanos & Giannis for the "Programming and Systems on
             the World Wide Web" course on the 8th semester.</p>
         <p>You can visit the project's <a href="https://github.com/sttasg7/WEB">github</a> page to monitor our progress
         </p>
@@ -136,9 +136,9 @@ include '../backend/logincheck.php';
     </div>
 
 
-    <footer class="footer mt-auto py-3 bg-dark d-none d-sm-block">
+    <footer class="footer mt-auto py-3 bg-dark">
         <div class="container">
-            <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</span>
+            <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος - Ιωάννης Αγγελόπουλος</span>
         </div>
     </footer>
 

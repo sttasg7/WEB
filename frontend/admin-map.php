@@ -28,9 +28,12 @@ include '../backend/logincheck.php';
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
 
-    <script src="../js/heatmap.js"></script>
+        <script src="../js/admin-map.js"></script>
+    <!--
+        <script src="../js/heatmap.js"></script>
     <script src="../js/pwied-heatmap.js"></script>
-    <script src="../js/admin-map.js"></script>
+    
+    -->
 
 </head>
 <style>
@@ -121,7 +124,7 @@ body {
         </div>
     </nav>
 
-    <div class="container py-5">
+    <div class="container py-5" style="margin-bottom: 40px;">
         <div id="mapid" style="border-radius: 15px; opacity: 0.95;"></div>
 
         <div class="py-3"><img src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png"
@@ -139,9 +142,9 @@ body {
     
     
 
-    <footer class="footer mt-auto py-3 bg-dark d-none d-sm-block">
+    <footer class="footer mt-auto py-3 bg-dark">
         <div class="container">
-            <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</span>
+            <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος - Ιωάννης Αγγελόπουλος</span>
         </div>
     </footer>
 

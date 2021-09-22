@@ -109,7 +109,7 @@ body {
             </div>
         </div>
     </nav>
-    <div class="container d-flex">
+    <div class="container d-flex" style="margin-bottom: 90px;">
         <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="height: 100%;" id="tainer">
             <hr>
             <b><a href="admin-analysis.php" class="d-flex text-white text-center  text-decoration-none">Timings
@@ -162,12 +162,11 @@ body {
 
     </div>
 
-    <div class="mb-1 row"></div>
    
 
-    <footer class="footer mt-auto py-3 bg-dark d-none d-md-block">
+    <footer class="footer mt-auto py-3 bg-dark d-none d-sm-block">
         <div class="container">
-            <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</span>
+            <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος - Ιωάννης Αγγελόπουλος</span>
         </div>
     </footer>
 

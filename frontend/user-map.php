@@ -104,7 +104,7 @@ include '../backend/logincheck.php';
         </div>
     </nav>
 
-    <div class="container py-4">
+    <div class="container py-4" style="margin-bottom: 40px;">
 
         <p align="center" class="lead"><u>Below you can see an analysis of all HTTP connection logged in your uploaded files.</u></p>
         <div id="mapid" style="border-radius: 15px; opacity: 0.95;"></div>
@@ -145,9 +145,9 @@ include '../backend/logincheck.php';
     </div>
 
 
-    <footer class="footer mt-auto py-3 bg-dark d-none d-sm-block">
+    <footer class="footer mt-auto py-3 bg-dark">
         <div class="container">
-            <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</span>
+            <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος - Ιωάννης Αγγελόπουλος</span>
         </div>
     </footer>
 

@@ -74,7 +74,7 @@ function load(json) {
   });
 
 }
-
+/*
 //toggle button 
 function myFunction() { 
   var x = document.getElementById("tog");
@@ -88,3 +88,4 @@ function myFunction() {
     $("#togbtn").html("Show Table");
   }
 }
+*/

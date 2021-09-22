@@ -77,7 +77,7 @@ include '../backend/logincheck.php';
     </p>
 
     <!-- Input Boxes -->
-    <div class="form d-lg-flex py-4" id="welcome">
+    <div class="form d-lg-flex py-4" id="welcome" style="margin-bottom: 80px;">
         <form class="container" method="POST">
             <div class="mb-3 row">
                 <label for="staticEmail" class="col-sm-2 col-form-label fw-light fs-5">Email:</label>
@@ -100,9 +100,9 @@ include '../backend/logincheck.php';
         </form>
     </div>
 
-    <footer class="footer mt-auto py-3 bg-dark d-none d-sm-block">
+    <footer class="footer mt-auto py-3 bg-dark">
         <div class="container">
-            <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</span>
+            <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος - Ιωάννης Αγγελόπουλος</span>
         </div>
     </footer>
 

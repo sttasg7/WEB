@@ -75,7 +75,7 @@ include 'backend/logincheck.php';
 		</a>
 	</div>
 
-	<div class="container" align="center" style="margin-top: 1%; margin-bottom: 4%;">
+	<div class="container" align="center" style="margin-top: 1%; margin-bottom: 40px;">
 		<p class="fs-2 fw-light" align="center">
 			If you don't have an account, please
 		</p>
@@ -85,11 +85,11 @@ include 'backend/logincheck.php';
 		</a>
 	</div>
 
-	<footer class="footer mt-auto py-4 bg-dark d-none d-sm-block" id="footer">
-		<div class="container">
-			<span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος</span>
-		</div>
-	</footer>
+	<footer class="footer mt-auto py-3 bg-dark">
+        <div class="container">
+            <span class="text-muted text-center">CEID © 2021 Copyright: Παναγιώτης Καπνίσης - Τάσσης Στέφανος - Ιωάννης Αγγελόπουλος</span>
+        </div>
+    </footer>
 
 	<script src="js/log_sign.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

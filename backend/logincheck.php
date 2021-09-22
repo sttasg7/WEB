@@ -21,7 +21,7 @@ if(isset($_SESSION['username'])) {
     }
     //end of check
 
-    //if user is admin $loginst =2
+    //if user is admin $loginst = 2
     if($res == 1){
         $loginst = 2;
     }
